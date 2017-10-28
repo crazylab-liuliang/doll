@@ -22,9 +22,7 @@ interface ProtocolProcess {
 		SocketServerHandler.bind(new protocol.ranking_request(), new ranking_request_process());
 		
 		// Unused
-		//SocketServerHandler.bind(new protocol.collect_item(), new collect_item_process());
 		SocketServerHandler.bind(new protocol.on_attacked(),  new on_attacked_process());
-		//SocketServerHandler.bind(new protocol.eat_item(), new eat_item_process());
 	}
 }
 
