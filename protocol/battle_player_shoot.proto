@@ -1,0 +1,6 @@
+{
+    "player":"long",
+    "weapon_pos_x":"float",
+    "weapon_pos_y":"float",
+    "degree":"float"
+}

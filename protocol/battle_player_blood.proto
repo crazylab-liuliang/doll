@@ -1,0 +1,4 @@
+{
+    "self_blood":"int",
+    "enemy_blood":"int"
+}

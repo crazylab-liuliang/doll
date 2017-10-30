@@ -1,0 +1,5 @@
+{
+    "player":"long",
+    "name":"string",
+    "pos":"int"
+}
