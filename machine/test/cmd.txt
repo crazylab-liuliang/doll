@@ -1,0 +1,1 @@
+ffmpeg -i /dev/video1 -framerate 24 -video_size 640x480 -vcodec libx264 -maxrate 768k -bufsize 8080k -vf "format=yuv420p" -g 60 -f flv rtmp://118.190.156.61/live/apple
