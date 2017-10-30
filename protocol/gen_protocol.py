@@ -5,6 +5,7 @@ import json
 root_path = os.getcwd() + '/'
 java_save_path = root_path + "../server/src/protocol/"
 gd_save_path   = root_path + "../client/global/protocol/"
+py_save_path   = root_path + "../machine/protocol/"
 
 # recreate java file save path
 if os.path.exists(java_save_path):
@@ -12,10 +13,15 @@ if os.path.exists(java_save_path):
 
 os.mkdir(java_save_path)
 
-if os.path.exists(gd_save_path):
-    shutil.rmtree(gd_save_path)
+if os.path.exists(py_save_path):
+    shutil.rmtree(py_save_path)
 
-os.mkdir(gd_save_path)
+os.mkdir(py_save_path)
+
+#if os.path.exists(gd_save_path):
+    #shutil.rmtree(gd_save_path)
+
+#os.mkdir(gd_save_path)
 
 def gen_protocol_java( file, id):
     protocol_name = os.path.splitext(file)[0]
@@ -198,6 +204,97 @@ def gen_protocol_godot(file, id):
     print("generate " + gd_file_name + " succeed")
 
 
+# generate protocol for python
+def gen_protocol_python(file, id):
+    protocol_name = os.path.splitext(file)[0]
+
+    py_file_name = py_save_path + protocol_name + ".pb.py"
+    print("prepare generate [" + py_file_name + "]")
+    py_file = open( py_file_name, "w+")
+
+    py_file.writelines("class " + protocol_name + ":\n\n")
+
+    with open(file) as data_file:
+        data = json.load(data_file) 
+        for key in data.keys():
+            if data[key] == 'string':
+                py_file.writelines( key + " = String("")\n")
+            elif data[key] == 'long':
+                py_file.writelines( key + " = -1\n")
+            else:
+                py_file.writelines( key + " = " + data[key] +"(0)\n")
+
+    py_file.writelines("\n")
+    py_file.writelines("def _ready():\n")
+    py_file.writelines("\tpass\n\n")
+
+    # name
+    py_file.writelines("def name():\n")
+    py_file.writelines("\treturn '%s'\n" % protocol_name)
+    py_file.writelines("\n")
+
+    # id
+    py_file.writelines("def id():\n")
+    py_file.writelines("\treturn %d\n" % id)
+
+    # length
+    length = 0
+    strings = ''
+    for key in data.keys():
+        if data[key]=='int':
+            length += 4
+        if data[key]=='long':
+            length += 8
+        if data[key]=='float':
+            length += 4
+        if data[key]=='string':
+            length += 4
+            strings += "+" + key + ".length()" 
+
+    py_file.writelines("\n")
+    py_file.writelines("def length():\n")
+    py_file.writelines("\treturn %d %s;\n" % (length, strings))
+    py_file.writelines("\n")
+
+    # send data
+    py_file.writelines("def send(stream):\n")
+    py_file.writelines("\tvar buf = ByteBuf.new()\n")
+    py_file.writelines("\tbuf.write_i32(int(id()))\n")
+    py_file.writelines("\tbuf.write_i32(int(length()))\n")
+    for key in data.keys():
+        if data[key]=='int':
+            py_file.writelines("\tbuf.write_i32(%s)\n" % key)
+        if data[key]=='long':
+            py_file.writelines("\tbuf.write_i64(%s)\n" % key)
+        if data[key]=='float':
+            py_file.writelines("\tbuf.write_float(%s)\n" % key)
+        if data[key]=='string':
+            py_file.writelines("\tbuf.write_string(%s)\n" % key)
+
+    py_file.writelines("\tbuf.write_byte(64)\n")
+    py_file.writelines("\tbuf.write_byte(64)\n")
+    py_file.writelines("\tstream.put_data(buf.raw_data())")
+    py_file.writelines("\n")
+
+    # parse data
+    py_file.writelines("\n")
+    py_file.writelines("def parse_data( byteBuffer):\n")
+    for key in data.keys():
+        if data[key]=='int':
+            py_file.writelines("\t%s = byteBuffer.read_i32();\n" % key)
+        if data[key]=='long':
+            py_file.writelines("\t%s = byteBuffer.read_i64();\n" % key)
+        if data[key]=='float':
+            py_file.writelines("\t%s = byteBuffer.read_float();\n" % key)
+        if data[key]=='string':
+            py_file.writelines("\t%s = byteBuffer.read_string();\n" % key)
+
+    py_file.writelines("\tpass\n")
+
+    py_file.close()
+
+    print("generate " + py_file_name + " succeed")
+
 def generate_msg_jave_base_class():
     java_file_name = java_save_path + "message.java"
     java_file = open(java_file_name, "w+")
@@ -253,5 +350,5 @@ id = 1
 for file in dirs:
     if os.path.splitext(file)[1] == '.proto':
         gen_protocol_java( file, id)
-        gen_protocol_godot(file, id)
+        gen_protocol_python(file, id)
         id+=1
