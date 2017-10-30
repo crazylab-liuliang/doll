@@ -1,0 +1,2 @@
+ffplay -fflags nobuffer -analyzeduration 100000 rtmp://118.190.156.61/live/test
+
