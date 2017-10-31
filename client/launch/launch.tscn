@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://launch/launch.gd" type="Script" id=1]
+[ext_resource path="res://launch/common/common.tscn" type="PackedScene" id=2]
+[ext_resource path="res://launch/main/main.tscn" type="PackedScene" id=3]
+[ext_resource path="res://launch/ranking/ranking.tscn" type="PackedScene" id=4]
+
+[node name="launch" type="Node2D"]
+
+script/script = ExtResource( 1 )
+
+[node name="ui" type="CanvasLayer" parent="."]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+
+[node name="common" parent="ui" instance=ExtResource( 2 )]
+
+[node name="main" parent="ui" instance=ExtResource( 3 )]
+
+[node name="ranking" parent="ui" instance=ExtResource( 4 )]
+
+visibility/visible = false
+
+

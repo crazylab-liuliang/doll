@@ -17,3 +17,6 @@ class network:
 
 	def close(self):
 		sock.close()
+
+	def loop(self):
+		print('loop')

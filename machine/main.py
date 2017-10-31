@@ -8,4 +8,5 @@ nw.connect_server("localhost", 8800)
 nw.login()
 
 while True:
-    time.sleep(10)
+    nw.loop()
+    time.sleep(0.1)

@@ -1,6 +1,7 @@
 package net.socket;
 
 import io.netty.channel.ChannelHandlerContext;
+import manager.machine.DollMachine;
 import manager.player.Player;
 import manager.ranking.RankingMgr;
 
@@ -176,6 +177,7 @@ class machine_login_process implements ProtocolProcess{
 	public void on_accept(protocol.message proto, ChannelHandlerContext ctx) {
 		protocol.machine_login msg = (protocol.machine_login)proto;
 		
-		System.out.println("hahahahahahahahahah");
+		DollMachine machine = DollMachine.get(ctx);
+		machine.login();
 	}
 }
