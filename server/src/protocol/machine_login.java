@@ -3,27 +3,23 @@ package protocol;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 
-public class register_by_email extends message {
+public class machine_login extends message {
 
-	public String password = "";
-	public String email = "";
 	@Override
 
 	public int id(){
-		 return 26;
+		 return 19;
 	}
 
 	@Override
 	public int length(){
-		 return 8 +password.length()+email.length();
+		 return 0 ;
 	}
 
 	public ByteBuf data(){
 		ByteBuf byteBuffer = Unpooled.buffer(8+length());
 		byteBuffer.writeInt(id());
 		byteBuffer.writeInt(length());
-		write_string(byteBuffer, password);
-		write_string(byteBuffer, email);
 		byteBuffer.writeByte(64);
 		byteBuffer.writeByte(64);
 		return byteBuffer;
@@ -31,7 +27,5 @@ public class register_by_email extends message {
 
 	@Override
 	public void parse_data(ByteBuf byteBuffer){
-		password = read_string(byteBuffer);
-		email = read_string(byteBuffer);
 	}
 }

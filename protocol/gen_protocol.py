@@ -212,7 +212,8 @@ def gen_protocol_python(file, id):
     print("prepare generate [" + py_file_name + "]")
     py_file = open( py_file_name, "w+")
 
-    py_file.writelines("class " + protocol_name + ":\n\n")
+    py_file.writelines("import struct\n\n")
+    py_file.writelines("class " + protocol_name + ":\n")
 
     with open(file) as data_file:
         data = json.load(data_file) 
@@ -258,22 +259,25 @@ def gen_protocol_python(file, id):
 
     # send data
     py_file.writelines("def send(stream):\n")
-    py_file.writelines("\tvar buf = ByteBuf.new()\n")
-    py_file.writelines("\tbuf.write_i32(int(id()))\n")
-    py_file.writelines("\tbuf.write_i32(int(length()))\n")
+    format = 'ii'
+    params = ',id(),length()'
     for key in data.keys():
         if data[key]=='int':
-            py_file.writelines("\tbuf.write_i32(%s)\n" % key)
+            format += 'i'
+            params += ',%s' % key
         if data[key]=='long':
-            py_file.writelines("\tbuf.write_i64(%s)\n" % key)
+            format += 'l'
+            params += ',%s' % key
         if data[key]=='float':
-            py_file.writelines("\tbuf.write_float(%s)\n" % key)
-        if data[key]=='string':
-            py_file.writelines("\tbuf.write_string(%s)\n" % key)
+            format += 'f'
+            params += ',%s' % key
+        #if data[key]=='string':
+        #    py_file.writelines("\tbuf.write_string(%s)\n" % key)
 
-    py_file.writelines("\tbuf.write_byte(64)\n")
-    py_file.writelines("\tbuf.write_byte(64)\n")
-    py_file.writelines("\tstream.put_data(buf.raw_data())")
+    format += 'BB'
+    params += ',%d,%d' % (64,64)
+    py_file.writelines("\tbuf = struct.pack(\'%s\'%s)\n" % (format, params))
+    py_file.writelines("\tstream.send(buf)")
     py_file.writelines("\n")
 
     # parse data
@@ -289,7 +293,7 @@ def gen_protocol_python(file, id):
         if data[key]=='string':
             py_file.writelines("\t%s = byteBuffer.read_string();\n" % key)
 
-    py_file.writelines("\tpass\n")
+    py_file.writelines("\treturn\n")
 
     py_file.close()
 
@@ -352,4 +356,13 @@ for file in dirs:
     if file_ext == '.proto':
         gen_protocol_java( file, id)
         gen_protocol_python(file, id)
+        id+=1
+    elif file_ext.find(".proto")!=-1:
+        if file_ext.find("java")!= -1:
+            gen_protocol_java(file, id)
+        if file_ext.find("python")!=-1:
+            gen_protocol_python(file, id)
+        if file_ext.find("gdscript")!=-1:
+            gen_protocol_godot(file, id)
+
         id+=1

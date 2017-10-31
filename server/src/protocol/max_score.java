@@ -9,7 +9,7 @@ public class max_score extends message {
 	@Override
 
 	public int id(){
-		 return 19;
+		 return 20;
 	}
 
 	@Override
