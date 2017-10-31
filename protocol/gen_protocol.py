@@ -208,7 +208,7 @@ def gen_protocol_godot(file, id):
 def gen_protocol_python(file, id):
     protocol_name = os.path.splitext(file)[0]
 
-    py_file_name = py_save_path + protocol_name + ".pb.py"
+    py_file_name = py_save_path + "pb." + protocol_name + ".py"
     print("prepare generate [" + py_file_name + "]")
     py_file = open( py_file_name, "w+")
 
@@ -348,7 +348,8 @@ generate_msg_jave_base_class()
 dirs = os.listdir(root_path)
 id = 1
 for file in dirs:
-    if os.path.splitext(file)[1] == '.proto':
+    file_ext = os.path.splitext(file)[1]
+    if file_ext == '.proto':
         gen_protocol_java( file, id)
         gen_protocol_python(file, id)
         id+=1
