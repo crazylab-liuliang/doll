@@ -2,9 +2,6 @@ extends Node
 
 var num = int(0)
 
-func _ready():
-	pass
-
 func name():
 	return 'backpack_num'
 

@@ -89,8 +89,8 @@ func connect_server():
 		streamPeerTCP.disconnect()
 	
 	streamPeerTCP = StreamPeerTCP.new()
-	#if OK!=streamPeerTCP.connect('localhost', 8800):
-	if OK!=streamPeerTCP.connect('118.190.156.61', 8800):
+	if OK!=streamPeerTCP.connect('localhost', 8800):
+	#if OK!=streamPeerTCP.connect('118.190.156.61', 8800):
 		print("connect server failed")
 		set_cur_net_state(NetState.DISCONNECTED)
 		set_target_net_state(NetState.DISCONNECTED)
@@ -231,6 +231,11 @@ func send_max_score(max_score):
 func send_ranking_request():
 	if streamPeerTCP.is_connected():
 		var msg = preload("res://global/protocol/ranking_request.pb.gd").new()
+		msg.send(streamPeerTCP)
+		
+func send_machine_move_left():
+	if streamPeerTCP.is_connected():
+		var msg = preload("res://global/protocol/machine_move_left.pb.gd").new()
 		msg.send(streamPeerTCP)
 
 func bind_msgs():

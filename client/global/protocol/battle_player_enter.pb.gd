@@ -4,9 +4,6 @@ var player = -1
 var name = String()
 var pos = int(0)
 
-func _ready():
-	pass
-
 func name():
 	return 'battle_player_enter'
 

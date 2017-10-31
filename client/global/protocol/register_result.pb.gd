@@ -3,14 +3,11 @@ extends Node
 var account = int(0)
 var result = int(0)
 
-func _ready():
-	pass
-
 func name():
 	return 'register_result'
 
 func id():
-	return 26
+	return 28
 
 func length():
 	return 8 ;

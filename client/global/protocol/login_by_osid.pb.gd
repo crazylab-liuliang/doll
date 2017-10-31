@@ -2,9 +2,6 @@ extends Node
 
 var osid = String()
 
-func _ready():
-	pass
-
 func name():
 	return 'login_by_osid'
 

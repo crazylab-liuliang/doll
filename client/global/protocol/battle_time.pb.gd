@@ -3,9 +3,6 @@ extends Node
 var battle_time = int(0)
 var turn_time = int(0)
 
-func _ready():
-	pass
-
 func name():
 	return 'battle_time'
 

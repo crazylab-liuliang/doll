@@ -1,28 +1,22 @@
 extends Node
 
-var password = String()
-var email = String()
 
 func name():
-	return 'login_by_email'
+	return 'machine_move_left'
 
 func id():
-	return 16
+	return 20
 
 func length():
-	return 8 +password.length()+email.length();
+	return 0 ;
 
 func send(stream):
 	var buf = ByteBuf.new()
 	buf.write_i32(int(id()))
 	buf.write_i32(int(length()))
-	buf.write_string(password)
-	buf.write_string(email)
 	buf.write_byte(64)
 	buf.write_byte(64)
 	stream.put_data(buf.raw_data())
 
 func parse_data( byteBuffer):
-	password = byteBuffer.read_string();
-	email = byteBuffer.read_string();
 	pass

@@ -2,14 +2,11 @@ extends Node
 
 var result = int(0)
 
-func _ready():
-	pass
-
 func name():
 	return 'search_room_result'
 
 func id():
-	return 29
+	return 31
 
 func length():
 	return 4 ;

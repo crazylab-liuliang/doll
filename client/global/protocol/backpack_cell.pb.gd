@@ -4,9 +4,6 @@ var item_id = int(0)
 var index = int(0)
 var item_num = int(0)
 
-func _ready():
-	pass
-
 func name():
 	return 'backpack_cell'
 

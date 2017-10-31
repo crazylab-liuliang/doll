@@ -12,9 +12,6 @@ var player0_blood = int(0)
 var pos0 = int(0)
 var pos1 = int(0)
 
-func _ready():
-	pass
-
 func name():
 	return 'battle_player_relogin'
 

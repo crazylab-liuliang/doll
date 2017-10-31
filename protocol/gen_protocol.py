@@ -22,10 +22,10 @@ os.mkdir(py_save_path)
 py_file = open( py_save_path + "__init__.py", "w+")
 py_file.close()
 
-#if os.path.exists(gd_save_path):
-    #shutil.rmtree(gd_save_path)
+if os.path.exists(gd_save_path):
+    shutil.rmtree(gd_save_path)
 
-#os.mkdir(gd_save_path)
+os.mkdir(gd_save_path)
 
 def gen_protocol_java( file, id):
     protocol_name = os.path.splitext(file)[0]
@@ -356,6 +356,7 @@ for file in dirs:
     if file_ext == '.proto':
         gen_protocol_java( file, id)
         gen_protocol_python(file, id)
+        gen_protocol_godot(file, id)
         id+=1
     elif file_ext.find(".proto")!=-1:
         if file_ext.find("java")!= -1:

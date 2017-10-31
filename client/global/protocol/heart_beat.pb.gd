@@ -1,9 +1,6 @@
 extends Node
 
 
-func _ready():
-	pass
-
 func name():
 	return 'heart_beat'
 

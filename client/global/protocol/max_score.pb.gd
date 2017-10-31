@@ -2,14 +2,11 @@ extends Node
 
 var max_score = int(0)
 
-func _ready():
-	pass
-
 func name():
 	return 'max_score'
 
 func id():
-	return 19
+	return 21
 
 func length():
 	return 4 ;

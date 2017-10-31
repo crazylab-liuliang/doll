@@ -2,14 +2,11 @@ extends Node
 
 var damage = int(0)
 
-func _ready():
-	pass
-
 func name():
 	return 'on_attacked'
 
 func id():
-	return 20
+	return 22
 
 func length():
 	return 4 ;

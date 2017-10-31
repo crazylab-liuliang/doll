@@ -19,6 +19,7 @@ import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
+import manager.machine.DollMachine;
 import manager.ranking.RankingMgr;
 import manager.room.Room;
 import manager.room.RoomMgr;
@@ -330,7 +331,7 @@ public class Player {
 		protocol.player_info msg = new protocol.player_info();
 		msg.player = table.player;
 		msg.name = info.baseInfo.name;
-		mChannelCtx.write(msg.data());
+		mChannelCtx.writeAndFlush(msg.data());
 	}
 	
 	// send info to client
@@ -348,7 +349,7 @@ public class Player {
 			
 		protocol.search_room_result msg = new protocol.search_room_result();
 		msg.result = 1;
-		mChannelCtx.write(msg.data());
+		mChannelCtx.writeAndFlush(msg.data());
 	}
 	
 	public void search_room_end() {
@@ -356,6 +357,14 @@ public class Player {
 		
 		protocol.search_room_result msg = new protocol.search_room_result();
 		msg.result = 0;
-		mChannelCtx.write(msg.data());
-	}	
+		mChannelCtx.writeAndFlush(msg.data());
+	}
+	
+	//--------------------------------machine control------------------------
+	public void machine_control_move_left() {
+		DollMachine machine = DollMachine.getOne();
+		if(machine!=null) {
+			machine.move_left();
+		}
+	}
 }

@@ -2,9 +2,6 @@ extends Node
 
 var player = -1
 
-func _ready():
-	pass
-
 func name():
 	return 'battle_turn_begin'
 

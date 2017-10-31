@@ -2,14 +2,11 @@ extends Node
 
 var ranking = String()
 
-func _ready():
-	pass
-
 func name():
 	return 'ranking_response'
 
 func id():
-	return 24
+	return 26
 
 func length():
 	return 4 +ranking.length();

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://launch/launch.gd" type="Script" id=1]
 [ext_resource path="res://launch/common/common.tscn" type="PackedScene" id=2]
 [ext_resource path="res://launch/main/main.tscn" type="PackedScene" id=3]
 [ext_resource path="res://launch/ranking/ranking.tscn" type="PackedScene" id=4]
+[ext_resource path="res://launch/machine_control.gd" type="Script" id=5]
 
 [node name="launch" type="Node2D"]
 
@@ -23,5 +24,35 @@ scale = Vector2( 1, 1 )
 [node name="ranking" parent="ui" instance=ExtResource( 4 )]
 
 visibility/visible = false
+
+[node name="machine_control" type="Control" parent="ui"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 40.0
+margin/bottom = 40.0
+script/script = ExtResource( 5 )
+
+[node name="left" type="Button" parent="ui/machine_control"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 196.0
+margin/bottom = 103.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Left"
+flat = false
+
+[connection signal="pressed" from="ui/machine_control/left" to="ui/machine_control" method="_on_left_pressed"]
 
 

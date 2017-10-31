@@ -2,9 +2,6 @@ extends Node
 
 var aim_degree = float(0)
 
-func _ready():
-	pass
-
 func name():
 	return 'battle_sync_aim_degree'
 

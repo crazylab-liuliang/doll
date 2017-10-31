@@ -9,4 +9,4 @@ nw.login()
 
 while True:
     nw.loop()
-    time.sleep(0.1)
+    time.sleep(1)

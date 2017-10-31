@@ -19,4 +19,12 @@ class network:
 		sock.close()
 
 	def loop(self):
-		print('loop')
+		if self.sock!=None:
+			print("xxx")
+			data = self.sock.recv(1024)
+			print(data)
+			if data:
+				print("move left")
+				print(data)
+		else:
+			print("b")

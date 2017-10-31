@@ -5,9 +5,6 @@ var weapon_pos_x = float(0)
 var weapon_pos_y = float(0)
 var degree = float(0)
 
-func _ready():
-	pass
-
 func name():
 	return 'battle_player_shoot'
 

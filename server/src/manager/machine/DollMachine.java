@@ -33,15 +33,27 @@ public class DollMachine {
 	
 	// Ê¹ÓÃÓÊÏäÃÜÂëµÇÂ¼
 	public void login() {
-		logger.info("doll machine login");
+		machines.put(mChannelCtx.hashCode(), this);
 		
-		move_left();
+		logger.info("doll machine login");
+	}
+	
+	// test
+	public static DollMachine getOne() {
+		if(machines.size()>0){
+			ConcurrentHashMap.Entry<Integer, DollMachine> entry = machines.entrySet().iterator().next();
+			return entry.getValue();
+		}
+		
+		return null;
 	}
 	
 	// ×óÒÆ×¦×Ó
 	public void move_left() {
 		protocol.machine_move_left msg = new protocol.machine_move_left();
-		mChannelCtx.write(msg.data());
+		mChannelCtx.writeAndFlush(msg.data());
+		
+		System.out.println("---move left, move left");
 	}
 	
 	// ×óÒÆ×¦×Ó

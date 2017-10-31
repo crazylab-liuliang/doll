@@ -1,14 +1,11 @@
 extends Node
 
 
-func _ready():
-	pass
-
 func name():
 	return 'ranking_request'
 
 func id():
-	return 23
+	return 25
 
 func length():
 	return 0 ;

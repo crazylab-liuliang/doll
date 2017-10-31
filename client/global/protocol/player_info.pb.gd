@@ -3,14 +3,11 @@ extends Node
 var player = -1
 var name = String()
 
-func _ready():
-	pass
-
 func name():
 	return 'player_info'
 
 func id():
-	return 22
+	return 24
 
 func length():
 	return 12 +name.length();

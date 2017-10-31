@@ -3,9 +3,6 @@ extends Node
 var player1_blood = int(0)
 var player0_blood = int(0)
 
-func _ready():
-	pass
-
 func name():
 	return 'battle_player_shoot_result'
 

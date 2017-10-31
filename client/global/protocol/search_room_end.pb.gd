@@ -1,14 +1,11 @@
 extends Node
 
 
-func _ready():
-	pass
-
 func name():
 	return 'search_room_end'
 
 func id():
-	return 28
+	return 30
 
 func length():
 	return 0 ;

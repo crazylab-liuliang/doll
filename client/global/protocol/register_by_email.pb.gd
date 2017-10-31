@@ -3,14 +3,11 @@ extends Node
 var password = String()
 var email = String()
 
-func _ready():
-	pass
-
 func name():
 	return 'register_by_email'
 
 func id():
-	return 25
+	return 27
 
 func length():
 	return 8 +password.length()+email.length();

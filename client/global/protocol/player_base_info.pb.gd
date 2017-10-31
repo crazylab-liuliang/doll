@@ -3,14 +3,11 @@ extends Node
 var cur_blood = int(0)
 var max_blood = int(0)
 
-func _ready():
-	pass
-
 func name():
 	return 'player_base_info'
 
 func id():
-	return 21
+	return 23
 
 func length():
 	return 8 ;

@@ -2,9 +2,6 @@ extends Node
 
 var time = int(0)
 
-func _ready():
-	pass
-
 func name():
 	return 'game_time'
 
