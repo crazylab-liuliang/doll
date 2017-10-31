@@ -34,3 +34,47 @@
 2017-10-31 14:49:52,129 WARN net [pool-6-thread-1] Unhandled proto id [318767104]
 2017-10-31 14:49:52,130 INFO shooter [pool-6-thread-1] Disconnect from client
 2017-10-31 14:51:12,332 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[]}]
+2017-10-31 14:53:44,925 WARN net [pool-6-thread-2] Unhandled proto id [318767104]
+2017-10-31 14:53:44,925 INFO shooter [pool-6-thread-2] Disconnect from client
+2017-10-31 14:54:17,211 WARN net [pool-6-thread-3] Unhandled proto id [318767104]
+2017-10-31 14:54:17,211 INFO shooter [pool-6-thread-3] Disconnect from client
+2017-10-31 14:56:12,384 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[]}]
+2017-10-31 15:01:12,637 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[]}]
+2017-10-31 15:06:12,307 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[]}]
+2017-10-31 15:11:12,344 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[]}]
+2017-10-31 15:16:12,402 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[]}]
+2017-10-31 15:21:12,392 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[]}]
+2017-10-31 15:26:12,387 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[]}]
+2017-10-31 15:31:12,438 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[]}]
+2017-10-31 15:32:45,341 WARN net [pool-6-thread-4] Unhandled proto id [318767104]
+2017-10-31 15:32:45,342 INFO shooter [pool-6-thread-4] Disconnect from client
+2017-10-31 15:36:01,012 WARN net [pool-6-thread-5] Unhandled proto id [318767104]
+2017-10-31 15:36:01,013 INFO shooter [pool-6-thread-5] Disconnect from client
+2017-10-31 15:36:12,377 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[]}]
+2017-10-31 15:37:36,762 INFO shooter [main] --------------
+2017-10-31 15:37:36,764 INFO shooter [main] |Start server|
+2017-10-31 15:37:36,764 INFO shooter [main] --------------
+2017-10-31 15:37:36,879 INFO db [main] db:connected
+2017-10-31 15:37:36,922 INFO ranking [main] load ranking data from db [{"lowestScore": 0, "rankingSize": 200, "scoreRanking": []}]
+2017-10-31 15:37:38,412 INFO socket server [main] bind port [8800] succeed
+2017-10-31 15:37:38,448 INFO http server [main] bind port [8900] succeed
+2017-10-31 15:37:42,749 INFO shooter [pool-6-thread-1] Disconnect from client
+2017-10-31 15:42:38,566 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[]}]
+2017-10-31 15:44:41,495 INFO shooter [main] --------------
+2017-10-31 15:44:41,496 INFO shooter [main] |Start server|
+2017-10-31 15:44:41,496 INFO shooter [main] --------------
+2017-10-31 15:44:41,592 INFO db [main] db:connected
+2017-10-31 15:44:41,627 INFO ranking [main] load ranking data from db [{"lowestScore": 0, "rankingSize": 200, "scoreRanking": []}]
+2017-10-31 15:44:42,304 INFO socket server [main] bind port [8800] succeed
+2017-10-31 15:44:42,339 INFO http server [main] bind port [8900] succeed
+2017-10-31 15:44:48,276 INFO shooter [pool-6-thread-1] Disconnect from client
+2017-10-31 15:45:53,783 INFO shooter [pool-6-thread-2] Disconnect from client
+2017-10-31 15:48:41,693 INFO shooter [pool-6-thread-3] Disconnect from client
+2017-10-31 15:48:54,102 INFO shooter [pool-6-thread-4] Disconnect from client
+2017-10-31 15:49:36,746 INFO shooter [pool-6-thread-5] Disconnect from client
+2017-10-31 15:49:42,416 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[]}]
+2017-10-31 15:49:44,128 INFO shooter [pool-6-thread-6] Disconnect from client
+2017-10-31 15:54:42,389 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[]}]
+2017-10-31 15:59:42,417 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[]}]
+2017-10-31 16:01:37,199 INFO shooter [pool-6-thread-7] Disconnect from client
+2017-10-31 16:01:44,883 INFO shooter [pool-6-thread-8] Disconnect from client

@@ -12,7 +12,7 @@ class machine_login:
 		return 0 ;
 
 	def send(self, stream):
-		buf = struct.pack('iiBB', self.id(), self.length(),64,64)
+		buf = struct.pack('!iiBB', self.id(), self.length(),64,64)
 		stream.send(buf)
 
 	def parse_data(self, byteBuffer):

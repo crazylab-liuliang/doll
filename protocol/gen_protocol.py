@@ -259,17 +259,17 @@ def gen_protocol_python(file, id):
 
     # send data
     py_file.writelines("\tdef send(self, stream):\n")
-    format = 'ii'
+    format = '!ii'
     params = ', self.id(), self.length()'
     for key in data.keys():
         if data[key]=='int':
-            format += 'i'
+            format += '!i'
             params += ',%s' % key
         if data[key]=='long':
-            format += 'l'
+            format += '!l'
             params += ',%s' % key
         if data[key]=='float':
-            format += 'f'
+            format += '!f'
             params += ',%s' % key
         #if data[key]=='string':
         #    py_file.writelines("\tbuf.write_string(%s)\n" % key)
