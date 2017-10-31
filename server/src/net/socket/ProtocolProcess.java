@@ -21,6 +21,8 @@ interface ProtocolProcess {
 		SocketServerHandler.bind(new protocol.max_score(), new max_score_process());
 		SocketServerHandler.bind(new protocol.ranking_request(), new ranking_request_process());
 		
+		SocketServerHandler.bind(new protocol.machine_login(), new machine_login_process());
+		
 		// Unused
 		SocketServerHandler.bind(new protocol.on_attacked(),  new on_attacked_process());
 	}
@@ -166,5 +168,14 @@ class eat_item_process implements ProtocolProcess{
 		
 		//Player player = Player.get(ctx);
 		//player.onEatItem(msg.slot_idx);
+	}
+}
+
+class machine_login_process implements ProtocolProcess{
+	@Override
+	public void on_accept(protocol.message proto, ChannelHandlerContext ctx) {
+		protocol.machine_login msg = (protocol.machine_login)proto;
+		
+		System.out.println("hahahahahahahahahah");
 	}
 }

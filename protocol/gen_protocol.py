@@ -18,6 +18,10 @@ if os.path.exists(py_save_path):
 
 os.mkdir(py_save_path)
 
+# create __init__.py
+py_file = open( py_save_path + "__init__.py", "w+")
+py_file.close()
+
 #if os.path.exists(gd_save_path):
     #shutil.rmtree(gd_save_path)
 
@@ -133,8 +137,6 @@ def gen_protocol_godot(file, id):
                 gd_file.writelines("var " + key + " = " + data[key] +"(0)\n")
 
     gd_file.writelines("\n")
-    gd_file.writelines("func _ready():\n")
-    gd_file.writelines("\tpass\n\n")
 
     # name
     gd_file.writelines("func name():\n")
@@ -208,7 +210,7 @@ def gen_protocol_godot(file, id):
 def gen_protocol_python(file, id):
     protocol_name = os.path.splitext(file)[0]
 
-    py_file_name = py_save_path + "pb." + protocol_name + ".py"
+    py_file_name = py_save_path + "pb_" + protocol_name + ".py"
     print("prepare generate [" + py_file_name + "]")
     py_file = open( py_file_name, "w+")
 
@@ -226,17 +228,15 @@ def gen_protocol_python(file, id):
                 py_file.writelines( key + " = " + data[key] +"(0)\n")
 
     py_file.writelines("\n")
-    py_file.writelines("def _ready():\n")
-    py_file.writelines("\tpass\n\n")
 
     # name
-    py_file.writelines("def name():\n")
-    py_file.writelines("\treturn '%s'\n" % protocol_name)
+    py_file.writelines("\tdef name(self):\n")
+    py_file.writelines("\t\treturn '%s'\n" % protocol_name)
     py_file.writelines("\n")
 
     # id
-    py_file.writelines("def id():\n")
-    py_file.writelines("\treturn %d\n" % id)
+    py_file.writelines("\tdef id(self):\n")
+    py_file.writelines("\t\treturn %d\n" % id)
 
     # length
     length = 0
@@ -253,14 +253,14 @@ def gen_protocol_python(file, id):
             strings += "+" + key + ".length()" 
 
     py_file.writelines("\n")
-    py_file.writelines("def length():\n")
-    py_file.writelines("\treturn %d %s;\n" % (length, strings))
+    py_file.writelines("\tdef length(self):\n")
+    py_file.writelines("\t\treturn %d %s;\n" % (length, strings))
     py_file.writelines("\n")
 
     # send data
-    py_file.writelines("def send(stream):\n")
+    py_file.writelines("\tdef send(self, stream):\n")
     format = 'ii'
-    params = ',id(),length()'
+    params = ', self.id(), self.length()'
     for key in data.keys():
         if data[key]=='int':
             format += 'i'
@@ -276,13 +276,13 @@ def gen_protocol_python(file, id):
 
     format += 'BB'
     params += ',%d,%d' % (64,64)
-    py_file.writelines("\tbuf = struct.pack(\'%s\'%s)\n" % (format, params))
-    py_file.writelines("\tstream.send(buf)")
+    py_file.writelines("\t\tbuf = struct.pack(\'%s\'%s)\n" % (format, params))
+    py_file.writelines("\t\tstream.send(buf)")
     py_file.writelines("\n")
 
     # parse data
     py_file.writelines("\n")
-    py_file.writelines("def parse_data( byteBuffer):\n")
+    py_file.writelines("\tdef parse_data(self, byteBuffer):\n")
     for key in data.keys():
         if data[key]=='int':
             py_file.writelines("\t%s = byteBuffer.read_i32();\n" % key)
@@ -293,7 +293,7 @@ def gen_protocol_python(file, id):
         if data[key]=='string':
             py_file.writelines("\t%s = byteBuffer.read_string();\n" % key)
 
-    py_file.writelines("\treturn\n")
+    py_file.writelines("\t\treturn\n")
 
     py_file.close()
 

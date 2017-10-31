@@ -1,18 +1,22 @@
 import os
 import socket
-import protocol.pb.machine_login
+import protocol.pb_machine_login as pb
 
-client_socket = None
+class network:
+	sock = None
 
-def connect_server( host, port):
-	client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-	client_socket.connect(host, port)
-	print("connect server")
+	def connect_server(self, host, port):
+		self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+		self.sock.connect((host, port))
+		print("connect server")
+		print(self.sock)
 
-def login():
-	msg = machine_login()
-	msg.send(client_socket)
-	print("login")
+	def login(self):
+		msg = pb.machine_login()
+		print("NM")
+		print(self.sock)
+		msg.send(self.sock)
+		print("login")
 
-def close():
-	client_socket.close()
+	def close(self):
+		sock.close()

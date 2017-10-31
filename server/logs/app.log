@@ -1,108 +1,36 @@
-2017-08-29 22:39:01,165 INFO shooter [main] --------------
-2017-08-29 22:39:01,167 INFO shooter [main] |Start server|
-2017-08-29 22:39:01,167 INFO shooter [main] --------------
-2017-08-29 22:39:01,760 INFO shooter [main] bind port 8800 succeed
-2017-08-29 22:40:01,168 INFO shooter [Timer-1] active battle field count[0]
-2017-08-29 22:40:06,168 INFO shooter [Timer-0] active players count [0]
-2017-08-29 22:41:02,169 INFO shooter [Timer-1] active battle field count[0]
-2017-08-29 22:41:11,168 INFO shooter [Timer-0] active players count [0]
-2017-08-29 22:42:03,168 INFO shooter [Timer-1] active battle field count[0]
-2017-08-29 22:42:16,169 INFO shooter [Timer-0] active players count [0]
-2017-08-29 22:43:04,169 INFO shooter [Timer-1] active battle field count[0]
-2017-08-29 22:43:21,169 INFO shooter [Timer-0] active players count [0]
-2017-08-29 22:44:05,168 INFO shooter [Timer-1] active battle field count[0]
-2017-08-29 22:44:26,168 INFO shooter [Timer-0] active players count [0]
-2017-08-29 22:45:06,168 INFO shooter [Timer-1] active battle field count[0]
-2017-08-29 22:45:31,168 INFO shooter [Timer-0] active players count [0]
-2017-08-29 22:46:07,169 INFO shooter [Timer-1] active battle field count[0]
-2017-08-29 22:46:36,169 INFO shooter [Timer-0] active players count [0]
-2017-08-29 22:47:08,169 INFO shooter [Timer-1] active battle field count[0]
-2017-08-29 22:47:41,168 INFO shooter [Timer-0] active players count [0]
-2017-08-29 22:48:09,168 INFO shooter [Timer-1] active battle field count[0]
-2017-08-29 22:48:46,169 INFO shooter [Timer-0] active players count [0]
-2017-08-29 22:49:10,168 INFO shooter [Timer-1] active battle field count[0]
-2017-08-29 22:49:51,169 INFO shooter [Timer-0] active players count [0]
-2017-08-29 22:50:11,168 INFO shooter [Timer-1] active battle field count[0]
-2017-08-29 22:50:56,169 INFO shooter [Timer-0] active players count [0]
-2017-08-29 22:51:12,168 INFO shooter [Timer-1] active battle field count[0]
-2017-08-29 22:52:01,169 INFO shooter [Timer-0] active players count [0]
-2017-08-29 22:52:13,168 INFO shooter [Timer-1] active battle field count[0]
-2017-08-29 22:53:06,168 INFO shooter [Timer-0] active players count [0]
-2017-08-29 22:53:14,169 INFO shooter [Timer-1] active battle field count[0]
-2017-08-29 22:54:06,896 INFO net [nioEventLoopGroup-3-1] Accept connect from client [0:0:0:0:0:0:0:1]
-2017-08-29 22:54:11,169 INFO shooter [Timer-0] active players count [0]
-2017-08-29 22:54:15,168 INFO shooter [Timer-1] active battle field count[0]
-2017-08-29 22:54:54,620 INFO db [nioEventLoopGroup-3-1] db:connected
-2017-08-29 22:54:55,366 INFO db [nioEventLoopGroup-3-1] db:INSERT INTO account(password,info) VALUES('Q19870816q', '{"email":"qq79402004@gmail.com","ips":[]}');
-2017-08-29 22:54:55,561 INFO db [nioEventLoopGroup-3-1] SELECT * FROM account WHERE info @> '{"email":"qq79402004@gmail.com"}';
-2017-08-29 22:54:55,572 INFO db [nioEventLoopGroup-3-1] SELECT * FROM account WHERE info @> '{"email":"qq79402004@gmail.com"}';
-2017-08-29 22:54:55,748 INFO db [nioEventLoopGroup-3-1] db:INSERT INTO player(account, info) VALUES('2', '{"baseInfo":{"name":"","gameTime":0,"curBlood":50,"maxBlood":50},"backpack":{"cell_number":15,"cells":[]},"building":{},"currency":{"coins":0,"rubys":0}}');
-2017-08-29 22:54:55,809 INFO db [nioEventLoopGroup-3-1] db:SELECT * FROM player WHERE account='2';
-2017-08-29 22:55:16,168 INFO shooter [Timer-1] active battle field count[0]
-2017-08-29 22:55:16,168 INFO shooter [Timer-0] active players count [0]
-2017-08-29 22:55:26,743 INFO net [nioEventLoopGroup-3-2] Accept connect from client [0:0:0:0:0:0:0:1]
-2017-08-29 22:55:26,750 INFO db [nioEventLoopGroup-3-2] db:INSERT INTO account(password,info) VALUES('', '{"osid":"apple","ips":[]}');
-2017-08-29 22:55:26,752 INFO db [nioEventLoopGroup-3-2] db:SELECT * FROM account WHERE info @> '{"osid":"apple"}';
-2017-08-29 22:55:26,759 INFO db [nioEventLoopGroup-3-2] db:INSERT INTO player(account, info) VALUES('3', '{"baseInfo":{"name":"","gameTime":0,"curBlood":50,"maxBlood":50},"backpack":{"cell_number":15,"cells":[]},"building":{},"currency":{"coins":0,"rubys":0}}');
-2017-08-29 22:55:26,763 INFO db [nioEventLoopGroup-3-2] db:SELECT * FROM player WHERE account='3';
-2017-08-29 22:56:17,169 INFO shooter [Timer-1] active battle field count[0]
-2017-08-29 22:56:21,168 INFO shooter [Timer-0] active players count [0]
-2017-08-29 22:56:34,933 INFO shooter [nioEventLoopGroup-3-2] Disconnect from client
-2017-08-29 22:56:37,203 INFO shooter [nioEventLoopGroup-3-1] Disconnect from client
-2017-08-29 22:56:50,273 INFO net [nioEventLoopGroup-3-3] Accept connect from client [0:0:0:0:0:0:0:1]
-2017-08-29 22:57:14,452 INFO db [nioEventLoopGroup-3-3] SELECT * FROM account WHERE info @> '{"email":"qq79402004@gmail.com"}';
-2017-08-29 22:57:14,454 INFO db [nioEventLoopGroup-3-3] db:SELECT * FROM player WHERE account='2';
-2017-08-29 22:57:18,169 INFO shooter [Timer-1] active battle field count[1]
-2017-08-29 22:57:26,169 INFO shooter [Timer-0] active players count [1]
-2017-08-29 22:57:51,034 INFO shooter [nioEventLoopGroup-3-3] Player [2] offline, CurrentPlayers [0]
-2017-08-29 22:57:51,036 INFO db [nioEventLoopGroup-3-3] db:UPDATE player SET info='{"baseInfo":{"name":"","gameTime":0,"curBlood":50,"maxBlood":50},"backpack":{"cell_number":15,"cells":[]},"building":{},"currency":{"coins":0,"rubys":0}}' WHERE player='2';
-2017-08-29 22:57:51,078 INFO shooter [nioEventLoopGroup-3-3] account [2] player [2] save to db
-2017-08-29 22:57:51,079 INFO shooter [nioEventLoopGroup-3-3] Disconnect from client
-2017-08-29 22:57:56,068 INFO shooter [main] --------------
-2017-08-29 22:57:56,070 INFO shooter [main] |Start server|
-2017-08-29 22:57:56,071 INFO shooter [main] --------------
-2017-08-29 22:57:56,760 INFO shooter [main] bind port 8800 succeed
-2017-08-29 22:58:03,781 INFO net [nioEventLoopGroup-3-1] Accept connect from client [0:0:0:0:0:0:0:1]
-2017-08-29 22:58:03,963 INFO db [nioEventLoopGroup-3-1] db:connected
-2017-08-29 22:58:03,983 INFO db [nioEventLoopGroup-3-1] SELECT * FROM account WHERE info @> '{"email":"qq79402004@gmail.com"}';
-2017-08-29 22:58:04,035 INFO db [nioEventLoopGroup-3-1] db:SELECT * FROM player WHERE account='2';
-2017-08-29 22:58:11,783 INFO net [nioEventLoopGroup-3-2] Accept connect from client [0:0:0:0:0:0:0:1]
-2017-08-29 22:58:11,788 INFO db [nioEventLoopGroup-3-2] db:SELECT * FROM account WHERE info @> '{"osid":"apple"}';
-2017-08-29 22:58:11,793 INFO db [nioEventLoopGroup-3-2] db:SELECT * FROM player WHERE account='3';
-2017-08-29 22:58:40,821 INFO shooter [nioEventLoopGroup-3-2] Player [3] offline, CurrentPlayers [1]
-2017-08-29 22:58:40,828 INFO db [nioEventLoopGroup-3-2] db:UPDATE player SET info='{"baseInfo":{"name":"","gameTime":0,"curBlood":50,"maxBlood":50},"backpack":{"cell_number":15,"cells":[]},"building":{},"currency":{"coins":0,"rubys":0}}' WHERE player='3';
-2017-08-29 22:58:40,830 INFO shooter [nioEventLoopGroup-3-2] account [3] player [3] save to db
-2017-08-29 22:58:40,831 INFO shooter [nioEventLoopGroup-3-2] Disconnect from client
-2017-08-29 22:58:46,730 INFO shooter [nioEventLoopGroup-3-1] Player [2] offline, CurrentPlayers [0]
-2017-08-29 22:58:46,732 INFO db [nioEventLoopGroup-3-1] db:UPDATE player SET info='{"baseInfo":{"name":"","gameTime":0,"curBlood":50,"maxBlood":50},"backpack":{"cell_number":15,"cells":[]},"building":{},"currency":{"coins":0,"rubys":0}}' WHERE player='2';
-2017-08-29 22:58:46,733 INFO shooter [nioEventLoopGroup-3-1] account [2] player [2] save to db
-2017-08-29 22:58:46,733 INFO shooter [nioEventLoopGroup-3-1] Disconnect from client
-2017-08-29 22:58:56,071 INFO shooter [Timer-1] active battle field count[0]
-2017-08-29 22:59:01,072 INFO shooter [Timer-0] active players count [0]
-2017-08-29 22:59:57,072 INFO shooter [Timer-1] active battle field count[0]
-2017-08-29 23:00:06,072 INFO shooter [Timer-0] active players count [0]
-2017-08-29 23:00:33,933 INFO net [nioEventLoopGroup-3-3] Accept connect from client [0:0:0:0:0:0:0:1]
-2017-08-29 23:00:33,938 INFO db [nioEventLoopGroup-3-3] SELECT * FROM account WHERE info @> '{"email":"qq79402004@gmail.com"}';
-2017-08-29 23:00:33,941 INFO db [nioEventLoopGroup-3-3] db:SELECT * FROM player WHERE account='2';
-2017-08-29 23:00:42,318 INFO net [nioEventLoopGroup-3-4] Accept connect from client [0:0:0:0:0:0:0:1]
-2017-08-29 23:00:42,323 INFO db [nioEventLoopGroup-3-4] db:SELECT * FROM account WHERE info @> '{"osid":"apple"}';
-2017-08-29 23:00:42,329 INFO db [nioEventLoopGroup-3-4] db:SELECT * FROM player WHERE account='3';
-2017-08-29 23:00:58,071 INFO shooter [Timer-1] active battle field count[1]
-2017-08-29 23:01:11,071 INFO shooter [Timer-0] active players count [2]
-2017-08-29 23:01:59,071 INFO shooter [Timer-1] active battle field count[0]
-2017-08-29 23:02:16,072 INFO shooter [Timer-0] active players count [2]
-2017-08-29 23:02:40,250 INFO shooter [nioEventLoopGroup-3-4] Player [3] offline, CurrentPlayers [1]
-2017-08-29 23:02:40,253 INFO db [nioEventLoopGroup-3-4] db:UPDATE player SET info='{"baseInfo":{"name":"","gameTime":0,"curBlood":50,"maxBlood":50},"backpack":{"cell_number":15,"cells":[]},"building":{},"currency":{"coins":0,"rubys":0}}' WHERE player='3';
-2017-08-29 23:02:40,255 INFO shooter [nioEventLoopGroup-3-4] account [3] player [3] save to db
-2017-08-29 23:02:40,255 INFO shooter [nioEventLoopGroup-3-4] Disconnect from client
-2017-08-29 23:03:00,071 INFO shooter [Timer-1] active battle field count[0]
-2017-08-29 23:03:21,072 INFO shooter [Timer-0] active players count [1]
-2017-08-29 23:04:01,071 INFO shooter [Timer-1] active battle field count[0]
-2017-08-29 23:04:26,072 INFO shooter [Timer-0] active players count [1]
-2017-08-29 23:05:02,072 INFO shooter [Timer-1] active battle field count[0]
-2017-08-29 23:05:31,072 INFO shooter [Timer-0] active players count [1]
-2017-08-29 23:05:53,348 INFO shooter [nioEventLoopGroup-3-3] Player [2] offline, CurrentPlayers [0]
-2017-08-29 23:05:53,350 INFO db [nioEventLoopGroup-3-3] db:UPDATE player SET info='{"baseInfo":{"name":"","gameTime":0,"curBlood":50,"maxBlood":50},"backpack":{"cell_number":15,"cells":[]},"building":{},"currency":{"coins":0,"rubys":0}}' WHERE player='2';
-2017-08-29 23:05:53,352 INFO shooter [nioEventLoopGroup-3-3] account [2] player [2] save to db
-2017-08-29 23:05:53,352 INFO shooter [nioEventLoopGroup-3-3] Disconnect from client
-2017-08-29 23:06:03,072 INFO shooter [Timer-1] active battle field count[0]
+2017-10-31 13:56:11,341 INFO shooter [main] --------------
+2017-10-31 13:56:11,370 INFO shooter [main] |Start server|
+2017-10-31 13:56:11,370 INFO shooter [main] --------------
+2017-10-31 13:56:11,533 INFO db [main] db:connected
+2017-10-31 13:56:12,266 INFO socket server [main] bind port [8800] succeed
+2017-10-31 13:56:12,301 INFO http server [main] bind port [8900] succeed
+2017-10-31 14:01:12,414 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[]}]
+2017-10-31 14:06:12,627 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[]}]
+2017-10-31 14:11:12,405 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[]}]
+2017-10-31 14:16:12,340 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[]}]
+2017-10-31 14:21:12,358 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[]}]
+2017-10-31 14:22:18,890 INFO shooter [pool-6-thread-1] Disconnect from client
+2017-10-31 14:23:01,508 INFO shooter [pool-6-thread-2] Disconnect from client
+2017-10-31 14:26:12,396 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[]}]
+2017-10-31 14:27:00,825 INFO shooter [pool-6-thread-3] Disconnect from client
+2017-10-31 14:27:14,844 INFO shooter [pool-6-thread-4] Disconnect from client
+2017-10-31 14:27:35,031 INFO shooter [pool-6-thread-5] Disconnect from client
+2017-10-31 14:28:30,780 INFO shooter [pool-6-thread-6] Disconnect from client
+2017-10-31 14:31:12,378 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[]}]
+2017-10-31 14:35:21,920 INFO shooter [pool-6-thread-7] Disconnect from client
+2017-10-31 14:35:37,838 INFO shooter [pool-6-thread-8] Disconnect from client
+2017-10-31 14:36:12,357 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[]}]
+2017-10-31 14:37:39,263 INFO shooter [pool-6-thread-9] Disconnect from client
+2017-10-31 14:38:39,644 INFO shooter [pool-6-thread-10] Disconnect from client
+2017-10-31 14:38:55,344 INFO shooter [pool-6-thread-11] Disconnect from client
+2017-10-31 14:39:36,527 INFO shooter [pool-6-thread-12] Disconnect from client
+2017-10-31 14:40:36,654 INFO shooter [pool-6-thread-13] Disconnect from client
+2017-10-31 14:41:12,339 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[]}]
+2017-10-31 14:46:12,391 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[]}]
+2017-10-31 14:49:00,985 INFO shooter [pool-6-thread-14] Disconnect from client
+2017-10-31 14:49:04,118 INFO shooter [pool-6-thread-15] Disconnect from client
+2017-10-31 14:49:20,836 WARN net [pool-6-thread-16] Unhandled proto id [318767104]
+2017-10-31 14:49:20,837 INFO shooter [pool-6-thread-16] Disconnect from client
+2017-10-31 14:49:52,129 WARN net [pool-6-thread-1] Unhandled proto id [318767104]
+2017-10-31 14:49:52,130 INFO shooter [pool-6-thread-1] Disconnect from client
+2017-10-31 14:51:12,332 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[]}]
