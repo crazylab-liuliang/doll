@@ -348,3 +348,14 @@
 2017-11-01 14:52:08,569 INFO db [pool-4-thread-1] db:save player[1]
 2017-11-01 14:52:08,569 INFO shooter [pool-4-thread-1] account [1] player [1] save to db
 2017-11-01 14:52:09,443 INFO shooter [pool-6-thread-1] Disconnect from client
+2017-11-01 15:58:19,964 INFO shooter [main] --------------
+2017-11-01 15:58:19,986 INFO shooter [main] |Start server|
+2017-11-01 15:58:19,987 INFO shooter [main] --------------
+2017-11-01 15:58:20,436 INFO db [main] db:connected
+2017-11-01 15:58:20,790 INFO ranking [main] load ranking data from db [{"lowestScore": 0, "rankingSize": 200, "scoreRanking": [{"name": "", "score": 43, "account": 1}]}]
+2017-11-01 15:58:21,204 INFO socket server [main] bind port [8800] succeed
+2017-11-01 15:58:21,238 INFO http server [main] bind port [8900] succeed
+2017-11-01 15:59:16,507 INFO doll machine [pool-6-thread-1] doll machine login
+2017-11-01 16:03:21,286 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-01 16:08:21,335 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-01 16:13:21,242 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]

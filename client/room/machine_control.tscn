@@ -78,12 +78,20 @@ shortcut = null
 text = "Right"
 flat = false
 
-[connection signal="pressed" from="forward" to="." method="_on_forward_pressed"]
+[connection signal="button_down" from="forward" to="." method="_on_forward_button_down"]
 
-[connection signal="pressed" from="back" to="." method="_on_back_pressed"]
+[connection signal="button_up" from="forward" to="." method="_on_forward_button_up"]
 
-[connection signal="pressed" from="left" to="." method="_on_left_pressed"]
+[connection signal="button_down" from="back" to="." method="_on_back_button_down"]
 
-[connection signal="pressed" from="right" to="." method="_on_right_pressed"]
+[connection signal="button_up" from="back" to="." method="_on_back_button_up"]
+
+[connection signal="button_down" from="left" to="." method="_on_left_button_down"]
+
+[connection signal="button_up" from="left" to="." method="_on_left_button_up"]
+
+[connection signal="button_down" from="right" to="." method="_on_right_button_down"]
+
+[connection signal="button_up" from="right" to="." method="_on_right_button_up"]
 
 

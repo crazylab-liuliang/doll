@@ -1,3 +1,4 @@
 {
-	"type" : "int"
+	"type" : "int",
+	"op" : "int"
 }

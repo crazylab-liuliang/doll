@@ -21,8 +21,6 @@ class network:
 		msg.send(self.sock)
 		print("login")
 
-		self.bind(pb_mc.machine_control(), self.on_recv_machine_control)
-
 	def close(self):
 		sock.close()
 
@@ -71,6 +69,3 @@ class network:
 			self.msg_bind.append(None)
 
 		self.msg_bind[msg_id] = [msg, func]
-
-	def on_recv_machine_control(self, msg):
-		print(msg.type)

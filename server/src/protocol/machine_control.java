@@ -8,6 +8,7 @@ import io.netty.channel.ChannelHandlerContext;
 public class machine_control extends message {
 
 	public int type = 0;
+	public int op = 0;
 
 	@Override
 	public int id(){
@@ -16,7 +17,7 @@ public class machine_control extends message {
 
 	@Override
 	public int length(){
-		 return 4 ;
+		 return 8 ;
 	}
 
 	@Override
@@ -25,6 +26,7 @@ public class machine_control extends message {
 		byteBuffer.writeInt(id());
 		byteBuffer.writeInt(length());
 		byteBuffer.writeInt(type);
+		byteBuffer.writeInt(op);
 		byteBuffer.writeByte(64);
 		byteBuffer.writeByte(64);
 		ctx.writeAndFlush( byteBuffer);
@@ -33,5 +35,6 @@ public class machine_control extends message {
 	@Override
 	public void parse_data(ByteBuf byteBuffer){
 		type = byteBuffer.readInt();
+		op = byteBuffer.readInt();
 	}
 }
