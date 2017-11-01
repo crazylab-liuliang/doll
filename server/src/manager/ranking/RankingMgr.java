@@ -117,7 +117,7 @@ public class RankingMgr {
 		
 		protocol.ranking_response msg = new protocol.ranking_response();
 		msg.ranking = json;
-		channelCtx.write(msg.data());
+		msg.send(channelCtx);
 	}
 	
 	

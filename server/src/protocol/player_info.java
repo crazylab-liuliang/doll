@@ -3,12 +3,14 @@ package protocol;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 
+import io.netty.channel.ChannelHandlerContext;
+
 public class player_info extends message {
 
 	public long player = 0;
 	public String name = "";
-	@Override
 
+	@Override
 	public int id(){
 		 return 24;
 	}
@@ -18,7 +20,8 @@ public class player_info extends message {
 		 return 12 +name.length();
 	}
 
-	public ByteBuf data(){
+	@Override
+	public void send(ChannelHandlerContext ctx){
 		ByteBuf byteBuffer = Unpooled.buffer(8+length());
 		byteBuffer.writeInt(id());
 		byteBuffer.writeInt(length());
@@ -26,7 +29,7 @@ public class player_info extends message {
 		write_string(byteBuffer, name);
 		byteBuffer.writeByte(64);
 		byteBuffer.writeByte(64);
-		return byteBuffer;
+		ctx.writeAndFlush( byteBuffer);
 	}
 
 	@Override

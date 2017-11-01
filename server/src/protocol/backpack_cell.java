@@ -3,13 +3,15 @@ package protocol;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 
+import io.netty.channel.ChannelHandlerContext;
+
 public class backpack_cell extends message {
 
 	public int item_id = 0;
 	public int index = 0;
 	public int item_num = 0;
-	@Override
 
+	@Override
 	public int id(){
 		 return 1;
 	}
@@ -19,7 +21,8 @@ public class backpack_cell extends message {
 		 return 12 ;
 	}
 
-	public ByteBuf data(){
+	@Override
+	public void send(ChannelHandlerContext ctx){
 		ByteBuf byteBuffer = Unpooled.buffer(8+length());
 		byteBuffer.writeInt(id());
 		byteBuffer.writeInt(length());
@@ -28,7 +31,7 @@ public class backpack_cell extends message {
 		byteBuffer.writeInt(item_num);
 		byteBuffer.writeByte(64);
 		byteBuffer.writeByte(64);
-		return byteBuffer;
+		ctx.writeAndFlush( byteBuffer);
 	}
 
 	@Override

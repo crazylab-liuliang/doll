@@ -3,12 +3,14 @@ package protocol;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 
+import io.netty.channel.ChannelHandlerContext;
+
 public class register_by_email extends message {
 
 	public String password = "";
 	public String email = "";
-	@Override
 
+	@Override
 	public int id(){
 		 return 27;
 	}
@@ -18,7 +20,8 @@ public class register_by_email extends message {
 		 return 8 +password.length()+email.length();
 	}
 
-	public ByteBuf data(){
+	@Override
+	public void send(ChannelHandlerContext ctx){
 		ByteBuf byteBuffer = Unpooled.buffer(8+length());
 		byteBuffer.writeInt(id());
 		byteBuffer.writeInt(length());
@@ -26,7 +29,7 @@ public class register_by_email extends message {
 		write_string(byteBuffer, email);
 		byteBuffer.writeByte(64);
 		byteBuffer.writeByte(64);
-		return byteBuffer;
+		ctx.writeAndFlush( byteBuffer);
 	}
 
 	@Override

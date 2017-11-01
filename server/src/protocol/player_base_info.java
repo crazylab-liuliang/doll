@@ -3,12 +3,14 @@ package protocol;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 
+import io.netty.channel.ChannelHandlerContext;
+
 public class player_base_info extends message {
 
 	public int cur_blood = 0;
 	public int max_blood = 0;
-	@Override
 
+	@Override
 	public int id(){
 		 return 23;
 	}
@@ -18,7 +20,8 @@ public class player_base_info extends message {
 		 return 8 ;
 	}
 
-	public ByteBuf data(){
+	@Override
+	public void send(ChannelHandlerContext ctx){
 		ByteBuf byteBuffer = Unpooled.buffer(8+length());
 		byteBuffer.writeInt(id());
 		byteBuffer.writeInt(length());
@@ -26,7 +29,7 @@ public class player_base_info extends message {
 		byteBuffer.writeInt(max_blood);
 		byteBuffer.writeByte(64);
 		byteBuffer.writeByte(64);
-		return byteBuffer;
+		ctx.writeAndFlush( byteBuffer);
 	}
 
 	@Override

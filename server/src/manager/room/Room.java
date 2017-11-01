@@ -37,8 +37,8 @@ public class Room {
 			sendBattleTurnBegin(GameState.GS_PLAYER0_TURN);
 			
 			protocol.battle_begin msg = new protocol.battle_begin();
-			sendMsgToPlayer(m_player0,msg.data());
-			sendMsgToPlayer(m_player1,msg.data());
+			sendMsgToPlayer(m_player0,msg);
+			sendMsgToPlayer(m_player1,msg);
 		}
 		else if(m_gameState==GameState.GS_PLAYER0_TURN) {
 			m_turnTime -= delta;
@@ -67,15 +67,15 @@ public class Room {
 		msg0.pos = 0;
 		msg0.player = m_player0;
 		msg0.name = "player_0";
-		sendMsgToPlayer( m_player0, msg0.data());
-		sendMsgToPlayer(m_player1,msg0.data());
+		sendMsgToPlayer( m_player0, msg0);
+		sendMsgToPlayer(m_player1,msg0);
 		
 		protocol.battle_player_enter msg1 = new protocol.battle_player_enter();
 		msg1.pos = 1;
 		msg1.player = m_player1;
 		msg1.name = "player_1";
-		sendMsgToPlayer(m_player0,msg1.data());
-		sendMsgToPlayer(m_player1,msg1.data());
+		sendMsgToPlayer(m_player0,msg1);
+		sendMsgToPlayer(m_player1,msg1);
 		
 		m_gameState = GameState.GS_PLAYER_READY;
 	}
@@ -84,33 +84,33 @@ public class Room {
 		protocol.battle_time msg = new protocol.battle_time();
 		msg.battle_time = (int)m_battleTime;
 		msg.turn_time   = (int)m_turnTime;
-		sendMsgToPlayer(m_player0,msg.data());
-		sendMsgToPlayer(m_player1,msg.data());
+		sendMsgToPlayer(m_player0,msg);
+		sendMsgToPlayer(m_player1,msg);
 	}
 	
 	void sendBattleTurnBegin(GameState state) {
 		if(state==GameState.GS_PLAYER0_TURN) {
 			protocol.battle_turn_begin msg = new protocol.battle_turn_begin();
 			msg.player = m_player0;
-			sendMsgToPlayer(m_player0,msg.data());
-			sendMsgToPlayer(m_player1,msg.data());
+			sendMsgToPlayer(m_player0,msg);
+			sendMsgToPlayer(m_player1,msg);
 		}
 		else if(state == GameState.GS_PLAYER1_TURN) {
 			protocol.battle_turn_begin msg = new protocol.battle_turn_begin();
 			msg.player = m_player1;
-			sendMsgToPlayer(m_player0,msg.data());
-			sendMsgToPlayer(m_player1,msg.data());
+			sendMsgToPlayer(m_player0,msg);
+			sendMsgToPlayer(m_player1,msg);
 		}
 	}
 	
 	public void on_batle_player_shoot(Long player, protocol.battle_player_shoot msg) {
 		if(player==m_player0 && m_gameState==GameState.GS_PLAYER0_TURN) {
-			sendMsgToPlayer(m_player0,msg.data());
-			sendMsgToPlayer(m_player1,msg.data());
+			sendMsgToPlayer(m_player0,msg);
+			sendMsgToPlayer(m_player1,msg);
 		}
 		else if (player==m_player1 && m_gameState==GameState.GS_PLAYER1_TURN) {		
-			sendMsgToPlayer(m_player0,msg.data());
-			sendMsgToPlayer(m_player1,msg.data());
+			sendMsgToPlayer(m_player0,msg);
+			sendMsgToPlayer(m_player1,msg);
 		}
 	}
 	
@@ -141,8 +141,8 @@ public class Room {
 		protocol.battle_player_shoot_result msg_sr = new protocol.battle_player_shoot_result();
 		msg_sr.player0_blood = m_player0Blood;
 		msg_sr.player1_blood = m_player1Blood;
-		sendMsgToPlayer(m_player0, msg_sr.data());
-		sendMsgToPlayer(m_player1, msg_sr.data());
+		sendMsgToPlayer(m_player0, msg_sr);
+		sendMsgToPlayer(m_player1, msg_sr);
 		
 		if(m_player0Blood <= 0 || m_player1Blood<=0) {
 			RoomMgr.instance().close_room(getID(), m_player0, m_player1);
@@ -151,10 +151,10 @@ public class Room {
 	
 	public void on_battle_sync_aim_degree(Long player, protocol.battle_sync_aim_degree msg) {
 		if(player==m_player0) {
-			sendMsgToPlayer(m_player1, msg.data());
+			sendMsgToPlayer(m_player1, msg);
 		}
 		else if (player==m_player1) {
-			sendMsgToPlayer(m_player0, msg.data());
+			sendMsgToPlayer(m_player0, msg);
 		}
 	}
 	
@@ -172,10 +172,10 @@ public class Room {
 		msg.player1_blood = m_player1Blood;
 		msg.turn_player = m_gameState==GameState.GS_PLAYER0_TURN ? m_player0 : m_player1;
 		
-		sendMsgToPlayer(player, msg.data());
+		sendMsgToPlayer(player, msg);
 	}
 	
-	protected void sendMsgToPlayer( Long playerID, ByteBuf buf) {
+	protected void sendMsgToPlayer( Long playerID, protocol.message buf) {
 		Player player = Player.getById( playerID);
 		if(player!=null) {
 			player.sendMsg(buf);

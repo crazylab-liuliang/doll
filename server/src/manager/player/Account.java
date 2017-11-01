@@ -45,7 +45,7 @@ public class Account {
 			protocol.register_result rr = new protocol.register_result();
 			rr.account= 0;
 			rr.result = 1;
-			ctx.write(rr.data());
+			rr.send(ctx);
 		}
 		else {
 			table.password = password;
@@ -58,7 +58,7 @@ public class Account {
 			
 			protocol.register_result rr = new protocol.register_result();
 			rr.result = 0;
-			ctx.write(rr.data());
+			rr.send(ctx);
 			
 			System.out.println(String.format("account [%d] registerByEmail succeed.", table.account));
 		}
@@ -82,7 +82,7 @@ public class Account {
 			if(password.equals(table.password)) {
 				protocol.login_result lr = new protocol.login_result();
 				lr.result = 0;
-				ctx.write(lr.data());
+				lr.send(ctx);
 				
 				rememberLoginIpAddress(ctx);
 				
@@ -93,7 +93,7 @@ public class Account {
 		// µÇÂ¼Ê§°Ü 
 		protocol.login_result lr = new protocol.login_result();
 		lr.result = 1;
-		ctx.write(lr.data());	
+		lr.send(ctx);
 		return false;
 	}
 	
@@ -106,7 +106,7 @@ public class Account {
 		loadAccountByOSID(osid);
 		protocol.login_result lr = new protocol.login_result();
 		lr.result = 0;
-		ctx.write(lr.data());
+		lr.send(ctx);
 		
 		rememberLoginIpAddress(ctx);
 		

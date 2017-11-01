@@ -33,7 +33,7 @@ public class BaseInfo {
 	public void sendGameTime(ChannelHandlerContext ctx) {
 		protocol.game_time bp_cell = new protocol.game_time();
 		bp_cell.time = gameTime;
-		ctx.write(bp_cell.data());
+		bp_cell.send(ctx);
 	}
 	
 	public boolean onNewMaxScore(int score) {

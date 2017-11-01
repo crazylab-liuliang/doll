@@ -3,11 +3,13 @@ package protocol;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 
+import io.netty.channel.ChannelHandlerContext;
+
 public class max_score extends message {
 
 	public int max_score = 0;
-	@Override
 
+	@Override
 	public int id(){
 		 return 21;
 	}
@@ -17,14 +19,15 @@ public class max_score extends message {
 		 return 4 ;
 	}
 
-	public ByteBuf data(){
+	@Override
+	public void send(ChannelHandlerContext ctx){
 		ByteBuf byteBuffer = Unpooled.buffer(8+length());
 		byteBuffer.writeInt(id());
 		byteBuffer.writeInt(length());
 		byteBuffer.writeInt(max_score);
 		byteBuffer.writeByte(64);
 		byteBuffer.writeByte(64);
-		return byteBuffer;
+		ctx.writeAndFlush( byteBuffer);
 	}
 
 	@Override

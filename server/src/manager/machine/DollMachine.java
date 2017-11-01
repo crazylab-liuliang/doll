@@ -51,7 +51,7 @@ public class DollMachine {
 	// ×óÒÆ×¦×Ó
 	public void move_left() {
 		protocol.machine_move_left msg = new protocol.machine_move_left();
-		mChannelCtx.writeAndFlush(msg.data());
+		msg.send(mChannelCtx);
 		
 		System.out.println("---move left, move left");
 	}

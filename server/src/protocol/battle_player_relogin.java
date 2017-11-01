@@ -3,6 +3,8 @@ package protocol;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 
+import io.netty.channel.ChannelHandlerContext;
+
 public class battle_player_relogin extends message {
 
 	public int battle_time = 0;
@@ -16,8 +18,8 @@ public class battle_player_relogin extends message {
 	public int player0_blood = 0;
 	public int pos0 = 0;
 	public int pos1 = 0;
-	@Override
 
+	@Override
 	public int id(){
 		 return 7;
 	}
@@ -27,7 +29,8 @@ public class battle_player_relogin extends message {
 		 return 56 +name0.length()+name1.length();
 	}
 
-	public ByteBuf data(){
+	@Override
+	public void send(ChannelHandlerContext ctx){
 		ByteBuf byteBuffer = Unpooled.buffer(8+length());
 		byteBuffer.writeInt(id());
 		byteBuffer.writeInt(length());
@@ -44,7 +47,7 @@ public class battle_player_relogin extends message {
 		byteBuffer.writeInt(pos1);
 		byteBuffer.writeByte(64);
 		byteBuffer.writeByte(64);
-		return byteBuffer;
+		ctx.writeAndFlush( byteBuffer);
 	}
 
 	@Override

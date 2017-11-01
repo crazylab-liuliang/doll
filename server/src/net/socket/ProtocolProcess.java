@@ -65,7 +65,7 @@ class heart_beat_process implements ProtocolProcess{
 	public void on_accept(protocol.message proto, ChannelHandlerContext ctx) {	
 		protocol.heart_beat msg = (protocol.heart_beat)proto;	
 		Player player = Player.get(ctx);
-		player.on_heart_beat(msg.data());
+		player.on_heart_beat(msg);
 	}
 }
 

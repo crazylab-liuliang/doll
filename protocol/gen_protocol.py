@@ -36,6 +36,7 @@ def gen_protocol_java( file, id):
     java_file.writelines("package protocol;\n\n")
     java_file.writelines("import io.netty.buffer.ByteBuf;\n")
     java_file.writelines("import io.netty.buffer.Unpooled;\n\n")
+    java_file.writelines("import io.netty.channel.ChannelHandlerContext;\n\n")
     java_file.writelines("public class " + protocol_name + " extends message {\n\n")
 
     data_file = open(file)
@@ -47,8 +48,8 @@ def gen_protocol_java( file, id):
             java_file.writelines("\tpublic " + data[key] +" " + key + " = 0;\n")
 
     # get_id
-    java_file.writelines("\t@Override\n")
     java_file.writelines("\n")
+    java_file.writelines("\t@Override\n")
     java_file.writelines("\tpublic int id(){\n")
     java_file.writelines("\t\t return %d;\n" % id)
     java_file.writelines("\t}\n")
@@ -75,7 +76,8 @@ def gen_protocol_java( file, id):
 
     # data
     java_file.writelines("\n")
-    java_file.writelines("\tpublic ByteBuf data(){\n")
+    java_file.writelines("\t@Override\n")
+    java_file.writelines("\tpublic void send(ChannelHandlerContext ctx){\n")
     java_file.writelines("\t\tByteBuf byteBuffer = Unpooled.buffer(8+length());\n")
     java_file.writelines("\t\tbyteBuffer.writeInt(id());\n")
     java_file.writelines("\t\tbyteBuffer.writeInt(length());\n")
@@ -91,7 +93,7 @@ def gen_protocol_java( file, id):
 
     java_file.writelines("\t\tbyteBuffer.writeByte(64);\n")
     java_file.writelines("\t\tbyteBuffer.writeByte(64);\n")
-    java_file.writelines("\t\treturn byteBuffer;\n")
+    java_file.writelines("\t\tctx.writeAndFlush( byteBuffer);\n")
     java_file.writelines("\t}\n")
 
     # parse_data
@@ -304,7 +306,8 @@ def generate_msg_jave_base_class():
     java_file = open(java_file_name, "w+")
     java_file.writelines("package protocol;\n\n")
     java_file.writelines("import io.netty.buffer.ByteBuf;\n")
-    java_file.writelines("import io.netty.buffer.Unpooled;\n\n")
+    java_file.writelines("import io.netty.buffer.Unpooled;\n")
+    java_file.writelines("import io.netty.channel.ChannelHandlerContext;\n\n")
     java_file.writelines("public class message {\n\n")
 
     # get_id
@@ -316,6 +319,12 @@ def generate_msg_jave_base_class():
     java_file.writelines("\n")
     java_file.writelines("\tpublic int length(){\n")
     java_file.writelines("\t\t return %d;\n" % 0)
+    java_file.writelines("\t}\n")
+
+    # send
+    java_file.writelines("\n")
+    java_file.writelines("\tpublic void send(ChannelHandlerContext ctx){\n")
+    java_file.writelines("\t\tSystem.out.println(\"send method hasn't implementation.\");\n")
     java_file.writelines("\t}\n")
 
     # pass data

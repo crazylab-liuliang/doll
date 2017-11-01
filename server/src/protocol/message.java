@@ -2,6 +2,7 @@ package protocol;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
+import io.netty.channel.ChannelHandlerContext;
 
 public class message {
 
@@ -11,6 +12,10 @@ public class message {
 
 	public int length(){
 		 return 0;
+	}
+
+	public void send(ChannelHandlerContext ctx){
+		System.out.println("send method hasn't implementation.");
 	}
 
 	public void parse_data(ByteBuf byteBuffer){

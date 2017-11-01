@@ -3,11 +3,13 @@ package protocol;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 
+import io.netty.channel.ChannelHandlerContext;
+
 public class ranking_response extends message {
 
 	public String ranking = "";
-	@Override
 
+	@Override
 	public int id(){
 		 return 26;
 	}
@@ -17,14 +19,15 @@ public class ranking_response extends message {
 		 return 4 +ranking.length();
 	}
 
-	public ByteBuf data(){
+	@Override
+	public void send(ChannelHandlerContext ctx){
 		ByteBuf byteBuffer = Unpooled.buffer(8+length());
 		byteBuffer.writeInt(id());
 		byteBuffer.writeInt(length());
 		write_string(byteBuffer, ranking);
 		byteBuffer.writeByte(64);
 		byteBuffer.writeByte(64);
-		return byteBuffer;
+		ctx.writeAndFlush( byteBuffer);
 	}
 
 	@Override

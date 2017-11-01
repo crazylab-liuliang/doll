@@ -122,10 +122,9 @@ public class Player {
 		}
 	}
 	
-	public void on_heart_beat(ByteBuf msg) {
+	public void on_heart_beat(protocol.message msg) {
 		nonHeartBeatTime = 0;
-		
-		mChannelCtx.write(msg);
+		msg.send(mChannelCtx);
 	}
 	
 	public void setAccount(long account) {	
@@ -331,7 +330,7 @@ public class Player {
 		protocol.player_info msg = new protocol.player_info();
 		msg.player = table.player;
 		msg.name = info.baseInfo.name;
-		mChannelCtx.writeAndFlush(msg.data());
+		msg.send(mChannelCtx);
 	}
 	
 	// send info to client
@@ -339,8 +338,8 @@ public class Player {
 		info.backpack.sendBackpackInfo(mChannelCtx);
 	}
 	
-	public void sendMsg(ByteBuf buf) {
-		mChannelCtx.writeAndFlush(buf);
+	public void sendMsg(protocol.message msg) {
+		msg.send(mChannelCtx);
 	}
 	
 	// --------------------search room-------------------------
@@ -349,7 +348,7 @@ public class Player {
 			
 		protocol.search_room_result msg = new protocol.search_room_result();
 		msg.result = 1;
-		mChannelCtx.writeAndFlush(msg.data());
+		msg.send(mChannelCtx);
 	}
 	
 	public void search_room_end() {
@@ -357,7 +356,7 @@ public class Player {
 		
 		protocol.search_room_result msg = new protocol.search_room_result();
 		msg.result = 0;
-		mChannelCtx.writeAndFlush(msg.data());
+		msg.send(mChannelCtx);
 	}
 	
 	//--------------------------------machine control------------------------

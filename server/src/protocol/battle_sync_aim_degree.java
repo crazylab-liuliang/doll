@@ -3,11 +3,13 @@ package protocol;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 
+import io.netty.channel.ChannelHandlerContext;
+
 public class battle_sync_aim_degree extends message {
 
 	public float aim_degree = 0;
-	@Override
 
+	@Override
 	public int id(){
 		 return 11;
 	}
@@ -17,14 +19,15 @@ public class battle_sync_aim_degree extends message {
 		 return 4 ;
 	}
 
-	public ByteBuf data(){
+	@Override
+	public void send(ChannelHandlerContext ctx){
 		ByteBuf byteBuffer = Unpooled.buffer(8+length());
 		byteBuffer.writeInt(id());
 		byteBuffer.writeInt(length());
 		byteBuffer.writeFloat(aim_degree);
 		byteBuffer.writeByte(64);
 		byteBuffer.writeByte(64);
-		return byteBuffer;
+		ctx.writeAndFlush( byteBuffer);
 	}
 
 	@Override
