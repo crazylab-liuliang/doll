@@ -1,7 +1,7 @@
 import struct
 
 class machine_control:
-type = int(0)
+	type = int(0)
 
 	def name(self):
 		return 'machine_control'
@@ -13,9 +13,9 @@ type = int(0)
 		return 4 ;
 
 	def send(self, stream):
-		buf = struct.pack('!ii!iBB', self.id(), self.length(),type,64,64)
+		buf = struct.pack('!iiiBB', self.id(), self.length(),self.type,64,64)
 		stream.send(buf)
 
 	def parse_data(self, byteBuffer):
-	type = byteBuffer.read_i32();
+		self.type = struct.unpack( "!i", byteBuffer)
 		return

@@ -235,7 +235,7 @@ func send_ranking_request():
 		
 func send_machine_move_left():
 	if streamPeerTCP.is_connected():
-		var msg = preload("res://global/protocol/machine_move_left.pb.gd").new()
+		var msg = preload("res://global/protocol/machine_control.pb.gd").new()
 		msg.send(streamPeerTCP)
 
 func bind_msgs():

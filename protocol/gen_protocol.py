@@ -223,11 +223,11 @@ def gen_protocol_python(file, id):
         data = json.load(data_file) 
         for key in data.keys():
             if data[key] == 'string':
-                py_file.writelines( key + " = String("")\n")
+                py_file.writelines( "\t" + key + " = String("")\n")
             elif data[key] == 'long':
-                py_file.writelines( key + " = -1\n")
+                py_file.writelines( "\t" + key + " = -1\n")
             else:
-                py_file.writelines( key + " = " + data[key] +"(0)\n")
+                py_file.writelines( "\t" + key + " = " + data[key] +"(0)\n")
 
     py_file.writelines("\n")
 
@@ -261,40 +261,30 @@ def gen_protocol_python(file, id):
 
     # send data
     py_file.writelines("\tdef send(self, stream):\n")
-    format = '!ii'
-    params = ', self.id(), self.length()'
+    format = ''
+    params = ''
     for key in data.keys():
         if data[key]=='int':
-            format += '!i'
-            params += ',%s' % key
+            format += 'i'
+            params += ',self.%s' % key
         if data[key]=='long':
-            format += '!l'
-            params += ',%s' % key
+            format += 'l'
+            params += ',self.%s' % key
         if data[key]=='float':
-            format += '!f'
-            params += ',%s' % key
+            format += 'f'
+            params += ',self.%s' % key
         #if data[key]=='string':
         #    py_file.writelines("\tbuf.write_string(%s)\n" % key)
 
-    format += 'BB'
-    params += ',%d,%d' % (64,64)
-    py_file.writelines("\t\tbuf = struct.pack(\'%s\'%s)\n" % (format, params))
+    py_file.writelines("\t\tbuf = struct.pack(\'%s\'%s)\n" % ('!ii'+format + 'BB', ', self.id(), self.length()' + params + ',%d,%d' % (64,64)))
     py_file.writelines("\t\tstream.send(buf)")
     py_file.writelines("\n")
 
     # parse data
     py_file.writelines("\n")
     py_file.writelines("\tdef parse_data(self, byteBuffer):\n")
-    for key in data.keys():
-        if data[key]=='int':
-            py_file.writelines("\t%s = byteBuffer.read_i32();\n" % key)
-        if data[key]=='long':
-            py_file.writelines("\t%s = byteBuffer.read_i64();\n" % key)
-        if data[key]=='float':
-            py_file.writelines("\t%s = byteBuffer.read_float();\n" % key)
-        if data[key]=='string':
-            py_file.writelines("\t%s = byteBuffer.read_string();\n" % key)
-
+    if len(data.keys())>0:
+        py_file.write("\t\t%s = struct.unpack( \"%s\", byteBuffer)\n" % (params[1:], '!'+format))
     py_file.writelines("\t\treturn\n")
 
     py_file.close()
