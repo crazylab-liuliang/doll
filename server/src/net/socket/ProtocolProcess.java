@@ -21,7 +21,7 @@ interface ProtocolProcess {
 		SocketServerHandler.bind(new protocol.battle_sync_aim_degree(), new battle_sync_aim_degree_process());
 		SocketServerHandler.bind(new protocol.max_score(), new max_score_process());
 		SocketServerHandler.bind(new protocol.ranking_request(), new ranking_request_process());
-		SocketServerHandler.bind(new protocol.machine_move_left(), new machine_move_left_cmd_process());
+		SocketServerHandler.bind(new protocol.machine_control(), new machine_control_cmd_process());
 		
 		SocketServerHandler.bind(new protocol.machine_login(), new machine_login_process());
 		
@@ -143,11 +143,11 @@ class ranking_request_process implements ProtocolProcess{
 }
 
 
-class machine_move_left_cmd_process implements ProtocolProcess{
+class machine_control_cmd_process implements ProtocolProcess{
 	@Override
 	public void on_accept(protocol.message proto, ChannelHandlerContext ctx) {		
 		Player player = Player.get(ctx);
-		player.machine_control_move_left();
+		player.machine_control();
 	}
 }
 

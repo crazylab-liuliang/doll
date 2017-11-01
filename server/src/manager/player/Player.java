@@ -360,10 +360,10 @@ public class Player {
 	}
 	
 	//--------------------------------machine control------------------------
-	public void machine_control_move_left() {
+	public void machine_control() {
 		DollMachine machine = DollMachine.getOne();
 		if(machine!=null) {
-			machine.move_left();
+			machine.on_control();
 		}
 	}
 }

@@ -5,17 +5,18 @@ import io.netty.buffer.Unpooled;
 
 import io.netty.channel.ChannelHandlerContext;
 
-public class machine_move_left extends message {
+public class machine_control extends message {
 
+	public int type = 0;
 
 	@Override
 	public int id(){
-		 return 20;
+		 return 19;
 	}
 
 	@Override
 	public int length(){
-		 return 0 ;
+		 return 4 ;
 	}
 
 	@Override
@@ -23,6 +24,7 @@ public class machine_move_left extends message {
 		ByteBuf byteBuffer = Unpooled.buffer(8+length());
 		byteBuffer.writeInt(id());
 		byteBuffer.writeInt(length());
+		byteBuffer.writeInt(type);
 		byteBuffer.writeByte(64);
 		byteBuffer.writeByte(64);
 		ctx.writeAndFlush( byteBuffer);
@@ -30,5 +32,6 @@ public class machine_move_left extends message {
 
 	@Override
 	public void parse_data(ByteBuf byteBuffer){
+		type = byteBuffer.readInt();
 	}
 }

@@ -5,3 +5,10 @@
 2017-11-01 10:42:28,435 INFO ranking [main] load ranking data from db [{"lowestScore": 0, "rankingSize": 200, "scoreRanking": [{"name": "", "score": 43, "account": 1}]}]
 2017-11-01 10:42:28,823 INFO socket server [main] bind port [8800] succeed
 2017-11-01 10:42:28,856 INFO http server [main] bind port [8900] succeed
+2017-11-01 10:48:12,857 INFO shooter [main] --------------
+2017-11-01 10:48:12,858 INFO shooter [main] |Start server|
+2017-11-01 10:48:12,859 INFO shooter [main] --------------
+2017-11-01 10:48:12,967 INFO db [main] db:connected
+2017-11-01 10:48:13,005 INFO ranking [main] load ranking data from db [{"lowestScore": 0, "rankingSize": 200, "scoreRanking": [{"name": "", "score": 43, "account": 1}]}]
+2017-11-01 10:48:13,375 INFO socket server [main] bind port [8800] succeed
+2017-11-01 10:48:13,407 INFO http server [main] bind port [8900] succeed
