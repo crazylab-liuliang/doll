@@ -9,5 +9,7 @@ class dollmachine:
 	def set_forward(self, value):
 		if value!=0:
 			GPIO.output(2, GPIO.HIGH)
+			print("forward begin")
 		else:
+			print("forward stop")
 			GPIO.output(2, GPIO.LOW)
