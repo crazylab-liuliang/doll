@@ -52,7 +52,9 @@ public class DollMachine {
 	public void on_control(protocol.message msg) {
 		msg.send(mChannelCtx);
 		
-		System.out.println("---move left, move left");
+		protocol.machine_control msg_ = (protocol.machine_control)msg;
+		
+		System.out.println( msg_.type);
 	}
 	
 	// ×óÒÆ×¦×Ó

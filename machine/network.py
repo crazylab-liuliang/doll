@@ -51,7 +51,7 @@ class network:
 			body_pack = self.data_buffer[self.header_size : self.header_size+body_size]
 			self.process_net_pack(head_pack, body_pack)
 
-			data_buffer = self.data_buffer[self.header_size+body_size+self.tail_size:]
+			self.data_buffer = self.data_buffer[self.header_size+body_size+self.tail_size:]
 
 	def process_net_pack(self, head, body):	
 		msg_id = head[0]

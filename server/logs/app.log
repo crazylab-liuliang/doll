@@ -295,3 +295,56 @@
 2017-11-01 14:36:57,903 INFO db [pool-4-thread-1] db: save account [1]
 2017-11-01 14:36:57,905 INFO db [pool-4-thread-1] db:save player[1]
 2017-11-01 14:36:57,906 INFO shooter [pool-4-thread-1] account [1] player [1] save to db
+2017-11-01 14:38:52,604 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-01 14:42:22,658 INFO shooter [pool-6-thread-8] Accept connect from client [0:0:0:0:0:0:0:1] count[29]
+2017-11-01 14:42:52,754 INFO shooter [main] Player [1] offline, CurrentPlayers [0]
+2017-11-01 14:42:52,756 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-01 14:42:52,756 INFO shooter [pool-6-thread-8] Disconnect from client
+2017-11-01 14:42:52,757 INFO db [pool-4-thread-1] db:save player[1]
+2017-11-01 14:42:52,758 INFO shooter [pool-4-thread-1] account [1] player [1] save to db
+2017-11-01 14:43:01,473 INFO shooter [pool-6-thread-9] Accept connect from client [0:0:0:0:0:0:0:1] count[30]
+2017-11-01 14:43:05,603 INFO shooter [pool-6-thread-9] Player [1] offline, CurrentPlayers [0]
+2017-11-01 14:43:05,604 INFO shooter [pool-6-thread-9] Disconnect from client
+2017-11-01 14:43:05,604 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-01 14:43:05,606 INFO db [pool-4-thread-1] db:save player[1]
+2017-11-01 14:43:05,607 INFO shooter [pool-4-thread-1] account [1] player [1] save to db
+2017-11-01 14:43:43,479 INFO shooter [main] --------------
+2017-11-01 14:43:43,481 INFO shooter [main] |Start server|
+2017-11-01 14:43:43,481 INFO shooter [main] --------------
+2017-11-01 14:43:43,575 INFO db [main] db:connected
+2017-11-01 14:43:43,612 INFO ranking [main] load ranking data from db [{"lowestScore": 0, "rankingSize": 200, "scoreRanking": [{"name": "", "score": 43, "account": 1}]}]
+2017-11-01 14:43:43,984 INFO socket server [main] bind port [8800] succeed
+2017-11-01 14:43:44,018 INFO http server [main] bind port [8900] succeed
+2017-11-01 14:43:58,210 INFO doll machine [pool-6-thread-1] doll machine login
+2017-11-01 14:44:05,612 INFO shooter [pool-6-thread-2] Accept connect from client [0:0:0:0:0:0:0:1] count[31]
+2017-11-01 14:48:25,250 INFO shooter [main] --------------
+2017-11-01 14:48:25,252 INFO shooter [main] |Start server|
+2017-11-01 14:48:25,252 INFO shooter [main] --------------
+2017-11-01 14:48:25,346 INFO db [main] db:connected
+2017-11-01 14:48:25,539 INFO ranking [main] load ranking data from db [{"lowestScore": 0, "rankingSize": 200, "scoreRanking": [{"name": "", "score": 43, "account": 1}]}]
+2017-11-01 14:48:25,908 INFO socket server [main] bind port [8800] succeed
+2017-11-01 14:48:25,942 INFO http server [main] bind port [8900] succeed
+2017-11-01 14:48:26,383 INFO shooter [pool-6-thread-1] Accept connect from client [0:0:0:0:0:0:0:1] count[31]
+2017-11-01 14:48:30,873 INFO doll machine [pool-6-thread-2] doll machine login
+2017-11-01 14:48:35,335 INFO shooter [pool-6-thread-1] Player [1] offline, CurrentPlayers [0]
+2017-11-01 14:48:35,336 INFO shooter [pool-6-thread-1] Disconnect from client
+2017-11-01 14:48:35,339 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-01 14:48:35,342 INFO db [pool-4-thread-1] db:save player[1]
+2017-11-01 14:48:35,343 INFO shooter [pool-4-thread-1] account [1] player [1] save to db
+2017-11-01 14:48:36,267 INFO shooter [pool-6-thread-3] Accept connect from client [0:0:0:0:0:0:0:1] count[32]
+2017-11-01 14:50:43,474 INFO shooter [main] --------------
+2017-11-01 14:50:43,475 INFO shooter [main] |Start server|
+2017-11-01 14:50:43,475 INFO shooter [main] --------------
+2017-11-01 14:50:43,594 INFO db [main] db:connected
+2017-11-01 14:50:43,632 INFO ranking [main] load ranking data from db [{"lowestScore": 0, "rankingSize": 200, "scoreRanking": [{"name": "", "score": 43, "account": 1}]}]
+2017-11-01 14:50:44,019 INFO socket server [main] bind port [8800] succeed
+2017-11-01 14:50:44,073 INFO http server [main] bind port [8900] succeed
+2017-11-01 14:50:46,266 INFO doll machine [pool-6-thread-1] doll machine login
+2017-11-01 14:50:50,725 INFO shooter [pool-6-thread-2] Disconnect from client
+2017-11-01 14:50:51,669 INFO shooter [pool-6-thread-3] Accept connect from client [0:0:0:0:0:0:0:1] count[32]
+2017-11-01 14:52:08,560 INFO shooter [pool-6-thread-3] Player [1] offline, CurrentPlayers [0]
+2017-11-01 14:52:08,561 INFO shooter [pool-6-thread-3] Disconnect from client
+2017-11-01 14:52:08,565 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-01 14:52:08,569 INFO db [pool-4-thread-1] db:save player[1]
+2017-11-01 14:52:08,569 INFO shooter [pool-4-thread-1] account [1] player [1] save to db
+2017-11-01 14:52:09,443 INFO shooter [pool-6-thread-1] Disconnect from client
