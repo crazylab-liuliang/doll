@@ -20,10 +20,6 @@ func set_scene(name):
 	
 # 启动
 func load_global_scripts():
-	var data = preload("res://global/player.gd").new()
-	data.set_name("player")
-	get_tree().get_root().add_child(data)
-	
 	var wechat = preload("res://global/wechat.gd").new()
 	wechat.set_name("wechat")
 	get_tree().get_root().add_child(wechat)
@@ -47,7 +43,4 @@ func load_global_scripts():
 	var viewport = preload("res://global/viewport.gd").new()
 	viewport.set_name("viewport")
 	get_tree().get_root().add_child(viewport)
-	
-	var sound = preload("res://sound/sound.tscn").instance()
-	get_tree().get_root().add_child(sound)
 	

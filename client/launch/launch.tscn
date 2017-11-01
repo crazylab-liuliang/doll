@@ -1,10 +1,8 @@
-[gd_scene load_steps=6 format=1]
+[gd_scene load_steps=4 format=1]
 
 [ext_resource path="res://launch/launch.gd" type="Script" id=1]
-[ext_resource path="res://launch/common/common.tscn" type="PackedScene" id=2]
-[ext_resource path="res://launch/main/main.tscn" type="PackedScene" id=3]
-[ext_resource path="res://launch/ranking/ranking.tscn" type="PackedScene" id=4]
-[ext_resource path="res://launch/machine_control.gd" type="Script" id=5]
+[ext_resource path="res://launch/main/main.tscn" type="PackedScene" id=2]
+[ext_resource path="res://launch/machine_control.gd" type="Script" id=3]
 
 [node name="launch" type="Node2D"]
 
@@ -17,16 +15,11 @@ offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
 
-[node name="common" parent="ui" instance=ExtResource( 2 )]
-
-[node name="main" parent="ui" instance=ExtResource( 3 )]
-
-[node name="ranking" parent="ui" instance=ExtResource( 4 )]
-
-visibility/visible = false
+[node name="main" parent="ui" instance=ExtResource( 2 )]
 
 [node name="machine_control" type="Control" parent="ui"]
 
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -35,7 +28,7 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 40.0
 margin/bottom = 40.0
-script/script = ExtResource( 5 )
+script/script = ExtResource( 3 )
 
 [node name="left" type="Button" parent="ui/machine_control"]
 
