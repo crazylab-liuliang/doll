@@ -146,8 +146,9 @@ class ranking_request_process implements ProtocolProcess{
 class machine_control_cmd_process implements ProtocolProcess{
 	@Override
 	public void on_accept(protocol.message proto, ChannelHandlerContext ctx) {		
+		
 		Player player = Player.get(ctx);
-		player.machine_control();
+		player.machine_control(proto);
 	}
 }
 

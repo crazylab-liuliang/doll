@@ -360,10 +360,10 @@ public class Player {
 	}
 	
 	//--------------------------------machine control------------------------
-	public void machine_control() {
+	public void machine_control(protocol.message msg) {
 		DollMachine machine = DollMachine.getOne();
 		if(machine!=null) {
-			machine.on_control();
+			machine.on_control(msg);
 		}
 	}
 }
