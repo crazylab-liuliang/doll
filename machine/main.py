@@ -32,8 +32,8 @@ def loop():
 # run
 init()
 
-threads = []
+# net thread
 t1 = threading.Thread(target=network_recv)
-threads.append(t1)
+t1.start()
 
 loop()
