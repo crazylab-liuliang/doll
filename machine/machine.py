@@ -57,7 +57,7 @@ class dollmachine:
 			GPIO.output(3, GPIO.LOW)
 
 	def set_back(self, value):
-			if value!=0:
+		if value!=0:
 			GPIO.output(4, GPIO.HIGH)
 			print("forward begin")
 		else:
@@ -66,7 +66,7 @@ class dollmachine:
 
 
 	def set_left(self, value):
-			if value!=0:
+		if value!=0:
 			GPIO.output(17, GPIO.HIGH)
 			print("forward begin")
 		else:
@@ -74,7 +74,7 @@ class dollmachine:
 			GPIO.output(17, GPIO.LOW)
 
 	def set_right(self, value):
-			if value!=0:
+		if value!=0:
 			GPIO.output(27, GPIO.HIGH)
 			print("forward begin")
 		else:
