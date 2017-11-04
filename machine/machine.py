@@ -90,8 +90,9 @@ class dollmachine:
 
 	def loop(self):
 		if self.coin_time > 0:
-			self.coin_time -= 20
+			self.coin_time -= 40
 			if self.coin_time < 0:
+				print("add coin")
 				GPIO.output(2, GPIO>LOW)
 
 		if self.take_time > 0:
