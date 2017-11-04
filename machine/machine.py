@@ -29,7 +29,7 @@ class dollmachine:
 		GPIO.cleanup()
 	
 	def on_recv_machine_control(self, msg):
-		print("on recv machine control")
+		print("on recv machine control [%d,%d]" % (msg.type, msg.op))
 		if msg.type==0:
 			self.add_coin()
 
