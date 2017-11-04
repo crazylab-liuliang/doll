@@ -44,7 +44,7 @@ class dollmachine:
 		if msg.type==5:
 			self.take_doll()
 
-	def add_coin():
+	def add_coin(self):
 		GPIO.output(2,GPIO.HIGH)
 		coin_time = 100
 
@@ -81,11 +81,11 @@ class dollmachine:
 			print("forward stop")
 			GPIO.output(27, GPIO.LOW)
 
-	def take_doll():
+	def take_doll(self):
 			GPIO.output(22, GPIO_HIGH)
 			take_time = 100
 
-	def loop():
+	def loop(self):
 		if coin_time > 0:
 			coin_time -= 10
 			if coin_time < 0:
