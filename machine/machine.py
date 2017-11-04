@@ -98,7 +98,7 @@ class dollmachine:
 				GPIO.output(2, GPIO.LOW)
 
 		if self.take_time > 0:
-			self.tale_time -= 20
+			self.take_time -= 20
 			if self.take_time <= 0:
 				print("take doll signal")
 				GPIO.output(22, GPIO.LOW)
