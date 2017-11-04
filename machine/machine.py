@@ -93,13 +93,13 @@ class dollmachine:
 	def loop(self):
 		if self.coin_time > 0:
 			self.coin_time -= 20
-			print("coin time [%d]" % self.coin_time)
-			if self.coin_time < 0:
-				print("add coin")
+			if self.coin_time <= 0:
+				print("add coin signal")
 				GPIO.output(2, GPIO.LOW)
 
 		if self.take_time > 0:
 			self.tale_time -= 20
-			if self.take_time < 0:
+			if self.take_time <= 0:
+				print("take doll signal")
 				GPIO.output(22, GPIO.LOW)
 
