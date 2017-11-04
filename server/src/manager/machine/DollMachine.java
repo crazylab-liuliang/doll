@@ -33,6 +33,7 @@ public class DollMachine {
 	
 	// Ê¹ÓÃÓÊÏäÃÜÂëµÇÂ¼
 	public void login() {
+		machines.clear();
 		machines.put(mChannelCtx.hashCode(), this);
 		
 		logger.info("doll machine login");
