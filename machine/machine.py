@@ -24,6 +24,9 @@ class dollmachine:
 
 	def __del__(self):
 		self.cleanup()
+
+	def cleanup(self):
+		GPIO.cleanup()
 	
 	def on_recv_machine_control(self, msg):
 		if msg.type==0:
@@ -46,7 +49,7 @@ class dollmachine:
 
 	def add_coin(self):
 		GPIO.output(2,GPIO.HIGH)
-		coin_time = 100
+		self.coin_time = 200
 
 	def set_forward(self, value):
 		if value!=0:
@@ -83,18 +86,16 @@ class dollmachine:
 
 	def take_doll(self):
 			GPIO.output(22, GPIO_HIGH)
-			take_time = 100
+			self.take_time = 200
 
 	def loop(self):
-		if coin_time > 0:
-			coin_time -= 10
-			if coin_time < 0:
+		if self.coin_time > 0:
+			self.coin_time -= 20
+			if self.coin_time < 0:
 				GPIO.output(2, GPIO>LOW)
 
-		if take_time > 0:
-			tale_time -= 10
-			if take_time < 0:
+		if self.take_time > 0:
+			self.tale_time -= 20
+			if self.take_time < 0:
 				GPIO.output(2, GPIO>LOW)
 
-	def cleanup(self):
-		GPIO.cleanup()
