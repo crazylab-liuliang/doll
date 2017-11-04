@@ -17,11 +17,13 @@ def init():
 	nw.bind(pb_mc.machine_control(), dm.on_recv_machine_control)
 
 def network_recv():
+	print("netwrok recv...")
 	while True:
 		nw.recv()
 		time.sleep(0.02)
 
 def loop():
+	print("main game loop...")
 	while True:
 		nw.process_net_bytes()
 		dm.loop()
@@ -32,6 +34,6 @@ init()
 
 threads = []
 t1 = threading.Thread(target=network_recv)
-t2 = threading.Thread(target=loop)
 threads.append(t1)
-threads.append(t2)
+
+loop()
