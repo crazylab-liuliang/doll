@@ -2,20 +2,36 @@ import camera
 import network
 import time
 import machine
+import threading
 import RPi.GPIO as GPIO
 import protocol.pb_machine_control as pb_mc
 import protocol.pb_machine_login as pb_l
 
-def run():
-	dm = machine.dollmachine()
+dm = machine.dollmachine()
+nw = network.network()
 
+def init():
 	#camera.begin_push_video_stream_0()
-	nw = network.network()
 	nw.connect_server("10.237.24.45", 8800)
 	nw.login()
 	nw.bind(pb_mc.machine_control(), dm.on_recv_machine_control)
+
+def network_recv():
 	while True:
-		nw.loop()
+		nw.recv()
+		time.sleep(0.02)
+
+def loop():
+	while True:
+		nw.process_net_bytes()
+		dm.loop()
+		time.sleep(0.02)
 
 # run
-run()
+init()
+
+threads = []
+t1 = threading.Thread(target=network_recv)
+t2 = threading.Thread(target=loop)
+threads.append(t1)
+threads.append(t2)

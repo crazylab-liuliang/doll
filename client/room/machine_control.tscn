@@ -78,6 +78,38 @@ shortcut = null
 text = "Right"
 flat = false
 
+[node name="take" type="Button" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 539.0
+margin/top = 3.0
+margin/right = 735.0
+margin/bottom = 106.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Take"
+flat = false
+
+[node name="start" type="Button" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 183.0
+margin/top = -286.0
+margin/right = 694.0
+margin/bottom = -183.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Start"
+flat = false
+
 [connection signal="button_down" from="forward" to="." method="_on_forward_button_down"]
 
 [connection signal="button_up" from="forward" to="." method="_on_forward_button_up"]
@@ -93,5 +125,9 @@ flat = false
 [connection signal="button_down" from="right" to="." method="_on_right_button_down"]
 
 [connection signal="button_up" from="right" to="." method="_on_right_button_up"]
+
+[connection signal="pressed" from="take" to="." method="_on_take_pressed"]
+
+[connection signal="pressed" from="start" to="." method="_on_start_pressed"]
 
 

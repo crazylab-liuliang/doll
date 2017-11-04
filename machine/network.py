@@ -1,12 +1,15 @@
 import os
 import socket
 import struct
+import threading
 import protocol.pb_machine_control as pb_mc
 import protocol.pb_machine_login as pb_l
 
 class network:
 	sock = None
 	msg_bind = []
+	net_data = bytes()
+	net_data_lock = threading.Lock()
 	data_buffer = bytes()
 	header_size = 8
 	tail_size = 2
@@ -24,18 +27,24 @@ class network:
 	def close(self):
 		sock.close()
 
-	def loop(self):
+	def recv(self):
 		if self.sock!=None:
 			data = self.sock.recv(1024)
 			if data:
-				self.process_net_bytes(data)
-		else:
-			print("socket is None")
+				self.net_data_lock.acquire()
+				self.net_data += data
+				self.net_data_lock.release()
+			else:
+				print("socket is None")
 
 	
-	def process_net_bytes(self, data):
-		self.data_buffer += data
+	def process_net_bytes(self):
 		if True:
+			self.net_data_lock.acquire()
+			self.data_buffer += self.net_data
+			self.net_data = bytes()
+			self.net_data_lock.release()
+
 			if len(self.data_buffer) < self.header_size:
 				return
 

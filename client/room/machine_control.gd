@@ -26,3 +26,9 @@ func _on_right_button_down():
 
 func _on_right_button_up():
 	get_node("/root/network").send_machine_control(4,0)
+
+func _on_start_pressed():
+	get_node("/root/network").send_machine_control(0,0)
+
+func _on_take_pressed():
+	get_node("/root/network").send_machine_control(5,0)
