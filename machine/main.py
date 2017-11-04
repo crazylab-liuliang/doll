@@ -34,6 +34,7 @@ init()
 
 # net thread
 t1 = threading.Thread(target=network_recv)
+t1.setDaemon(True)
 t1.start()
 
 loop()
