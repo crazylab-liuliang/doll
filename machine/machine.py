@@ -51,6 +51,7 @@ class dollmachine:
 	def add_coin(self):
 		GPIO.output(2,GPIO.HIGH)
 		self.coin_time = 200
+		print("add coin")
 
 	def set_forward(self, value):
 		if value!=0:
@@ -86,18 +87,19 @@ class dollmachine:
 			GPIO.output(27, GPIO.LOW)
 
 	def take_doll(self):
-			GPIO.output(22, GPIO_HIGH)
+			GPIO.output(22, GPIO.HIGH)
 			self.take_time = 200
 
 	def loop(self):
+		print("loop+++")
 		if self.coin_time > 0:
 			self.coin_time -= 40
 			if self.coin_time < 0:
 				print("add coin")
-				GPIO.output(2, GPIO>LOW)
+				GPIO.output(2, GPIO.LOW)
 
 		if self.take_time > 0:
 			self.tale_time -= 20
 			if self.take_time < 0:
-				GPIO.output(2, GPIO>LOW)
+				GPIO.output(2, GPIO.LOW)
 
