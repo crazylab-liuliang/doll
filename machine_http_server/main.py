@@ -21,7 +21,7 @@ def init():
 def start_flask_server():
 	print("run flask server...")
 	app.debug = True
-	app.run(port=80)
+	app.run(host='0.0.0.0',port=80)
 
 	time.sleep(0.02)
 
