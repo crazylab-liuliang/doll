@@ -17,6 +17,10 @@ class machine_control:
 		buf = struct.pack('!iiiiBB', self.id(), self.length(),self.type,self.op,64,64)
 		stream.send(buf)
 
+	def data(self):
+		buf = struct.pack('!iiiiBB', self.id(), self.length(),self.type,self.op,64,64)
+		return buf
+
 	def parse_data(self, byteBuffer):
 		self.type,self.op = struct.unpack( "!ii", byteBuffer)
 		return

@@ -4,6 +4,7 @@ import struct
 import threading
 import protocol.pb_machine_control as pb_mc
 import protocol.pb_machine_login as pb_l
+from flask import Flask
 
 class network:
 	sock = None
@@ -14,29 +15,27 @@ class network:
 	header_size = 8
 	tail_size = 2
 
-	def connect_server(self, host, port):
-		self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-		self.sock.connect((host, port))
-		print("connect server")
-
-	def login(self):
-		msg = pb_l.machine_login()
-		msg.send(self.sock)
-		print("login")
+	def __init__(self):
+		self.sock = Flask(__name__, static_url_path='', static_folder='templates')
 
 	def close(self):
-		sock.close()
+		self.sock.close()
 
 	def recv(self):
 		if self.sock!=None:
-			data = self.sock.recv(1024)
-			if data:
-				self.net_data_lock.acquire()
-				self.net_data += data
-				self.net_data_lock.release()
-			else:
-				print("socket is None")
+			self.sock.debug = True
+			self.sock.run()
 
+	@self.sock.route('/op', methods=['GET', 'POST'])
+	def machine_op(self):
+		self.net_data_lock.acquire()
+		msg = pb_mc.machine_control()
+		msg.type = request.args.get('op')
+		msg.op = request.args.get('code')
+		self.net_data += msg.data()
+		self.net_data_lock.release()		
+
+		return 1
 	
 	def process_net_bytes(self):
 		if True:
@@ -63,8 +62,6 @@ class network:
 	def process_net_pack(self, head, body):	
 		msg_id = head[0]
 		msg_size = head[1]
-
-		print(msg_id)
 
 		if msg_id < len(self.msg_bind):
 			msg = self.msg_bind[msg_id][0]

@@ -280,6 +280,13 @@ def gen_protocol_python(file, id):
     py_file.writelines("\t\tstream.send(buf)")
     py_file.writelines("\n")
 
+    # data
+    py_file.writelines("\n")
+    py_file.writelines("\tdef data(self):\n")
+    py_file.writelines("\t\tbuf = struct.pack(\'%s\'%s)\n" % ('!ii'+format + 'BB', ', self.id(), self.length()' + params + ',%d,%d' % (64,64)))
+    py_file.writelines("\t\treturn buf")
+    py_file.writelines("\n")
+    
     # parse data
     py_file.writelines("\n")
     py_file.writelines("\tdef parse_data(self, byteBuffer):\n")

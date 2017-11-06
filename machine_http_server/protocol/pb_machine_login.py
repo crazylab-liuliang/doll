@@ -15,5 +15,9 @@ class machine_login:
 		buf = struct.pack('!iiBB', self.id(), self.length(),64,64)
 		stream.send(buf)
 
+	def data(self):
+		buf = struct.pack('!iiBB', self.id(), self.length(),64,64)
+		return buf
+
 	def parse_data(self, byteBuffer):
 		return
