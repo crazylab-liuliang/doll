@@ -39,7 +39,7 @@ def machine_op():
 	code = int(request.args.get('code'))
 	nw.machine_op(op, code)
 
-	return 1
+	return "1"
 
 # init
 init()
