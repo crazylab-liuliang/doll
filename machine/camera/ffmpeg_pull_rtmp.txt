@@ -1,2 +1,0 @@
-avconv -f video4linux2 -r 25 -s 640×480 -i /dev/video0 -f flv rtmp://118.190.156.61/live/test
-
