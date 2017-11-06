@@ -37,7 +37,7 @@ def loop():
 def machine_op():
 	op = request.args.get('op')
 	code = request.args.get('code')
-	nw.machine_op(op, code)
+	nw.machine_op(int(op), int(code))
 
 	return 1
 
