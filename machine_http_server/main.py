@@ -35,9 +35,9 @@ def loop():
 
 @app.route('/op', methods=['GET', 'POST'])
 def machine_op():
-	op = request.args.get('op')
-	code = request.args.get('code')
-	nw.machine_op(int(op), int(code))
+	op = int(request.args.get('op'))
+	code = int(request.args.get('code'))
+	nw.machine_op(op, code)
 
 	return 1
 
