@@ -4,10 +4,8 @@ import struct
 import threading
 import protocol.pb_machine_control as pb_mc
 import protocol.pb_machine_login as pb_l
-from flask import Flask
 
 class network:
-	sock = None
 	msg_bind = []
 	net_data = bytes()
 	net_data_lock = threading.Lock()
@@ -15,23 +13,14 @@ class network:
 	header_size = 8
 	tail_size = 2
 
-	def __init__(self):
-		self.sock = Flask(__name__, static_url_path='', static_folder='templates')
-
 	def close(self):
-		self.sock.close()
+		return
 
-	def recv(self):
-		if self.sock!=None:
-			self.sock.debug = True
-			self.sock.run()
-
-	@self.sock.route('/op', methods=['GET', 'POST'])
-	def machine_op(self):
+	def machine_op(self, type_, op_):
 		self.net_data_lock.acquire()
 		msg = pb_mc.machine_control()
-		msg.type = request.args.get('op')
-		msg.op = request.args.get('code')
+		msg.type = type_
+		msg.op = op_
 		self.net_data += msg.data()
 		self.net_data_lock.release()		
 
