@@ -15,6 +15,9 @@ class dollmachine:
 		GPIO.setup( 27, GPIO.OUT)
 		GPIO.setup( 22, GPIO.OUT)
 
+		reset_state()
+
+	def reset_state():
 		GPIO.output(2, GPIO.LOW)
 		GPIO.output(3, GPIO.LOW)
 		GPIO.output(4, GPIO.LOW)
@@ -46,6 +49,7 @@ class dollmachine:
 			self.set_right(msg.op)
 
 		if msg.type==5:
+			reset_state()
 			self.take_doll()
 
 	def add_coin(self):

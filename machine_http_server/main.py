@@ -16,7 +16,7 @@ nw = network.network()
 
 def init():
 	nw.bind(pb_mc.machine_control(), dm.on_recv_machine_control)
-	#cm.begin_push_video_stream_0()
+	cm.begin_push_video_stream_0()
 
 def start_flask_server():
 	print("run flask server...")
