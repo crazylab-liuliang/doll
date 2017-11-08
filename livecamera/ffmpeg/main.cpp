@@ -30,14 +30,7 @@ extern "C" {
 #include <libavutil/imgutils.h>
 }
 
-
 #include <stdio.h>
-
-// compatibility with newer API
-#if LIBAVCODEC_VERSION_INT < AV_VERSION_INT(55,28,1)
-#define av_frame_alloc avcodec_alloc_frame
-#define av_frame_free avcodec_free_frame
-#endif
 
 void SaveFrame(AVFrame *pFrame, int width, int height, int iFrame) {
     FILE *pFile;
@@ -61,6 +54,8 @@ void SaveFrame(AVFrame *pFrame, int width, int height, int iFrame) {
     fclose(pFile);
 }
 
+static int frameCount = 0;
+
 void decode_frame_from_packet(AVCodecContext *dec_ctx, AVFrame *frame, AVPacket *pkt)
 {
     char buf[1024];
@@ -81,16 +76,8 @@ void decode_frame_from_packet(AVCodecContext *dec_ctx, AVFrame *frame, AVPacket 
             exit(1);
         }
         
-        fprintf(stderr,"get frame ---");
-        
-        //printf("saving frame %3d\n", dec_ctx->frame_number);
-        //fflush(stdout);
-        
-        /* the picture is allocated by the decoder. no need to
-         free it */
-        //snprintf(buf, sizeof(buf), "%s-%d", filename, dec_ctx->frame_number);
-        //pgm_save(frame->data[0], frame->linesize[0],
-        //         frame->width, frame->height, buf);
+        frameCount++;
+        fprintf(stderr,"get frame --- %d\n", frameCount);
     }
 }
 
@@ -102,20 +89,12 @@ int main(int argc, char *argv[]) {
     AVCodec           *pCodec = NULL;
     AVFrame           *pFrame = NULL;
     AVPacket          packet;
-    //int               frameFinished;
-   // int               numBytes;
-    //uint8_t           *buffer = NULL;
-    //struct SwsContext *sws_ctx = NULL;
-    
-    //if(argc < 2) {
-    //    printf("Please provide a movie file\n");
-    //    return -1;
-    //}
+
     // Register all formats and codecs
     av_register_all();
     
     // Open video file
-    if(avformat_open_input(&pFormatCtx, "/Users/ares/Desktop/output.mpeg", NULL, NULL)!=0)
+    if(avformat_open_input(&pFormatCtx, "/Users/ares/Desktop/short.mp4", NULL, NULL)!=0)
         return -1; // Couldn't open file
     
     // Retrieve stream information
@@ -142,15 +121,10 @@ int main(int argc, char *argv[]) {
         return -1; // Codec not found
     }
     
-    // Get a pointer to the codec context for the video stream
-    //pCodecCtxOrig= avcodec_alloc_context3(pCodec);// pFormatCtx->streams[videoStream]->codec;
-    
     // Copy context
     pCodecCtx = avcodec_alloc_context3(pCodec);
-    //if(avcodec_copy_context(pCodecCtx, pCodecCtxOrig) != 0) {
-    //    fprintf(stderr, "Couldn't copy codec context");
-    //    return -1; // Error copying codec context
-    //}
+    
+    avcodec_parameters_to_context(pCodecCtx,pFormatCtx->streams[videoStream]->codecpar);
     
     // Open codec
     if(avcodec_open2(pCodecCtx, pCodec, NULL)<0)
@@ -159,70 +133,16 @@ int main(int argc, char *argv[]) {
     // Allocate video frame
     pFrame=av_frame_alloc();
     
-    // Allocate an AVFrame structure
-    //pFrameRGB=av_frame_alloc();
-//if(pFrameRGB==NULL)
-    //    return -1;
-    
-    // Determine required buffer size and allocate buffer
-    //numBytes=av_image_get_buffer_size(AV_PIX_FMT_RGB24, pCodecCtx->width,
-     //                           pCodecCtx->height, 16);
-    //buffer=(uint8_t *)av_malloc(numBytes*sizeof(uint8_t));
-    
-    // Assign appropriate parts of buffer to image planes in pFrameRGB
-    // Note that pFrameRGB is an AVFrame, but AVFrame is a superset
-    // of AVPicture
-    //av_image_fill_arrays((AVPicture *)pFrameRGB, buffer, AV_PIX_FMT_RGB24,
-    //              pCodecCtx->width, pCodecCtx->height);
-    
-    // initialize SWS context for software scaling
-    //sws_ctx = sws_getContext(pCodecCtx->width,
-     //                        pCodecCtx->height,
-     //                        pCodecCtx->pix_fmt,
-     //                        pCodecCtx->width,
-     //                        pCodecCtx->height,
-     //                        AV_PIX_FMT_RGB24,
-     //                        SWS_BILINEAR,
-     //                        NULL,
-     //                        NULL,
-     //                        NULL
-     //                        );
-    
     // Read frames and save first five frames to disk
     // i=0;
     while(av_read_frame(pFormatCtx, &packet)>=0) {
         // Is this a packet from the video stream?
         if(packet.stream_index==videoStream) {
-            
             decode_frame_from_packet(pCodecCtx, pFrame, &packet);
-            
-            /*
-            // Decode video frame
-            avcodec_decode_video2(pCodecCtx, pFrame, &frameFinished, &packet);
-            
-            // Did we get a video frame?
-            if(frameFinished) {
-                // Convert the image from its native format to RGB
-                sws_scale(sws_ctx, (uint8_t const * const *)pFrame->data,
-                          pFrame->linesize, 0, pCodecCtx->height,
-                          pFrameRGB->data, pFrameRGB->linesize);
-                
-                // Save the frame to disk
-                if(++i<=5)
-                    SaveFrame(pFrameRGB, pCodecCtx->width, pCodecCtx->height,
-                              i);
-            }*/
         }
-        
-        // Free the packet that was allocated by av_read_frame
-        //
     }
     
     av_free_packet(&packet);
-    
-    // Free the RGB image
-    //av_free(buffer);
-    //av_frame_free(&pFrameRGB);
     
     // Free the YUV frame
     av_frame_free(&pFrame);
@@ -232,7 +152,6 @@ int main(int argc, char *argv[]) {
     
     // Close the codecs
     avcodec_close(pCodecCtx);
-    //avcodec_close(pCodecCtxOrig);
     
     // Close the video file
     avformat_close_input(&pFormatCtx);
