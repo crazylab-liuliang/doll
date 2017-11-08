@@ -1,3 +1,3 @@
 import os
 
-os.system("(node websocket-relay.js secret 10001 10002 &)")
+os.system("(node websocket-relay.js 10001 10002 &)")

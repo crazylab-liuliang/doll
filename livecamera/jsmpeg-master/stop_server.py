@@ -1,7 +1,7 @@
 import os
 import psutil
 
-cmdline_name = ['node', 'websocket-relay.js', 'secret', '10001', '10002']
+cmdline_name = ['node', 'websocket-relay.js', '10001', '10002']
 
 for proc in psutil.process_iter():
     if proc.cmdline() == cmdline_name:

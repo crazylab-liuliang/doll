@@ -16,48 +16,62 @@ if (process.argv.length < 3) {
 	process.exit();
 }
 
-var STREAM_SECRET = process.argv[2],
-	STREAM_PORT = process.argv[3] || 8081,
-	WEBSOCKET_PORT = process.argv[4] || 8082,
+var STREAM_PORT = process.argv[2] || 8081,
+	WEBSOCKET_PORT = process.argv[3] || 8082,
 	RECORD_STREAM = false;
+
+var clients = [];
 
 // Websocket Server
 var socketServer = new WebSocket.Server({port: WEBSOCKET_PORT, perMessageDeflate: false});
 socketServer.connectionCount = 0;
 socketServer.on('connection', function(socket, upgradeReq) {
 	socketServer.connectionCount++;
+
+	var group = upgradeReq.url.substr(1);
+	var index = clients.push([group, socket]) -1;
+
 	console.log(
 		'New WebSocket Connection: ', 
 		(upgradeReq || socket.upgradeReq).socket.remoteAddress,
 		(upgradeReq || socket.upgradeReq).headers['user-agent'],
-		'('+socketServer.connectionCount+' total)'
+		'('+socketServer.connectionCount+' total)',group
 	);
 	socket.on('close', function(code, message){
+		clients.splice(index, 1)
 		socketServer.connectionCount--;
 		console.log(
 			'Disconnected WebSocket ('+socketServer.connectionCount+' total)'
 		);
 	});
 });
-socketServer.broadcast = function(data) {
-	socketServer.clients.forEach(function each(client) {
-		if (client.readyState === WebSocket.OPEN) {
-			client.send(data);
+socketServer.broadcast = function(data, group) {
+	clients.forEach(function each(client){
+		if(client[0] === group){
+			if(client[1].readyState === WebSocket.OPEN){
+				client[1].send(data);
+			}
 		}
 	});
+
+	//socketServer.clients.forEach(function each(client) {
+	//	if (client.readyState === WebSocket.OPEN) {
+	//		client.send(data);
+	//	}
+	//});
 };
 
 // HTTP Server to accept incomming MPEG-TS Stream from ffmpeg
 var streamServer = http.createServer( function(request, response) {
 	var params = request.url.substr(1).split('/');
 
-	if (params[0] !== STREAM_SECRET) {
-		console.log(
-			'Failed Stream Connection: '+ request.socket.remoteAddress + ':' +
-			request.socket.remotePort + ' - wrong secret.'
-		);
-		response.end();
-	}
+	//if (params[0] !== STREAM_SECRET) {
+	//	console.log(
+	//		'Failed Stream Connection: '+ request.socket.remoteAddress + ':' +
+	//		request.socket.remotePort + ' - wrong secret.'
+	//	);
+	//	response.end();
+	//}
 
 	response.connection.setTimeout(0);
 	console.log(
@@ -66,7 +80,7 @@ var streamServer = http.createServer( function(request, response) {
 		request.socket.remotePort
 	);
 	request.on('data', function(data){
-		socketServer.broadcast(data);
+		socketServer.broadcast(data, params[0]);
 		if (request.socket.recording) {
 			request.socket.recording.write(data);
 		}
