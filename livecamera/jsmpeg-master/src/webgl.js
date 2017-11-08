@@ -27,7 +27,7 @@ var WebGLRenderer = function(options) {
 
 	// Init buffers
 	this.vertexBuffer = gl.createBuffer();
-	var vertexCoords = new Float32Array([0, 0, 0, 1, 1, 0, 1, 1]);
+	var vertexCoords = new Float32Array([0,0,0,1,0,1,1,1,1,0,0,0,1,1,1,0]);
 	gl.bindBuffer(gl.ARRAY_BUFFER, this.vertexBuffer);
 	gl.bufferData(gl.ARRAY_BUFFER, vertexCoords, gl.STATIC_DRAW);
 
@@ -38,7 +38,7 @@ var WebGLRenderer = function(options) {
 	);
 	vertexAttr = gl.getAttribLocation(this.program, 'vertex');
 	gl.enableVertexAttribArray(vertexAttr);
-	gl.vertexAttribPointer(vertexAttr, 2, gl.FLOAT, false, 0, 0);
+	gl.vertexAttribPointer(vertexAttr, 4, gl.FLOAT, false, 0, 0);
 
 	this.textureY = this.createTexture(0, 'textureY');
 	this.textureCb = this.createTexture(1, 'textureCb');
@@ -52,7 +52,7 @@ var WebGLRenderer = function(options) {
 	);
 	vertexAttr = gl.getAttribLocation(this.loadingProgram, 'vertex');
 	gl.enableVertexAttribArray(vertexAttr);
-	gl.vertexAttribPointer(vertexAttr, 2, gl.FLOAT, false, 0, 0);
+	gl.vertexAttribPointer(vertexAttr, 4, gl.FLOAT, false, 0, 0);
 
 	this.shouldCreateUnclampedViews = !this.allowsClampedTextureData();
 };
@@ -235,12 +235,12 @@ WebGLRenderer.SHADER = {
 	].join('\n'),
 
 	VERTEX_IDENTITY: [
-		'attribute vec2 vertex;',
+		'attribute vec4 vertex;',
 		'varying vec2 texCoord;',
 
 		'void main() {',
-			'texCoord = vertex;',
-			'gl_Position = vec4((vertex * 2.0 - 1.0) * vec2(1, -1), 0.0, 1.0);',
+			'texCoord = vertex.zw;',
+			'gl_Position = vec4((vertex.xy * 2.0 - 1.0) * vec2(1, -1), 0.0, 1.0);',
 		'}'
 	].join('\n')
 };
