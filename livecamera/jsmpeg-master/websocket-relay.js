@@ -38,7 +38,12 @@ socketServer.on('connection', function(socket, upgradeReq) {
 		'('+socketServer.connectionCount+' total)',group
 	);
 	socket.on('close', function(code, message){
-		clients.splice(index, 1)
+		for(var i=0;i<clients.length;i++){
+		var client = clients[i];
+		if(client[1] === socket){
+			clients.splice(i, 1);
+		}
+
 		socketServer.connectionCount--;
 		console.log(
 			'Disconnected WebSocket ('+socketServer.connectionCount+' total)'
@@ -53,25 +58,11 @@ socketServer.broadcast = function(data, group) {
 			}
 		}
 	});
-
-	//socketServer.clients.forEach(function each(client) {
-	//	if (client.readyState === WebSocket.OPEN) {
-	//		client.send(data);
-	//	}
-	//});
 };
 
 // HTTP Server to accept incomming MPEG-TS Stream from ffmpeg
 var streamServer = http.createServer( function(request, response) {
 	var params = request.url.substr(1).split('/');
-
-	//if (params[0] !== STREAM_SECRET) {
-	//	console.log(
-	//		'Failed Stream Connection: '+ request.socket.remoteAddress + ':' +
-	//		request.socket.remotePort + ' - wrong secret.'
-	//	);
-	//	response.end();
-	//}
 
 	response.connection.setTimeout(0);
 	console.log(
