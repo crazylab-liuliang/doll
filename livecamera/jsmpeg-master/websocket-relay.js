@@ -39,9 +39,10 @@ socketServer.on('connection', function(socket, upgradeReq) {
 	);
 	socket.on('close', function(code, message){
 		for(var i=0;i<clients.length;i++){
-		var client = clients[i];
-		if(client[1] === socket){
-			clients.splice(i, 1);
+			var client = clients[i];
+			if(client[1] === socket){
+				clients.splice(i, 1);
+			}
 		}
 
 		socketServer.connectionCount--;
