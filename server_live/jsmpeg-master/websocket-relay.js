@@ -4,32 +4,47 @@
 // node websocket-relay yoursecret 8081 8082
 // ffmpeg -i <some input> -f mpegts http://localhost:8081/yoursecret
 
+try {
+
 var fs = require('fs'),
 	http = require('http'),
-	WebSocket = require('ws');
+	WebSocket = require('ws'); 
 
 if (process.argv.length < 3) {
 	console.log(
 		'Usage: \n' +
-		'node websocket-relay.js <secret> [<stream-port> <websocket-port>]'
+		'node websocket-relay.js [<stream-port> <websocket-port>]'
 	);
 	process.exit();
 }
 
-var STREAM_PORT = process.argv[2] || 8081,
-	WEBSOCKET_PORT = process.argv[3] || 8082,
+var STREAM_PORT = process.argv[2] || 10001,
+	WEBSOCKET_PORT = process.argv[3] || 10002,
 	RECORD_STREAM = false;
 
-var clients = [];
+var clients = new Map();
 
 // Websocket Server
 var socketServer = new WebSocket.Server({port: WEBSOCKET_PORT, perMessageDeflate: false});
 socketServer.connectionCount = 0;
 socketServer.on('connection', function(socket, upgradeReq) {
 	socketServer.connectionCount++;
-
 	var group = upgradeReq.url.substr(1);
-	var index = clients.push([group, socket]) -1;
+	try{
+		if(clients.has(group)){
+			var socks = clients.get(group);
+			if(!socks.has(socket)){
+				socks.add(socket)
+			}
+		} else{
+			var socks=new Set;
+			socks.add(socket);
+			clients.set(group,socks);
+		}
+	}
+	catch(err){
+		console.error("Unhandled exception when build connect"+ err);
+	}
 
 	console.log(
 		'New WebSocket Connection: ', 
@@ -38,11 +53,15 @@ socketServer.on('connection', function(socket, upgradeReq) {
 		'('+socketServer.connectionCount+' total)',group
 	);
 	socket.on('close', function(code, message){
-		for(var i=0;i<clients.length;i++){
-			var client = clients[i];
-			if(client[1] === socket){
-				clients.splice(i, 1);
+		try{
+			if(clients.has(group)){
+				var socks= clients.get(group);
+				if (socks.has(socket)){
+					socks.delete(socket);
+				}
 			}
+		}catch(err){
+			console.error("Unhandled exception when close connect:["+ err + "]");
 		}
 
 		socketServer.connectionCount--;
@@ -50,15 +69,25 @@ socketServer.on('connection', function(socket, upgradeReq) {
 			'Disconnected WebSocket ('+socketServer.connectionCount+' total)'
 		);
 	});
+
+	socket.on('error', function(e){	
+		console.log(e)
+	});
 });
+
 socketServer.broadcast = function(data, group) {
-	clients.forEach(function each(client){
-		if(client[0] === group){
-			if(client[1].readyState === WebSocket.OPEN){
-				client[1].send(data);
+	try{
+		if(clients.has(group)){
+			var socks= clients.get(group);
+			for (var sock of socks.values()) {
+				if(sock.readyState===WebSocket.OPEN){
+					sock.send(data);
+				}
 			}
 		}
-	});
+	} catch(err){
+		console.error("Unhandled exception when broad cast mpeg-ts data err:" + err);
+	}
 };
 
 // HTTP Server to accept incomming MPEG-TS Stream from ffmpeg
@@ -91,5 +120,9 @@ var streamServer = http.createServer( function(request, response) {
 	}
 }).listen(STREAM_PORT);
 
-console.log('Listening for incomming MPEG-TS Stream on http://127.0.0.1:'+STREAM_PORT+'/<secret>');
-console.log('Awaiting WebSocket connections on ws://127.0.0.1:'+WEBSOCKET_PORT+'/');
+console.log('Listening for incomming MPEG-TS Stream on http://0.0.0.0:/');
+console.log('Awaiting WebSocket connections on ws://0.0.0.0:'+WEBSOCKET_PORT+'/');
+}
+catch(e){
+	console.error("Unhandled exception all" + e);
+}
