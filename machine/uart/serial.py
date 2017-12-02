@@ -5,7 +5,7 @@ class Serial:
 
     def __init__(self):
         self.ser = serial.Serial("/dev/ttyAMA0")
-        self.ser.baudrate =
+        self.ser.baudrate = 115200
 
     def __del__(self):
         self.ser.close()
