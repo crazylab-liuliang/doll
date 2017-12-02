@@ -16,7 +16,7 @@ def init():
 	nw.login()
 	nw.bind(pb_mc.machine_control(), dm.on_recv_machine_control)
 	cm.begin_push_video_stream_0()
-	cm.begin_push_video_stream_1()
+	#cm.begin_push_video_stream_1()
 
 def network_recv():
 	print("netwrok recv...")

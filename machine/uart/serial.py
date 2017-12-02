@@ -1,6 +1,6 @@
 import serial
 
-class uart:
+class Serial:
     ser = None
 
     def __init__(self):
