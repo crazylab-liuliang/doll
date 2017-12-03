@@ -21,7 +21,7 @@ sudo dpkg-reconfigure keyboard-configuration
 
 5. 重启
 ```
-    sudo reboot
+sudo reboot
 ```
 
 [参考文档](http://blog.csdn.net/c80486/article/details/8460271)   
