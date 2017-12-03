@@ -20,7 +20,7 @@ sudo dpkg-reconfigure keyboard-configuration
 4. 选择 English (US, alternative international)
 
 5. 重启
-```shell
+```bash
 sudo reboot
 ```
 
