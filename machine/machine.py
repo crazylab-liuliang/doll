@@ -48,6 +48,7 @@ class dollmachine:
 		self.add_pid()
 		data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x14, 0x31, 0x3c, 0x00, 0x00, 0x00, 0x00, 0x00, 0x09, 0x21, 0x00,0x00, 0x00, 0x47])
 		self.ser.write( data)
+		self.ser.flush()
 		self.coin_time = 200
 		print("add coin - coin time [%d]" % self.coin_time)
 
@@ -56,24 +57,28 @@ class dollmachine:
 			self.add_pid()
 			data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x00, 0x2c, 0x01, 0x07])
 			self.ser.write( data)
+			self.ser.flush()
 			print("forward begin")
 		else:
 			print("forward stop")
 			self.add_pid()
 			data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x05, 0x00, 0x00, 0x43])
 			self.ser.write( data)
+			self.ser.flush()
 
 	def set_back(self, value):
 		if value!=0:
 			self.add_pid()
 			data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x01, 0x2c, 0x01, 0x08])
 			self.ser.write( data)
+			self.ser.flush()
 			print("forward begin")
 		else:
 			print("forward stop")
 			self.add_pid()
 			data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x05, 0x00, 0x00, 0x43])
 			self.ser.write( data)
+			self.ser.flush()
 
 
 	def set_left(self, value):
@@ -81,23 +86,27 @@ class dollmachine:
 			self.add_pid()
 			data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x02, 0x2c, 0x01, 0x09])
 			self.ser.write( data)
+			self.ser.flush()
 			print("forward begin")
 		else:
 			print("forward stop")
 			self.add_pid()
 			data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x05, 0x00, 0x00, 0x43])
 			self.ser.write( data)
+			self.ser.flush()
 
 	def set_right(self, value):
 		if value!=0:
 			self.add_pid()
 			data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x03, 0x2c, 0x01, 0x0a])
 			self.ser.write( data)
+			self.ser.flush()
 			print("forward begin")
 		else:
 			self.add_pid()
 			data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x05, 0x00, 0x00, 0x43])
 			self.ser.write( data)
+			self.ser.flush()
 			print("forward stop")
 			#GPIO.output(27, GPIO.LOW)
 
@@ -105,6 +114,7 @@ class dollmachine:
 			self.add_pid()
 			data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x04, 0x00, 0x00, 0x42])
 			self.ser.write( data)
+			self.ser.flush()
 			self.take_time = 200
 
 	def loop(self):
