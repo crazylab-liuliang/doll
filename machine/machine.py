@@ -67,86 +67,92 @@ class dollmachine:
 
 	def set_forward(self, value):
 		if value!=0:
-			self.rand_pid()
-			data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x00, 0x00, 0x14, 0x52])
-			writebytes = self.ser.write( data)
-			self.ser.flush()
-			print("forward begin")
-			print("header --- [%d,%d,%d,%d]" % (data[1], data[2], data[4], data[5]))
-			print("write bytes : %d" % writebytes )
+			with serial.Serial("/dev/ttyAMA0", 115200, timeout=1) as ser:	
+				self.rand_pid()
+				data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x00, 0x00, 0x14, 0x52])
+				writebytes = ser.write( data)
+				ser.flush()
+				print("forward begin")
+				print("header --- [%d,%d,%d,%d]" % (data[1], data[2], data[4], data[5]))
+				print("write bytes : %d" % writebytes )
 		else:
-			print("forward stop")
-			self.rand_pid()
-			data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x05, 0x00, 0x00, 0x43])
-			writebytes = self.ser.write( data)
-			self.ser.flush()
-			print("header --- [%d,%d,%d,%d]" % (data[1], data[2], data[4], data[5]))
-			print("write bytes : %d" % writebytes )
+			with serial.Serial("/dev/ttyAMA0", 115200, timeout=1) as ser:	
+				print("forward stop")
+				self.rand_pid()
+				data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x05, 0x00, 0x00, 0x43])
+				writebytes = ser.write( data)
+				ser.flush()
+				print("header --- [%d,%d,%d,%d]" % (data[1], data[2], data[4], data[5]))
+				print("write bytes : %d" % writebytes )
 
 	def set_back(self, value):
-		if value!=0:
-			self.rand_pid()
-			data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x01, 0x00, 0x14, 0x53])
-			writebytes = self.ser.write( data)
-			self.ser.flush()
-			print("back begin")
-			print("header --- [%d,%d,%d,%d]" % (data[1], data[2], data[4], data[5]))
-			print("write bytes : %d" % writebytes )
-		else:
-			print("back stop")
-			self.rand_pid()
-			data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x05, 0x00, 0x00, 0x43])
-			writebytes = self.ser.write( data)
-			self.ser.flush()
-			print("header --- [%d,%d,%d,%d]" % (data[1], data[2], data[4], data[5]))
-			print("write bytes : %d" % writebytes )
+		with serial.Serial("/dev/ttyAMA0", 115200, timeout=1) as ser:	
+			if value!=0:
+				self.rand_pid()
+				data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x01, 0x00, 0x14, 0x53])
+				writebytes = ser.write( data)
+				ser.flush()
+				print("back begin")
+				print("header --- [%d,%d,%d,%d]" % (data[1], data[2], data[4], data[5]))
+				print("write bytes : %d" % writebytes )
+			else:
+				print("back stop")
+				self.rand_pid()
+				data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x05, 0x00, 0x00, 0x43])
+				writebytes = ser.write( data)
+				ser.flush()
+				print("header --- [%d,%d,%d,%d]" % (data[1], data[2], data[4], data[5]))
+				print("write bytes : %d" % writebytes )
 
 
 	def set_left(self, value):
-		if value!=0:
-			self.rand_pid()
-			data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x02, 0x00, 0x14, 0x54])
-			writebytes = self.ser.write( data)
-			self.ser.flush()
-			print("left begin")
-			print("header --- [%d,%d,%d,%d]" % (data[1], data[2], data[4], data[5]))
-			print("write bytes : %d" % writebytes )
-		else:
-			print("left stop")
-			self.rand_pid()
-			data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x05, 0x00, 0x00, 0x43])
-			writebytes = self.ser.write( data)
-			self.ser.flush()
-			print("header --- [%d,%d,%d,%d]" % (data[1], data[2], data[4], data[5]))
-			print("write bytes : %d" % writebytes )
+		with serial.Serial("/dev/ttyAMA0", 115200, timeout=1) as ser:	
+			if value!=0:
+				self.rand_pid()
+				data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x02, 0x00, 0x14, 0x54])
+				writebytes = ser.write( data)
+				ser.flush()
+				print("left begin")
+				print("header --- [%d,%d,%d,%d]" % (data[1], data[2], data[4], data[5]))
+				print("write bytes : %d" % writebytes )
+			else:
+				print("left stop")
+				self.rand_pid()
+				data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x05, 0x00, 0x00, 0x43])
+				writebytes = ser.write( data)
+				ser.flush()
+				print("header --- [%d,%d,%d,%d]" % (data[1], data[2], data[4], data[5]))
+				print("write bytes : %d" % writebytes )
 
 	def set_right(self, value):
-		if value!=0:
-			self.rand_pid()
-			data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x03, 0x00, 0x14, 0x55])
-			writebytes = self.ser.write( data)
-			self.ser.flush()
-			print("right begin")
-			print("header --- [%d,%d,%d,%d]" % (data[1], data[2], data[4], data[5]))
-			print("write bytes : %d" % writebytes )
-		else:
-			self.rand_pid()
-			data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x05, 0x00, 0x00, 0x43])
-			writebytes = self.ser.write( data)
-			self.ser.flush()
-			print("right stop")
-			print("header --- [%d,%d,%d,%d]" % (data[1], data[2], data[4], data[5]))
-			print("write bytes : %d" % writebytes )
+		with serial.Serial("/dev/ttyAMA0", 115200, timeout=1) as ser:	
+			if value!=0:
+				self.rand_pid()
+				data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x03, 0x00, 0x14, 0x55])
+				writebytes = ser.write( data)
+				ser.flush()
+				print("right begin")
+				print("header --- [%d,%d,%d,%d]" % (data[1], data[2], data[4], data[5]))
+				print("write bytes : %d" % writebytes )
+			else:
+				self.rand_pid()
+				data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x05, 0x00, 0x00, 0x43])
+				writebytes = ser.write( data)
+				ser.flush()
+				print("right stop")
+				print("header --- [%d,%d,%d,%d]" % (data[1], data[2], data[4], data[5]))
+				print("write bytes : %d" % writebytes )
 
 	def take_doll(self):
-			self.rand_pid()
-			data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x04, 0x00, 0x00, 0x42])
-			writebytes = self.ser.write( data)
-			self.ser.flush()
-			self.take_time = 200
-			print("take doll")
-			print("header --- [%d,%d,%d,%d]" % (data[1], data[2], data[4], data[5]))
-			print("write bytes : %d" % writebytes )
+			with serial.Serial("/dev/ttyAMA0", 115200, timeout=1) as ser:	
+				self.rand_pid()
+				data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x04, 0x00, 0x00, 0x42])
+				writebytes = ser.write( data)
+				ser.flush()
+				self.take_time = 200
+				print("take doll")
+				print("header --- [%d,%d,%d,%d]" % (data[1], data[2], data[4], data[5]))
+				print("write bytes : %d" % writebytes )
 
 	def loop(self):
 		if self.coin_time > 0:
