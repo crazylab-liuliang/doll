@@ -7,6 +7,7 @@ class dollmachine:
 	ser = None
 	coin_time = 0
 	take_time = 0
+	pid = 0
 
 	def __init__(self):
 		self.ser = serial.Serial("/dev/ttyAMA0", 115200, timeout=1.0)
@@ -16,7 +17,12 @@ class dollmachine:
 		self.cleanup()
 
 	def cleanup(self):
-		GPIO.cleanup()
+		return
+		#GPIO.cleanup()
+
+	def add_pid(self):
+		self.pid++
+		self.pid = self.pid % 65536
 
 	def on_recv_machine_control(self, msg):
 		print("on recv machine control [%d,%d]" % (msg.type, msg.op))
@@ -39,46 +45,66 @@ class dollmachine:
 			self.take_doll()
 
 	def add_coin(self):
-		data = [0xfe, 0x00, 0x00, 0x01, 0xff, 0xff, 0x10, 0x31, 0x3d, 0x01, 0x01, 0x01, 0x01, 0x01, 0x00, 0x1f]
+		self.add_pid()
+		data = bytes([0xfe, self.pid/255, self.pid%255, 0x01, ~(self.pid/255), ~(self.pid%255), 0x14, 0x31, 0x3c, 0x00, 0x00, 0x00, 0x00, 0x00, 0x09, 0x21, 0x00, ,0x00, 0x00 0x47])
 		self.ser.write( data)
 		self.coin_time = 200
 		print("add coin - coin time [%d]" % self.coin_time)
 
 	def set_forward(self, value):
 		if value!=0:
-			#GPIO.output(3, GPIO.HIGH)
+			self.add_pid()
+			data = bytes([0xfe, self.pid/255, self.pid%255, 0x01, ~(self.pid/255), ~(self.pid%255), 0x0c, 0x32, 0x00, 0x2c, 0x01, 0x07])
+			self.ser.write( data)
 			print("forward begin")
 		else:
 			print("forward stop")
-			#GPIO.output(3, GPIO.LOW)
+			self.add_pid()
+			data = bytes([0xfe, self.pid/255, self.pid%255, 0x01, ~(self.pid/255), ~(self.pid%255), 0x0c, 0x32, 0x05, 0x00, 0x00, 0x43])
+			self.ser.write( data)
 
 	def set_back(self, value):
 		if value!=0:
-			#GPIO.output(4, GPIO.HIGH)
+			self.add_pid()
+			data = bytes([0xfe, self.pid/255, self.pid%255, 0x01, ~(self.pid/255), ~(self.pid%255), 0x0c, 0x32, 0x01, 0x2c, 0x01, 0x08])
+			self.ser.write( data)
 			print("forward begin")
 		else:
 			print("forward stop")
-			#GPIO.output(4, GPIO.LOW)
+			self.add_pid()
+			data = bytes([0xfe, self.pid/255, self.pid%255, 0x01, ~(self.pid/255), ~(self.pid%255), 0x0c, 0x32, 0x05, 0x00, 0x00, 0x43])
+			self.ser.write( data)
 
 
 	def set_left(self, value):
 		if value!=0:
-			#GPIO.output(17, GPIO.HIGH)
+			self.add_pid()
+			data = bytes([0xfe, self.pid/255, self.pid%255, 0x01, ~(self.pid/255), ~(self.pid%255), 0x0c, 0x32, 0x02, 0x2c, 0x01, 0x09])
+			self.ser.write( data)
 			print("forward begin")
 		else:
 			print("forward stop")
-			#GPIO.output(17, GPIO.LOW)
+			self.add_pid()
+			data = bytes([0xfe, self.pid/255, self.pid%255, 0x01, ~(self.pid/255), ~(self.pid%255), 0x0c, 0x32, 0x05, 0x00, 0x00, 0x43])
+			self.ser.write( data)
 
 	def set_right(self, value):
 		if value!=0:
-			#GPIO.output(27, GPIO.HIGH)
+			self.add_pid()
+			data = bytes([0xfe, self.pid/255, self.pid%255, 0x01, ~(self.pid/255), ~(self.pid%255), 0x0c, 0x32, 0x03, 0x2c, 0x01, 0x0a])
+			self.ser.write( data)
 			print("forward begin")
 		else:
+			self.add_pid()
+			data = bytes([0xfe, self.pid/255, self.pid%255, 0x01, ~(self.pid/255), ~(self.pid%255), 0x0c, 0x32, 0x05, 0x00, 0x00, 0x43])
+			self.ser.write( data)
 			print("forward stop")
 			#GPIO.output(27, GPIO.LOW)
 
 	def take_doll(self):
-			#GPIO.output(22, GPIO.HIGH)
+			self.add_pid()
+			data = bytes([0xfe, self.pid/255, self.pid%255, 0x01, ~(self.pid/255), ~(self.pid%255), 0x0c, 0x32, 0x04, 0x00, 0x00, 0x42])
+			self.ser.write( data)
 			self.take_time = 200
 
 	def loop(self):
