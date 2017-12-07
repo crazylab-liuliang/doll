@@ -144,3 +144,6 @@ class dollmachine:
 			if self.take_time <= 0:
 				print("take doll signal")
 				print("serial baudrate : %d" % self.ser.baudrate)
+
+		while self.ser.readable():
+			print(self.ser.read(1))
