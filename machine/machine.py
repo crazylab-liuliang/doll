@@ -49,14 +49,20 @@ class dollmachine:
 			self.take_doll()
 
 	def add_coin(self):
-		self.rand_pid()
-		data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x14, 0x31, 0x3c, 0x00, 0x00, 0x00, 0x00, 0x00, 0x09, 0x21, 0x00,0x00, 0x00, 0x47])
-		writebytes = self.ser.write( data)
-		self.ser.flush()
-		self.coin_time = 200
-		print("add coin - coin time [%d]" % self.coin_time)
-		print("header --- [%d,%d,%d,%d]" % (data[1], data[2], data[4], data[5]))
-		print("write bytes : %d" % writebytes )
+		with serial.Serial("/dev/ttyAMA0", 115200, timeout=1) as ser:		
+			self.rand_pid()
+			data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x14, 0x31, 0x3c, 0x00, 0x00, 0x00, 0x00, 0x00, 0x09, 0x21, 0x00,0x00, 0x00, 0x47])
+			writebytes = ser.write( data)
+			ser.flush()
+			ser.close()
+			self.coin_time = 200
+			print("add coin - coin time [%d]" % self.coin_time)
+			print("header --- [%d,%d,%d,%d]" % (data[1], data[2], data[4], data[5]))
+			print("write bytes : %d" % writebytes )
+
+			line = ser.readline()
+			if len(line):
+				print(line)
 
 
 	def set_forward(self, value):
@@ -155,5 +161,6 @@ class dollmachine:
 				print("take doll signal")
 				print("serial baudrate : %d" % self.ser.baudrate)
 
-		while self.ser.readable():
-			print(self.ser.read(1))
+		#line = self.ser.readline()
+		#if len(line):
+		#	print(line)
