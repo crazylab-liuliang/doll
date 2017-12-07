@@ -1,17 +1,19 @@
+import serial
 import RPi.GPIO as GPIO
-import uart.serial as uart
 import protocol.pb_machine_control as pb_mc
 
+
 class dollmachine:
-	serial = None
+	ser = None
 	coin_time = 0
 	take_time = 0
 
 	def __init__(self):
-		serial = uart.Serial()
+		self.ser = serial.Serial("/dev/ttyAMA0")
 		#GPIO.setmode(GPIO.BCM)
 
 	def __del__(self):
+		self.ser.close()
 		self.cleanup()
 
 	def cleanup(self):
@@ -39,7 +41,7 @@ class dollmachine:
 
 	def add_coin(self):
 		data = [0xfe, 0x00, 0x00, 0x01, 0xff, 0xff, 0x10, 0x31, 0x3d, 0x01, 0x01, 0x01, 0x01, 0x01, 0x00, 0x1f]
-		serial.write( data)
+		self.ser.write( data)
 		self.coin_time = 200
 		print("add coin - coin time [%d]" % self.coin_time)
 
