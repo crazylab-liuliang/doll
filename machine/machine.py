@@ -51,86 +51,96 @@ class dollmachine:
 	def add_coin(self):
 		self.rand_pid()
 		data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x14, 0x31, 0x3c, 0x00, 0x00, 0x00, 0x00, 0x00, 0x09, 0x21, 0x00,0x00, 0x00, 0x47])
-		self.ser.write( data)
+		writebytes = self.ser.write( data)
 		self.ser.flush()
 		self.coin_time = 200
 		print("add coin - coin time [%d]" % self.coin_time)
 		print("header --- [%d,%d,%d,%d]" % (data[1], data[2], data[4], data[5]))
+		print("write bytes : %d" % writebytes )
 
 
 	def set_forward(self, value):
 		if value!=0:
 			self.rand_pid()
 			data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x00, 0x00, 0x14, 0x52])
-			self.ser.write( data)
+			writebytes = self.ser.write( data)
 			self.ser.flush()
 			print("forward begin")
 			print("header --- [%d,%d,%d,%d]" % (data[1], data[2], data[4], data[5]))
+			print("write bytes : %d" % writebytes )
 		else:
 			print("forward stop")
 			self.rand_pid()
 			data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x05, 0x00, 0x00, 0x43])
-			self.ser.write( data)
+			writebytes = self.ser.write( data)
 			self.ser.flush()
 			print("header --- [%d,%d,%d,%d]" % (data[1], data[2], data[4], data[5]))
+			print("write bytes : %d" % writebytes )
 
 	def set_back(self, value):
 		if value!=0:
 			self.rand_pid()
 			data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x01, 0x00, 0x14, 0x53])
-			self.ser.write( data)
+			writebytes = self.ser.write( data)
 			self.ser.flush()
 			print("back begin")
 			print("header --- [%d,%d,%d,%d]" % (data[1], data[2], data[4], data[5]))
+			print("write bytes : %d" % writebytes )
 		else:
 			print("back stop")
 			self.rand_pid()
 			data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x05, 0x00, 0x00, 0x43])
-			self.ser.write( data)
+			writebytes = self.ser.write( data)
 			self.ser.flush()
 			print("header --- [%d,%d,%d,%d]" % (data[1], data[2], data[4], data[5]))
+			print("write bytes : %d" % writebytes )
 
 
 	def set_left(self, value):
 		if value!=0:
 			self.rand_pid()
 			data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x02, 0x00, 0x14, 0x54])
-			self.ser.write( data)
+			writebytes = self.ser.write( data)
 			self.ser.flush()
 			print("left begin")
 			print("header --- [%d,%d,%d,%d]" % (data[1], data[2], data[4], data[5]))
+			print("write bytes : %d" % writebytes )
 		else:
 			print("left stop")
 			self.rand_pid()
 			data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x05, 0x00, 0x00, 0x43])
-			self.ser.write( data)
+			writebytes = self.ser.write( data)
 			self.ser.flush()
 			print("header --- [%d,%d,%d,%d]" % (data[1], data[2], data[4], data[5]))
+			print("write bytes : %d" % writebytes )
 
 	def set_right(self, value):
 		if value!=0:
 			self.rand_pid()
 			data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x03, 0x00, 0x14, 0x55])
-			self.ser.write( data)
+			writebytes = self.ser.write( data)
 			self.ser.flush()
 			print("right begin")
 			print("header --- [%d,%d,%d,%d]" % (data[1], data[2], data[4], data[5]))
+			print("write bytes : %d" % writebytes )
 		else:
 			self.rand_pid()
 			data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x05, 0x00, 0x00, 0x43])
-			self.ser.write( data)
+			writebytes = self.ser.write( data)
 			self.ser.flush()
 			print("right stop")
 			print("header --- [%d,%d,%d,%d]" % (data[1], data[2], data[4], data[5]))
+			print("write bytes : %d" % writebytes )
 
 	def take_doll(self):
 			self.rand_pid()
 			data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x04, 0x00, 0x00, 0x42])
-			self.ser.write( data)
+			writebytes = self.ser.write( data)
 			self.ser.flush()
 			self.take_time = 200
 			print("take doll")
 			print("header --- [%d,%d,%d,%d]" % (data[1], data[2], data[4], data[5]))
+			print("write bytes : %d" % writebytes )
 
 	def loop(self):
 		if self.coin_time > 0:
