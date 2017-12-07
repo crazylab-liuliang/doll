@@ -1,4 +1,5 @@
 import serial
+import random
 import RPi.GPIO as GPIO
 import protocol.pb_machine_control as pb_mc
 
@@ -11,6 +12,7 @@ class dollmachine:
 
 	def __init__(self):
 		self.ser = serial.Serial("/dev/ttyAMA0", 115200, timeout=1.0)
+		self.ser.ba
 
 	def __del__(self):
 		self.ser.close()
@@ -20,9 +22,13 @@ class dollmachine:
 		return
 		#GPIO.cleanup()
 
-	def add_pid(self):
-		self.pid = self.pid+1
-		self.pid = self.pid % 65536
+	def rand_pid(self):
+		self.pid = 0
+		rd  = random.randint(0, 65535)
+		while self.pid==rd:
+			rd = random.randint(0, 65535)
+
+		self.pid = rd
 
 	def on_recv_machine_control(self, msg):
 		print("on recv machine control [%d,%d]" % (msg.type, msg.op))
@@ -45,7 +51,7 @@ class dollmachine:
 			self.take_doll()
 
 	def add_coin(self):
-		self.add_pid()
+		self.rand_pid()
 		data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x14, 0x31, 0x3c, 0x00, 0x00, 0x00, 0x00, 0x00, 0x09, 0x21, 0x00,0x00, 0x00, 0x47])
 		self.ser.write( data)
 		self.ser.flush()
@@ -54,28 +60,28 @@ class dollmachine:
 
 	def set_forward(self, value):
 		if value!=0:
-			self.add_pid()
+			self.rand_pid()
 			data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x00, 0x00, 0x14, 0x52])
 			self.ser.write( data)
 			self.ser.flush()
 			print("forward begin")
 		else:
 			print("forward stop")
-			self.add_pid()
+			self.rand_pid()
 			data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x05, 0x00, 0x00, 0x43])
 			self.ser.write( data)
 			self.ser.flush()
 
 	def set_back(self, value):
 		if value!=0:
-			self.add_pid()
+			self.rand_pid()
 			data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x01, 0x00, 0x14, 0x53])
 			self.ser.write( data)
 			self.ser.flush()
 			print("forward begin")
 		else:
 			print("forward stop")
-			self.add_pid()
+			self.rand_pid()
 			data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x05, 0x00, 0x00, 0x43])
 			self.ser.write( data)
 			self.ser.flush()
@@ -83,27 +89,27 @@ class dollmachine:
 
 	def set_left(self, value):
 		if value!=0:
-			self.add_pid()
+			self.rand_pid()
 			data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x02, 0x00, 0x14, 0x54])
 			self.ser.write( data)
 			self.ser.flush()
 			print("forward begin")
 		else:
 			print("forward stop")
-			self.add_pid()
+			self.rand_pid()
 			data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x05, 0x00, 0x00, 0x43])
 			self.ser.write( data)
 			self.ser.flush()
 
 	def set_right(self, value):
 		if value!=0:
-			self.add_pid()
+			self.rand_pid()
 			data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x03, 0x00, 0x14, 0x55])
 			self.ser.write( data)
 			self.ser.flush()
 			print("forward begin")
 		else:
-			self.add_pid()
+			self.rand_pid()
 			data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x05, 0x00, 0x00, 0x43])
 			self.ser.write( data)
 			self.ser.flush()
@@ -111,7 +117,7 @@ class dollmachine:
 			#GPIO.output(27, GPIO.LOW)
 
 	def take_doll(self):
-			self.add_pid()
+			self.rand_pid()
 			data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x04, 0x00, 0x00, 0x42])
 			self.ser.write( data)
 			self.ser.flush()
