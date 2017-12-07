@@ -9,8 +9,7 @@ class dollmachine:
 	take_time = 0
 
 	def __init__(self):
-		self.ser = serial.Serial("/dev/ttyAMA0")
-		#GPIO.setmode(GPIO.BCM)
+		self.ser = serial.Serial("/dev/ttyAMA0", 115200, timeout=1.0)
 
 	def __del__(self):
 		self.ser.close()
