@@ -21,7 +21,7 @@ class dollmachine:
 		#GPIO.cleanup()
 
 	def add_pid(self):
-		self.pid++
+		self.pid = self.pid+1
 		self.pid = self.pid % 65536
 
 	def on_recv_machine_control(self, msg):
