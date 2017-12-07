@@ -1,4 +1,5 @@
 import serial
+import time
 import random
 import RPi.GPIO as GPIO
 import protocol.pb_machine_control as pb_mc
@@ -10,9 +11,9 @@ class dollmachine:
 	pid = 0
 
 	def __init__(self):
+		return
 
 	def __del__(self):
-		self.ser.close()
 		self.cleanup()
 
 	def cleanup(self):
@@ -62,6 +63,8 @@ class dollmachine:
 
 			ser.close()
 
+			time.sleep(0.1)
+
 
 	def set_forward(self, value):
 		if value!=0:
@@ -71,6 +74,7 @@ class dollmachine:
 				writebytes = ser.write( data)
 				print("forward begin")
 				ser.close()
+				time.sleep(0.1)
 		else:
 			with serial.Serial("/dev/ttyAMA0", 115200, timeout=1) as ser:	
 				print("forward stop")
@@ -87,6 +91,7 @@ class dollmachine:
 				writebytes = ser.write( data)
 				print("back begin")
 				ser.close()
+				time.sleep(0.1)
 			else:
 				print("back stop")
 				self.rand_pid()
@@ -103,6 +108,7 @@ class dollmachine:
 				writebytes = ser.write( data)
 				print("left begin")
 				ser.close()
+				time.sleep(0.1)
 			else:
 				print("left stop")
 				self.rand_pid()
@@ -118,6 +124,7 @@ class dollmachine:
 				writebytes = ser.write( data)
 				print("right begin")
 				ser.close()
+				time.sleep(0.1)
 			else:
 				self.rand_pid()
 				data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x05, 0x00, 0x00, 0x43])
@@ -133,6 +140,7 @@ class dollmachine:
 				self.take_time = 200
 				print("take doll")
 				ser.close()
+				time.sleep(0.1)
 
 	def loop(self):
 		if self.coin_time > 0:
@@ -144,7 +152,3 @@ class dollmachine:
 			self.take_time -= 20
 			if self.take_time <= 0:
 				print("take doll signal")
-
-		#line = self.ser.readline()
-		#if len(line):
-		#	print(line)
