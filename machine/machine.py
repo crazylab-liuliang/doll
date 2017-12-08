@@ -6,12 +6,14 @@ import protocol.pb_machine_control as pb_mc
 
 class dollmachine:
 	ser = None
+	ser_rcv = None
 	take_time = 0
 	loop_time = 0.0
 	pid = 0
 
 	def __init__(self):
-		self.ser = serial.Serial("/dev/ttyAMA0", 115200, timeout=10, stopbits=serial.STOPBITS_TWO)
+		self.files_preserve = [handler.socket]
+		self.ser_rcv = serial.Serial("/dev/ttyAMA0", 115200, timeout=10, stopbits=serial.STOPBITS_TWO)
 		return
 
 	def __del__(self):
@@ -21,9 +23,8 @@ class dollmachine:
 		if self.ser != None:
 			self.ser.close()
 
-		if self.ser_read != None:
-			self.ser_read.close()
-			self.ser_read = None
+		if self.ser_rcv != None and self.ser_rcv.is_open:
+			self.ser_rcv.close()
 
 		return
 
@@ -139,11 +140,10 @@ class dollmachine:
 		self.loop_time += delta
 		if self.loop_time > 1.5:
 			data = []
-			self.reopen_ser()
-			inbuff = self.ser.in_waiting
+			inbuff = self.ser_rcv.in_waiting
 			while inbuff > 0:
-				data += self.ser.read(inbuff)
-				inbuff = self.ser.in_waiting
+				data += self.ser_rcv.read(inbuff)
+				inbuff = self.ser_rcv.in_waiting
 
 			if len(data):
 				print("parse receive data : \n\t")
