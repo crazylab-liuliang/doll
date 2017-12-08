@@ -24,7 +24,7 @@ class dollmachine:
 		return
 
 	def reopen_ser(self):
-		if self.ser != None && self.ser.is_open:
+		if self.ser != None and self.ser.is_open:
 			self.ser.close()
 			self.ser = None
 		
