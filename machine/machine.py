@@ -23,10 +23,15 @@ class dollmachine:
 
 		return
 
-	def reopen_ser():
-		if self.ser != None:
+	def reopen_ser(self):
+		if self.ser != None && self.ser.is_open:
 			self.ser.close()
-			self.ser.open()
+			self.ser = None
+		
+		if self.ser == None:
+			self.ser = serial.Serial("/dev/ttyAMA0", 115200, timeout=10, stopbits=serial.STOPBITS_TWO)
+		
+		#self.ser.open()		
 
 	def rand_pid(self):
 		self.pid = 0
