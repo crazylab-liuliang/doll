@@ -51,35 +51,30 @@ class dollmachine:
 		if msg.type==5:
 			self.take_doll()
 
-	def add_coin(self):
-		with serial.Serial("/dev/ttyAMA0", 115200, timeout=1, stopbits=serial.STOPBITS_TWO) as ser:		
-			self.rand_pid()
-			data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x14, 0x31, 0x3c, 0x00, 0x00, 0x00, 0x00, 0x00, 0x09, 0x21, 0x00,0x00, 0x00, 0x47])
-			writebytes = ser.write( data)
-			print("add coin...")
-			ser.close()
-			time.sleep(0.1)
+	def add_coin(self):	
+		self.rand_pid()
+		data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x14, 0x31, 0x3c, 0x00, 0x00, 0x00, 0x00, 0x00, 0x09, 0x21, 0x00,0x00, 0x00, 0x47])
+		self.ser.write( data)
+		time.sleep(0.1)
+		print("add coin...")
 
 	def set_stop(self, ser):
 		self.rand_pid()
 		data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x05, 0x00, 0x00, 0x43])
 		ser.write( data)
-		ser.close()
 		time.sleep(0.1)
 
 
 	def set_forward(self, value):
-		with serial.Serial("/dev/ttyAMA0", 115200, timeout=1, stopbits=serial.STOPBITS_TWO) as ser:	
-			if value!=0:
-				self.rand_pid()
-				data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x00, 0x00, 0x14, 0x52])
-				ser.write( data)
-				print("forward begin")
-				ser.close()
-				time.sleep(0.1)
-			else:
-				self.set_stop(ser)
-				print("forward stop")
+		if value!=0:
+			self.rand_pid()
+			data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x00, 0x00, 0x14, 0x52])
+			self.ser.write( data)
+			print("forward begin")
+			time.sleep(0.1)
+		else:
+			self.set_stop(self.ser)
+			print("forward stop")
 
 	def set_back(self, value):
 		if value!=0:
@@ -89,45 +84,38 @@ class dollmachine:
 			time.sleep(0.1)
 			print("back begin")
 		else:
-			with serial.Serial("/dev/ttyAMA0", 115200, timeout=1, stopbits=serial.STOPBITS_TWO) as ser:
-				self.set_stop(ser)
-				print("back stop")
+			self.set_stop(self.ser)
+			print("back stop")
 
 	def set_left(self, value):
-		with serial.Serial("/dev/ttyAMA0", 115200, timeout=1, stopbits=serial.STOPBITS_TWO) as ser:	
-			if value!=0:
-				self.rand_pid()
-				data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x02, 0x00, 0x14, 0x54])
-				writebytes = ser.write( data)
-				ser.close()
-				time.sleep(0.1)
-				print("left begin")
-			else:
-				self.set_stop(ser)
-				print("left stop")
+		if value!=0:
+			self.rand_pid()
+			data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x02, 0x00, 0x14, 0x54])
+			self.ser.write( data)
+			time.sleep(0.1)
+			print("left begin")
+		else:
+			self.set_stop(self.ser)
+			print("left stop")
 
 	def set_right(self, value):
-		with serial.Serial("/dev/ttyAMA0", 115200, timeout=1, stopbits=serial.STOPBITS_TWO) as ser:	
-			if value!=0:
-				self.rand_pid()
-				data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x03, 0x00, 0x14, 0x55])
-				writebytes = ser.write( data)
-				ser.close()
-				time.sleep(0.1)
-				print("right begin")
-			else:
-				self.set_stop(ser)
-				print("right stop")
+		if value!=0:
+			self.rand_pid()
+			data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x03, 0x00, 0x14, 0x55])
+			self.ser.write( data)
+			time.sleep(0.1)
+			print("right begin")
+		else:
+			self.set_stop(self.ser)
+			print("right stop")
 
 	def take_doll(self):
-		with serial.Serial("/dev/ttyAMA0", 115200, timeout=1, stopbits=serial.STOPBITS_TWO) as ser:	
-			self.rand_pid()
-			data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x04, 0x00, 0x00, 0x42])
-			writebytes = ser.write( data)
-			self.take_time = 10000
-			print("take doll")
-			ser.close()
-			time.sleep(0.1)
+		self.rand_pid()
+		data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x04, 0x00, 0x00, 0x42])
+		self.ser.write( data)
+		self.take_time = 10000
+		print("take doll")
+		time.sleep(0.1)
 
 	def loop(self, delta):		
 		self.loop_time += delta
