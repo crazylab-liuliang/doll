@@ -23,6 +23,11 @@ class dollmachine:
 
 		return
 
+	def reopen_ser():
+		if self.ser != None:
+			self.ser.close()
+			self.ser.open()
+
 	def rand_pid(self):
 		self.pid = 0
 		rd  = random.randint(0, 65025)
@@ -30,6 +35,7 @@ class dollmachine:
 			rd = random.randint(0, 65025)
 
 		self.pid = rd
+		self.reopen_ser()
 
 	def on_recv_machine_control(self, msg):
 		print("on recv machine control [%d,%d]" % (msg.type, msg.op))
@@ -58,10 +64,10 @@ class dollmachine:
 		time.sleep(0.1)
 		print("add coin...")
 
-	def set_stop(self, ser):
+	def set_stop(self):
 		self.rand_pid()
 		data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x05, 0x00, 0x00, 0x43])
-		ser.write( data)
+		self.ser.write( data)
 		time.sleep(0.1)
 
 
@@ -73,7 +79,7 @@ class dollmachine:
 			print("forward begin")
 			time.sleep(0.1)
 		else:
-			self.set_stop(self.ser)
+			self.set_stop()
 			print("forward stop")
 
 	def set_back(self, value):
@@ -84,7 +90,7 @@ class dollmachine:
 			time.sleep(0.1)
 			print("back begin")
 		else:
-			self.set_stop(self.ser)
+			self.set_stop()
 			print("back stop")
 
 	def set_left(self, value):
@@ -95,7 +101,7 @@ class dollmachine:
 			time.sleep(0.1)
 			print("left begin")
 		else:
-			self.set_stop(self.ser)
+			self.set_stop()
 			print("left stop")
 
 	def set_right(self, value):
@@ -106,7 +112,7 @@ class dollmachine:
 			time.sleep(0.1)
 			print("right begin")
 		else:
-			self.set_stop(self.ser)
+			self.set_stop()
 			print("right stop")
 
 	def take_doll(self):
@@ -121,6 +127,7 @@ class dollmachine:
 		self.loop_time += delta
 		if self.loop_time > 1.5:
 			data = []
+			self.reopen_ser()
 			while self.ser.in_waiting > 0:
 				data += self.ser.read(1)
 
