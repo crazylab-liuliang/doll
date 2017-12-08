@@ -7,6 +7,7 @@ import protocol.pb_machine_control as pb_mc
 class dollmachine:
 	ser = None
 	take_time = 0
+	loop_time = 0.0
 	pid = 0
 
 	def __init__(self):
@@ -135,16 +136,21 @@ class dollmachine:
 			ser.close()
 			time.sleep(0.1)
 
-	def loop(self):		
+	def loop(self, delta):		
 		if self.take_time > 0:
 			self.take_time -= 20
 			if self.take_time <= 0:
 				print("take doll signal")
 
-		data = []
-		while self.ser.in_waiting > 0:
-			data += self.ser.read(self.ser.in_waiting)
+		self.loop_time += delta
+		if self.loop_time > 1.0:
+			data = []
+			while self.ser.in_waiting > 0:
+				data += self.ser.read(1)
 
-		if len(data):
-			print("parse receive data : \n\t")
-			print(data)
+			if len(data):
+				print("parse receive data : \n\t")
+				print(data)
+				
+			self.loop_time =0.0
+
