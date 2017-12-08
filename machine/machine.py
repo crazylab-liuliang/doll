@@ -6,7 +6,6 @@ import protocol.pb_machine_control as pb_mc
 
 
 class dollmachine:
-	coin_time = 0
 	take_time = 0
 	pid = 0
 
@@ -52,31 +51,22 @@ class dollmachine:
 			self.rand_pid()
 			data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x14, 0x31, 0x3c, 0x00, 0x00, 0x00, 0x00, 0x00, 0x09, 0x21, 0x00,0x00, 0x00, 0x47])
 			writebytes = ser.write( data)
-			self.coin_time = 200
-			print("add coin - coin time [%d]" % self.coin_time)
-			print("header --- [%d,%d,%d,%d]" % (data[1], data[2], data[4], data[5]))
-			print("write bytes : %d" % writebytes )
-
-			line = ser.readline()
-			if len(line):
-				print(line)
-
+			print("add coin...")
 			ser.close()
 
 			time.sleep(0.1)
 
 
 	def set_forward(self, value):
-		if value!=0:
-			with serial.Serial("/dev/ttyAMA0", 115200, timeout=1) as ser:	
+		with serial.Serial("/dev/ttyAMA0", 115200, timeout=1) as ser:	
+			if value!=0:
 				self.rand_pid()
 				data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x00, 0x00, 0x14, 0x52])
 				writebytes = ser.write( data)
 				print("forward begin")
 				ser.close()
 				time.sleep(0.1)
-		else:
-			with serial.Serial("/dev/ttyAMA0", 115200, timeout=1) as ser:	
+			else:
 				print("forward stop")
 				self.rand_pid()
 				data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x05, 0x00, 0x00, 0x43])
@@ -137,18 +127,15 @@ class dollmachine:
 				self.rand_pid()
 				data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x04, 0x00, 0x00, 0x42])
 				writebytes = ser.write( data)
-				self.take_time = 200
+				self.take_time = 10000
 				print("take doll")
 				ser.close()
 				time.sleep(0.1)
 
 	def loop(self):
-		if self.coin_time > 0:
-			self.coin_time -= 20
-			if self.coin_time <= 0:
-				print("add coin signal")
-
 		if self.take_time > 0:
 			self.take_time -= 20
 			if self.take_time <= 0:
 				print("take doll signal")
+
+		
