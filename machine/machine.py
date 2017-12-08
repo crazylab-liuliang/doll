@@ -10,7 +10,7 @@ class dollmachine:
 	pid = 0
 
 	def __init__(self):
-		self.ser = serial.Serial("/dev/ttyAMA0", 115200, timeout=10, stopbits=STOPBITS_TWO)
+		self.ser = serial.Serial("/dev/ttyAMA0", 115200, timeout=10, stopbits=serial.STOPBITS_TWO)
 		return
 
 	def __del__(self):
@@ -51,7 +51,7 @@ class dollmachine:
 			self.take_doll()
 
 	def add_coin(self):
-		with serial.Serial("/dev/ttyAMA0", 115200, timeout=1, stopbits=STOPBITS_TWO) as ser:		
+		with serial.Serial("/dev/ttyAMA0", 115200, timeout=1, stopbits=serial.STOPBITS_TWO) as ser:		
 			self.rand_pid()
 			data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x14, 0x31, 0x3c, 0x00, 0x00, 0x00, 0x00, 0x00, 0x09, 0x21, 0x00,0x00, 0x00, 0x47])
 			writebytes = ser.write( data)
@@ -94,7 +94,7 @@ class dollmachine:
 
 
 	def set_left(self, value):
-		with serial.Serial("/dev/ttyAMA0", 115200, timeout=1, stopbits=STOPBITS_TWO) as ser:	
+		with serial.Serial("/dev/ttyAMA0", 115200, timeout=1, stopbits=serial.STOPBITS_TWO) as ser:	
 			if value!=0:
 				self.rand_pid()
 				data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x02, 0x00, 0x14, 0x54])
@@ -110,7 +110,7 @@ class dollmachine:
 				ser.close()
 
 	def set_right(self, value):
-		with serial.Serial("/dev/ttyAMA0", 115200, timeout=1, stopbits=STOPBITS_TWO) as ser:	
+		with serial.Serial("/dev/ttyAMA0", 115200, timeout=1, stopbits=serial.STOPBITS_TWO) as ser:	
 			if value!=0:
 				self.rand_pid()
 				data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x03, 0x00, 0x14, 0x55])
@@ -126,7 +126,7 @@ class dollmachine:
 				ser.close()
 
 	def take_doll(self):
-		with serial.Serial("/dev/ttyAMA0", 115200, timeout=1, stopbits=STOPBITS_TWO) as ser:	
+		with serial.Serial("/dev/ttyAMA0", 115200, timeout=1, stopbits=serial.STOPBITS_TWO) as ser:	
 			self.rand_pid()
 			data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x04, 0x00, 0x00, 0x42])
 			writebytes = ser.write( data)
