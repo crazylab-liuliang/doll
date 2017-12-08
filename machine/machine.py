@@ -139,8 +139,11 @@ class dollmachine:
 		self.loop_time += delta
 		if self.loop_time > 1.5:
 			data = []
-			while self.ser.in_waiting > 0:
-				data += self.ser.read(1)
+			self.reopen_ser()
+			inbuff = self.ser.in_waiting
+			while inbuff > 0:
+				data += self.ser.read(inbuff)
+				inbuff = self.ser.in_waiting
 
 			if len(data):
 				print("parse receive data : \n\t")
