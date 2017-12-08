@@ -12,8 +12,7 @@ class dollmachine:
 	pid = 0
 
 	def __init__(self):
-		self.files_preserve = [handler.socket]
-		self.ser_rcv = serial.Serial("/dev/ttyAMA0", 115200, timeout=10, stopbits=serial.STOPBITS_TWO)
+		self.ser_rcv = serial.Serial("/dev/ttyAMA0", 115200, timeout=10, stopbits=serial.STOPBITS_TWO，rtscts=True, dsrdtr=True)
 		return
 
 	def __del__(self):
@@ -34,7 +33,7 @@ class dollmachine:
 				self.ser.close()
 				self.ser = None
 		
-			self.ser = serial.Serial("/dev/ttyAMA0", 115200, timeout=10, stopbits=serial.STOPBITS_TWO)
+			self.ser = serial.Serial("/dev/ttyAMA0", 115200, timeout=10, stopbits=serial.STOPBITS_TWO, rtscts=True, dsrdtr=True)
 
 		except Exception as e:
 			time.sleep(0.5)
