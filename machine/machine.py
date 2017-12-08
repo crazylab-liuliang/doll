@@ -5,16 +5,21 @@ import protocol.pb_machine_control as pb_mc
 
 
 class dollmachine:
+	ser = None
 	take_time = 0
 	pid = 0
 
 	def __init__(self):
+		self.ser = serial.Serial("/dev/ttyAMA0", 115200, timeout=10)
 		return
 
 	def __del__(self):
 		self.cleanup()
 
 	def cleanup(self):
+		if self.ser != None:
+			self.ser.close()
+
 		return
 
 	def rand_pid(self):
@@ -136,11 +141,10 @@ class dollmachine:
 			if self.take_time <= 0:
 				print("take doll signal")
 
-		with serial.Serial("/dev/ttyAMA0", 115200, timeout=1) as ser:
-			data = []
-			while ser.in_waiting()>0:
-				data += ser.read(1)
+		data = []
+		while self.ser.in_waiting > 0:
+			data += ser.read(1)
 
-			if len(data):
-				print("parse receive data : \n\t")
-				print(data)
+		if len(data):
+			print("parse receive data : \n\t")
+			print(data)
