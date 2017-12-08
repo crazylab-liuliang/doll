@@ -63,9 +63,6 @@ class network:
 	def process_net_pack(self, head, body):	
 		msg_id = head[0]
 		msg_size = head[1]
-
-		print(msg_id)
-
 		if msg_id < len(self.msg_bind):
 			msg = self.msg_bind[msg_id][0]
 			msg_cb = self.msg_bind[msg_id][1]

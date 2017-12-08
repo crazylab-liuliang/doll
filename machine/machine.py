@@ -61,11 +61,11 @@ class dollmachine:
 
 
 	def set_forward(self, value):
-		with serial.Serial("/dev/ttyAMA0", 115200, timeout=1) as ser:	
+		if self.ser != None:	
 			if value!=0:
 				self.rand_pid()
 				data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x00, 0x00, 0x14, 0x52])
-				writebytes = ser.write( data)
+				self.ser.write( data)
 				print("forward begin")
 				ser.close()
 				time.sleep(0.1)
@@ -73,15 +73,15 @@ class dollmachine:
 				print("forward stop")
 				self.rand_pid()
 				data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x05, 0x00, 0x00, 0x43])
-				writebytes = ser.write( data)
+				self.ser.write( data)
 				ser.close()
 
 	def set_back(self, value):
-		with serial.Serial("/dev/ttyAMA0", 115200, timeout=1) as ser:	
+		if self.ser != None:	
 			if value!=0:
 				self.rand_pid()
 				data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x01, 0x00, 0x14, 0x53])
-				writebytes = ser.write( data)
+				self.ser.write( data)
 				print("back begin")
 				ser.close()
 				time.sleep(0.1)
@@ -89,7 +89,7 @@ class dollmachine:
 				print("back stop")
 				self.rand_pid()
 				data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x05, 0x00, 0x00, 0x43])
-				writebytes = ser.write( data)
+				self.ser.write( data)
 				ser.close()
 
 
@@ -143,7 +143,7 @@ class dollmachine:
 
 		data = []
 		while self.ser.in_waiting > 0:
-			data += ser.read(1)
+			data += self.ser.read(1)
 
 		if len(data):
 			print("parse receive data : \n\t")
