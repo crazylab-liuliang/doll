@@ -20,9 +20,9 @@ class dollmachine:
 
 	def rand_pid(self):
 		self.pid = 0
-		rd  = random.randint(0, 65535)
+		rd  = random.randint(0, 65025)
 		while self.pid==rd:
-			rd = random.randint(0, 65535)
+			rd = random.randint(0, 65025)
 
 		self.pid = rd
 
