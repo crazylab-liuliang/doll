@@ -12,7 +12,7 @@ class dollmachine:
 	pid = 0
 
 	def __init__(self):
-		self.ser_rcv = serial.Serial("/dev/ttyAMA0", 115200, timeout=10, stopbits=serial.STOPBITS_TWO，rtscts=True, dsrdtr=True)
+		self.ser_rcv = serial.Serial("/dev/ttyAMA0", 115200, timeout=10, stopbits=serial.STOPBITS_TWO, rtscts=True, dsrdtr=True)
 		return
 
 	def __del__(self):
