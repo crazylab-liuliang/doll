@@ -24,12 +24,17 @@ class dollmachine:
 		return
 
 	def reopen_ser(self):
-		if self.ser != None and self.ser.is_open:
-			self.ser.close()
-			self.ser = None
+		try:
+			if self.ser != None and self.ser.is_open:
+				self.ser.close()
+				self.ser = None
 		
-		if self.ser == None:
-			self.ser = serial.Serial("/dev/ttyAMA0", 115200, timeout=10, stopbits=serial.STOPBITS_TWO)
+			if self.ser == None:
+				self.ser = serial.Serial("/dev/ttyAMA0", 115200, timeout=10, stopbits=serial.STOPBITS_TWO)
+		except Exception as e:
+			time.sleep(0.5)
+			print(e)
+			self.reopen_ser()
 		
 		#self.ser.open()		
 
