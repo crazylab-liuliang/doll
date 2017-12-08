@@ -28,7 +28,7 @@ def loop():
 	print("main game loop...")
 	while True:
 		nw.process_net_bytes()
-		dm.loop()
+		dm.loop(0.02)
 		time.sleep(0.02)
 
 # init
