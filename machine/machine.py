@@ -1,7 +1,6 @@
 import serial
 import time
 import random
-import RPi.GPIO as GPIO
 import protocol.pb_machine_control as pb_mc
 
 
@@ -53,7 +52,6 @@ class dollmachine:
 			writebytes = ser.write( data)
 			print("add coin...")
 			ser.close()
-
 			time.sleep(0.1)
 
 
@@ -123,19 +121,26 @@ class dollmachine:
 				ser.close()
 
 	def take_doll(self):
-			with serial.Serial("/dev/ttyAMA0", 115200, timeout=1) as ser:	
-				self.rand_pid()
-				data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x04, 0x00, 0x00, 0x42])
-				writebytes = ser.write( data)
-				self.take_time = 10000
-				print("take doll")
-				ser.close()
-				time.sleep(0.1)
+		with serial.Serial("/dev/ttyAMA0", 115200, timeout=1) as ser:	
+			self.rand_pid()
+			data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x04, 0x00, 0x00, 0x42])
+			writebytes = ser.write( data)
+			self.take_time = 10000
+			print("take doll")
+			ser.close()
+			time.sleep(0.1)
 
-	def loop(self):
+	def loop(self):		
 		if self.take_time > 0:
 			self.take_time -= 20
 			if self.take_time <= 0:
 				print("take doll signal")
 
-		
+		with serial.Serial("/dev/ttyAMA0", 115200, timeout=1) as ser:
+			data = []
+			while ser.in_waiting()>0:
+				data += ser.read(1)
+
+			if len(data):
+				print("parse receive data : \n\t")
+				print(data)
