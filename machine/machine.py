@@ -12,7 +12,7 @@ class dollmachine:
 	pid = 0
 
 	def __init__(self):
-		self.ser = serial.Serial("/dev/ttyUSB0", 115200, timeout=10, stopbits=serial.STOPBITS_TWO, rtscts=True, dsrdtr=True)
+		self.ser = serial.Serial("/dev/ttyUSB0", 115200, timeout=10, stopbits=serial.STOPBITS_ONE, rtscts=False, dsrdtr=False)
 		return
 
 	def __del__(self):
@@ -23,21 +23,7 @@ class dollmachine:
 			self.ser.close()
 
 		return
-
-	def reopen_ser(self):
-		self.ser.reset_input_buffer()
-		return
-		try:
-			if self.ser != None and self.ser.is_open:
-				self.ser.close()
-				self.ser = None
-		
-			self.ser = serial.Serial("/dev/ttyAMA0", 115200, timeout=10, stopbits=serial.STOPBITS_TWO, rtscts=True, dsrdtr=True)
-
-		except Exception as e:
-			time.sleep(0.5)
-			print(e)
-			self.reopen_ser()		
+	
 
 	def rand_pid(self):
 		self.pid = 0
@@ -46,7 +32,6 @@ class dollmachine:
 			rd = random.randint(0, 65025)
 
 		self.pid = rd
-		self.reopen_ser()
 
 	def on_recv_machine_control(self, msg):
 		print("on recv machine control [%d,%d]" % (msg.type, msg.op))
