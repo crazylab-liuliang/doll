@@ -12,7 +12,7 @@ class dollmachine:
 	pid = 0
 
 	def __init__(self):
-		self.ser_rcv = serial.Serial("/dev/ttyAMA0", 115200, timeout=10, stopbits=serial.STOPBITS_TWO, rtscts=True, dsrdtr=True)
+		self.ser = serial.Serial("/dev/ttyUSB0", 115200, timeout=10, stopbits=serial.STOPBITS_TWO, rtscts=True, dsrdtr=True)
 		return
 
 	def __del__(self):
@@ -22,12 +22,10 @@ class dollmachine:
 		if self.ser != None:
 			self.ser.close()
 
-		if self.ser_rcv != None and self.ser_rcv.is_open:
-			self.ser_rcv.close()
-
 		return
 
 	def reopen_ser(self):
+		return
 		try:
 			if self.ser != None and self.ser.is_open:
 				self.ser.close()
@@ -139,10 +137,10 @@ class dollmachine:
 		self.loop_time += delta
 		if self.loop_time > 1.5:
 			data = []
-			inbuff = self.ser_rcv.in_waiting
+			inbuff = self.ser.in_waiting
 			while inbuff > 0:
-				data += self.ser_rcv.read(inbuff)
-				inbuff = self.ser_rcv.in_waiting
+				data += self.ser.read(inbuff)
+				inbuff = self.ser.in_waiting
 
 			if len(data):
 				print("parse receive data : \n\t")
