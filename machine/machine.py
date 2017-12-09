@@ -3,11 +3,13 @@ import time
 import random
 import protocol.pb_machine_control as pb_mc
 
+def hex2int(str):
+	return int(str.encode('hex'), 16)
 
 class dollmachine:
 	ser = None
 	loop_time = 0.0
-	data_buffer = bytes()
+	data_buffer = []
 	pid = 0
 	header_size = 7
 
@@ -64,7 +66,6 @@ class dollmachine:
 		self.rand_pid()
 		data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x05, 0x00, 0x00, 0x43])
 		self.ser.write( data)
-		time.sleep(0.1)
 
 
 	def set_forward(self, value):
@@ -122,7 +123,7 @@ class dollmachine:
 		print(self.data_buffer)
 
 		# make sure msg begin weith 0xfe		
-		while len(self.data_buffer) > 1 and self.data_buffer[0] != 0xfe:
+		while len(self.data_buffer) > 1 and self.data_buffer[0] != '\xfe':
 			print("error : protocol begin with ["+ self.data_buffer[0] + "], it should begin with [0xfe]...")
 			self.data_buffer = self.data_buffer[1:]
 
@@ -131,7 +132,7 @@ class dollmachine:
 			return
 
 		proto_head = self.data_buffer[:self.header_size]
-		proto_size = proto_head[self.header_size-1]
+		proto_size = hex2int(proto_head[self.header_size-1])
 
 		if len(self.data_buffer) < proto_size:
 				return
@@ -144,24 +145,20 @@ class dollmachine:
 
 	def process_rcv_pack(self, head, body):
 		print("receive protocol type [%d]" % body[0])
-		if body[0] == 0x03:
-			if body[1] == 0x00:
+		msg_type = hex2int(body[0])
+		if msg_type == 0x03 or msg_type == 0x33:
+			catch_result = hex2int(body[1])
+			if catch_result == 0x00:
 				print("catch nothing... 03")
-			elif body[1]==0x01:
+			elif catch_result==0x01:
 				print("catch one doll... 03")
-
-		if body[0] == 0x33:
-			if body[1] == 0x00:
-				print("catch nothing... 33")
-			elif body[1]==0x01:
-				print("catch one doll... 33")
 
 	def loop(self, delta):		
 		self.loop_time += delta
 		if self.loop_time > 1:
 			inbuff = self.ser.in_waiting
 			while inbuff > 0:
-				self.data_buffer += self.ser.read(inbuff).encode('hex')
+				self.data_buffer += self.ser.read(inbuff)
 				inbuff = self.ser.in_waiting
 
 			self.process_rcv_bytes()
