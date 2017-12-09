@@ -6,10 +6,10 @@ import protocol.pb_machine_control as pb_mc
 
 class dollmachine:
 	ser = None
-	ser_rcv = None
-	take_time = 0
 	loop_time = 0.0
+	data_buffer = bytes()
 	pid = 0
+	header_size = 7
 
 	def __init__(self):
 		self.ser = serial.Serial("/dev/ttyUSB0", 115200, timeout=10, stopbits=serial.STOPBITS_ONE, rtscts=False, dsrdtr=False)
@@ -115,22 +115,52 @@ class dollmachine:
 		self.rand_pid()
 		data = bytearray([0xfe, self.pid/255, self.pid%255, 0x01, (~(self.pid/255))&0xff, (~(self.pid%255))&0xff, 0x0c, 0x32, 0x04, 0x00, 0x00, 0x42])
 		self.ser.write( data)
-		self.take_time = 10000
 		print("take doll")
 		time.sleep(0.1)
 
+	def process_rcv_bytes(self):
+		# make sure msg begin weith 0xfe		
+		while len(self.data_buffer) > 1 and self.data_buffer[0] != 0xfe:
+			self.data_buffer = self.data_buffer[1:]
+
+		# make sure we can get data  len from header size
+		if len(self.data_buffer) < self.header_size:
+			return
+
+		proto_head = self.data_buffer[:self.header_size])
+		proto_size = proto_head[self.header_size-1]
+
+		if len(self.data_buffer) < proto_size:
+				return
+
+		proto_body = self.data_buffer[self.header_size : proto_size]
+		self.process_rcv_pack(proto_head, proto_body)
+
+		self.data_buffer = self.data_buffer[proto_size:]
+
+
+	def process_rcv_pack(self, head, body):
+		if body[0] == 0x03:
+			if body[1] == 0x00:
+				print("catch nothing... 03")
+			elif body[1]==0x01:
+				print("catch one doll... 03")
+
+		if body[0] == 0x33:
+			if body[1] == 0x00:
+				print("catch nothing... 33")
+			elif body[1]==0x01:
+				print("catch one doll... 33")
+
 	def loop(self, delta):		
 		self.loop_time += delta
-		if self.loop_time > 1.5:
-			data = []
+		if self.loop_time > 1:
 			inbuff = self.ser.in_waiting
 			while inbuff > 0:
-				data += self.ser.read(inbuff)
+				self.data_buffer += self.ser.read(inbuff)
 				inbuff = self.ser.in_waiting
 
-			if len(data):
-				print("parse receive data : \n\t")
-				print(data)
+			self.process_rcv_bytes()
 				
 			self.loop_time =0.0
 
