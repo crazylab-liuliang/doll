@@ -119,8 +119,10 @@ class dollmachine:
 		time.sleep(0.1)
 
 	def process_rcv_bytes(self):
+		print(self.data_buffer)
+
 		# make sure msg begin weith 0xfe		
-		while len(self.data_buffer) > 1 and self.data_buffer[0] != '\xfe':
+		while len(self.data_buffer) > 1 and self.data_buffer[0] != 0xfe:
 			print("error : protocol begin with ["+ self.data_buffer[0] + "], it should begin with [0xfe]...")
 			self.data_buffer = self.data_buffer[1:]
 
@@ -142,16 +144,16 @@ class dollmachine:
 
 	def process_rcv_pack(self, head, body):
 		print("receive protocol type [%d]" % body[0])
-		if body[0] == '\x03':
-			if body[1] == '\x00':
+		if body[0] == 0x03:
+			if body[1] == 0x00:
 				print("catch nothing... 03")
-			elif body[1]=='\x01':
+			elif body[1]==0x01:
 				print("catch one doll... 03")
 
-		if body[0] == '\x33':
-			if body[1] == '\x00':
+		if body[0] == 0x33:
+			if body[1] == 0x00:
 				print("catch nothing... 33")
-			elif body[1]=='\x01':
+			elif body[1]==0x01:
 				print("catch one doll... 33")
 
 	def loop(self, delta):		
@@ -159,7 +161,7 @@ class dollmachine:
 		if self.loop_time > 1:
 			inbuff = self.ser.in_waiting
 			while inbuff > 0:
-				self.data_buffer += self.ser.read(inbuff)
+				self.data_buffer += self.ser.read(inbuff).encode('hex')
 				inbuff = self.ser.in_waiting
 
 			self.process_rcv_bytes()
