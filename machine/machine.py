@@ -25,6 +25,7 @@ class dollmachine:
 		return
 
 	def reopen_ser(self):
+		self.ser.reset_input_buffer()
 		return
 		try:
 			if self.ser != None and self.ser.is_open:
