@@ -36,6 +36,10 @@ class dollmachine:
 		self.pid = rd
 
 	def on_recv_machine_control(self, msg):
+		if self.ser == None:
+			print("no ttyUSB0 device, can't process msg from server.")
+			return
+
 		if msg.type==0:
 			self.add_coin()
 
@@ -149,7 +153,10 @@ class dollmachine:
 			elif catch_result==0x01:
 				print("catch one doll...\n")
 
-	def loop(self, delta):		
+	def loop(self, delta):	
+		if self.ser == None:
+			return
+
 		self.loop_time += delta
 		if self.loop_time > 1:
 			inbuff = self.ser.in_waiting
