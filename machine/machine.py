@@ -36,7 +36,7 @@ class dollmachine:
 		self.pid = rd
 
 	def on_recv_machine_control(self, msg):
-		print("on recv machine control [%d,%d]" % (msg.type, msg.op))
+		#print("on recv machine control [%d,%d]" % (msg.type, msg.op))
 		if msg.type==0:
 			self.add_coin()
 
@@ -120,8 +120,6 @@ class dollmachine:
 		time.sleep(0.1)
 
 	def process_rcv_bytes(self):
-		print(self.data_buffer)
-
 		# make sure msg begin weith 0xfe		
 		while len(self.data_buffer) > 1 and self.data_buffer[0] != '\xfe':
 			print("error : protocol begin with ["+ self.data_buffer[0] + "], it should begin with [0xfe]...")
@@ -149,9 +147,9 @@ class dollmachine:
 		if msg_type == 0x03 or msg_type == 0x33:
 			catch_result = hex2int(body[1])
 			if catch_result == 0x00:
-				print("catch nothing... 03")
+				print("catch nothing...\n")
 			elif catch_result==0x01:
-				print("catch one doll... 03")
+				print("catch one doll...\n")
 
 	def loop(self, delta):		
 		self.loop_time += delta
