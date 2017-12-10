@@ -36,7 +36,6 @@ class dollmachine:
 		self.pid = rd
 
 	def on_recv_machine_control(self, msg):
-		#print("on recv machine control [%d,%d]" % (msg.type, msg.op))
 		if msg.type==0:
 			self.add_coin()
 
@@ -142,7 +141,6 @@ class dollmachine:
 
 
 	def process_rcv_pack(self, head, body):
-		print("receive protocol type [%d]" % body[0])
 		msg_type = hex2int(body[0])
 		if msg_type == 0x03 or msg_type == 0x33:
 			catch_result = hex2int(body[1])
