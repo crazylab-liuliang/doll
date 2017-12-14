@@ -158,10 +158,10 @@ class dollmachine:
 			return
 
 		self.loop_time += delta
-		if self.loop_time > 1:
+		if self.loop_time > 0.2:
 			inbuff = self.ser.in_waiting
 			while inbuff > 0:
-				self.data_buffer += self.ser.read(inbuff)
+				self.data_buffer += self.ser.read(inbuff, timeout=0.1)
 				inbuff = self.ser.in_waiting
 
 			self.process_rcv_bytes()
