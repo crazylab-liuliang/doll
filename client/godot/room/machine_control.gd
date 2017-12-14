@@ -5,7 +5,7 @@ var button_idxs = []
 
 func _ready():
 	if is_mirror:
-		button_idxs = [2,1,4,3]
+		button_idxs = [2,1,3,4]
 	else:
 		button_idxs = [1,2,3,4]
 
