@@ -9,17 +9,13 @@ import net.socket.SocketServer;
 import quartz.JobMgr;
 
 import org.apache.logging.log4j.Logger;
-
-import manager.ranking.RankingMgr;
 import net.http.HttpServer;
-
 import org.apache.logging.log4j.LogManager;
 
 public class app {
 	// 定义一个静态日志变量
-	private static final Logger logger = LogManager.getLogger("shooter");
+	private static final Logger logger = LogManager.getLogger("doll");
 	private static ExecutorService updateService = null;
-	private static ExecutorService dbSaveService = null;
 	private static long	 				currentTime = 0;
 	private static long	 				lastTime = 0;
 	private static long					saveToDBTime = 0;
@@ -37,13 +33,9 @@ public class app {
 		// 新建线程池
 		int nThreads = Math.max( 1, Runtime.getRuntime().availableProcessors()-1);
 		updateService = Executors.newFixedThreadPool(nThreads);	
-		dbSaveService = Executors.newFixedThreadPool(1);
 		
 		// 开启定时任务
 		JobMgr.getInstance().startJobs();
-		
-		// 排行榜
-		RankingMgr.getInstance();
 		
 		// 启动服务
 		SocketServer server = SocketServer.getInstance();
@@ -76,7 +68,6 @@ public class app {
 	
 	public static void waitExecutatServiceTerminated() {
 		updateService.shutdown();
-		dbSaveService.shutdown();
 		
 		while(!updateService.isTerminated()) {
 			try {
@@ -85,38 +76,6 @@ public class app {
 				e.printStackTrace();
 			}
 		}
-		
-		while(!dbSaveService.isTerminated()) {
-			try {
-				Thread.sleep(100);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-	}
-	
-	public static void saveToDB(long delta) {
-		// 保存到数据库
-		saveToDBTime += delta;
-		if(saveToDBTime > 300 * 1000) {
-			dbSaveService.execute(new Runnable() {
-				public void run() {
-					manager.ranking.RankingMgr.getInstance().saveToDB();
-				}		
-			});
-				
-			dbSaveService.execute(new Runnable() {
-				public void run() {
-					manager.player.Player.saveAllToDB();
-				}
-			});
-			
-			saveToDBTime -= 300 * 1000;
-		}
-	}
-	
-	public static void addSaveToDBTask(Runnable command) {
-		dbSaveService.execute(command);
 	}
 	
 	public static void sleep(long delta) {
@@ -133,13 +92,6 @@ public class app {
 	public static void mainLoop(long delta)
 	{					
 			// 更新所有玩家
-			manager.player.Player.updateAll(delta);
-			
-			// 更新房间
-			manager.room.RoomMgr.update(delta);
-			
-			// 保存到数据库
-			saveToDB(delta);
 					
 			// 休息
 			sleep(delta);

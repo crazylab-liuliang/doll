@@ -23,9 +23,6 @@ import io.netty.handler.codec.http.HttpVersion;
 import io.netty.handler.codec.http.QueryStringDecoder;
 import io.netty.util.CharsetUtil;
 import manager.machine.DollMachine;
-import manager.player.Player;
-import manager.ranking.RankingMgr;
-import manager.room.RoomMgr;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -66,17 +63,6 @@ public class HttpServerInboundHandler extends SimpleChannelInboundHandler<FullHt
 				dm.on_controll(type, value);
 			}
 		}
-		else if(path.equals("/state")) {
-			String sendMsg = String.format("Rooms number [%d]\nPlayers number[%d]", RoomMgr.rooms.size(), Player.players.size());
-
-			writeJson(ctx, sendMsg);
-		}
-		else if(path.equals("/ranking")) {
-			String sendMsg = RankingMgr.getInstance().getRankingInJson();
-			
-			writeJson(ctx, sendMsg);
-		}
-	
 	}
 	
 	private void writeJson(ChannelHandlerContext ctx, String sendMsg) {
