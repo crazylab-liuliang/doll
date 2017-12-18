@@ -44,6 +44,8 @@ public class HttpServerInboundHandler extends SimpleChannelInboundHandler<FullHt
 		else if(request.getMethod()==HttpMethod.POST) {
 			handleHttpPost(ctx, request);
 		}
+		
+		writeJson(ctx, "1");
 	}
 	
 	private void handleHttpGet(ChannelHandlerContext ctx, FullHttpRequest request) {

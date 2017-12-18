@@ -52,5 +52,9 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="org.thymeleaf:thymeleaf-spring4:Release3" level="project" />
+    <orderEntry type="library" name="org.thymeleaf:thymeleaf:Release3" level="project" />
+    <orderEntry type="library" name="org.thymeleaf:thymeleaf-spring4:Release2" level="project" />
+    <orderEntry type="library" name="org.thymeleaf:thymeleaf:Release2" level="project" />
   </component>
 </module>

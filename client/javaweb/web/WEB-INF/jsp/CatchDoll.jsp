@@ -59,7 +59,7 @@
     <script type="text/javascript" src="dist/js/jsmpeg.min.js"></script>
     <script type="text/javascript">
         var canvas = document.getElementById('video-canvas');
-        var url = 'ws://wawadaren.ledo.com:10002/camera_0';
+        var url = 'ws://118.190.156.61:10002/camera_0';
         var player = new JSMpeg.Player(url, {canvas: canvas});
     </script>
 

@@ -24,7 +24,8 @@ public class CatchDollController {
                                                 @RequestParam("value") String value){
 
         RestTemplate rest= new RestTemplate();
-        rest.getForObject( "http://localhost:5000/op?type=" + type + "&value=" + value, String.class);
+        rest.getForObject( "http://118.190.156.61:8900/op?machine=apple&type=" + type + "&value=" + value, String.class);
+        //rest.getForObject( "http://localhost:8900/op?machine=apple&type=" + type + "&value=" + value, String.class);
 
         String response = "";
         return response;
