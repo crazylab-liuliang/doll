@@ -15,6 +15,44 @@
             text-align: center;
         }
     </style>
+
+    <script>
+        function onPressStart(){
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.open("GET", "/op?type=0&value=0", true);
+            xmlhttp.send()
+        }
+
+        function onPressForward(){
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.open("GET", "/op?type=1&value=1", true);
+            xmlhttp.send()
+        }
+
+        function onPressBack(){
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.open("GET", "/op?type=2&value=1", true);
+            xmlhttp.send()
+        }
+
+        function onPressLeft(){
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.open("GET", "/op?type=3&value=1", true);
+            xmlhttp.send()
+        }
+
+        function onPressRight(){
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.open("GET", "/op?type=4&value=1", true);
+            xmlhttp.send()
+        }
+
+        function onPressTake(){
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.open("GET", "/op?type=5&value=0", true);
+            xmlhttp.send()
+        }
+    </script>
 </head>
 <body>
     <canvas id="video-canvas"></canvas>
@@ -24,5 +62,12 @@
         var url = 'ws://wawadaren.ledo.com:10002/camera_0';
         var player = new JSMpeg.Player(url, {canvas: canvas});
     </script>
+
+    <button type="button" onclick="onPressStart()">start</button>
+    <button type="button" onclick="onPressForward()">forward</button>
+    <button type="button" onclick="onPressBack()">back</button>
+    <button type="button" onclick="onPressLeft()">left</button>
+    <button type="button" onclick="onPressRight()">right</button>
+    <button type="button" onclick="onPressTake()">take</button>
 </body>
 </html>
