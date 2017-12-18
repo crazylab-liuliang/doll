@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping(value="/", method = RequestMethod.GET)
 public class CatchDollController {
 
-    @RequestMapping(value="catch", method = RequestMethod.GET)
+    @RequestMapping(value="/catch", method = RequestMethod.GET)
     public String catchDoll(ModelMap model){
         model.addAttribute("msg", "Spring MVC hellow" );
         model.addAttribute("name", "wocao");
