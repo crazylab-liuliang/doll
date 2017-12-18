@@ -1,0 +1,309 @@
+2017-11-04 12:29:53,073 INFO shooter [main] --------------
+2017-11-04 12:29:53,073 INFO shooter [main] --------------
+2017-11-04 12:29:53,076 INFO shooter [main] |Start server|
+2017-11-04 12:29:53,076 INFO shooter [main] |Start server|
+2017-11-04 12:29:53,076 INFO shooter [main] --------------
+2017-11-04 12:29:53,076 INFO shooter [main] --------------
+2017-11-04 12:29:55,673 INFO db [main] db:connected
+2017-11-04 12:29:55,673 INFO db [main] db:connected
+2017-11-04 12:29:56,738 INFO ranking [main] load ranking data from db [{"lowestScore": 0, "rankingSize": 200, "scoreRanking": [{"name": "", "score": 43, "account": 1}]}]
+2017-11-04 12:29:56,738 INFO ranking [main] load ranking data from db [{"lowestScore": 0, "rankingSize": 200, "scoreRanking": [{"name": "", "score": 43, "account": 1}]}]
+2017-11-04 12:29:59,051 INFO socket server [main] bind port [8800] succeed
+2017-11-04 12:29:59,087 INFO http server [main] bind port [8900] succeed
+2017-11-04 12:30:06,755 INFO shooter [main] --------------
+2017-11-04 12:30:06,757 INFO shooter [main] |Start server|
+2017-11-04 12:30:06,757 INFO shooter [main] --------------
+2017-11-04 12:30:06,966 INFO db [main] db:connected
+2017-11-04 12:30:07,008 INFO ranking [main] load ranking data from db [{"lowestScore": 0, "rankingSize": 200, "scoreRanking": [{"name": "", "score": 43, "account": 1}]}]
+2017-11-04 12:30:07,407 INFO socket server [main] bind port [8800] succeed
+2017-11-04 12:30:07,442 INFO http server [main] bind port [8900] succeed
+2017-11-04 12:33:25,487 INFO doll machine [pool-6-thread-1] doll machine login
+2017-11-04 12:33:25,489 INFO shooter [pool-6-thread-1] Disconnect from client
+2017-11-04 12:35:07,698 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 12:36:25,346 INFO doll machine [pool-6-thread-2] doll machine login
+2017-11-04 12:36:25,364 INFO shooter [pool-6-thread-2] Disconnect from client
+2017-11-04 12:40:03,704 INFO doll machine [pool-6-thread-3] doll machine login
+2017-11-04 12:40:03,709 INFO shooter [pool-6-thread-3] Disconnect from client
+2017-11-04 12:40:07,468 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 12:44:29,413 INFO doll machine [pool-6-thread-4] doll machine login
+2017-11-04 12:44:58,867 INFO shooter [main] --------------
+2017-11-04 12:44:58,868 INFO shooter [main] |Start server|
+2017-11-04 12:44:58,868 INFO shooter [main] --------------
+2017-11-04 12:44:58,959 INFO db [main] db:connected
+2017-11-04 12:44:58,996 INFO ranking [main] load ranking data from db [{"lowestScore": 0, "rankingSize": 200, "scoreRanking": [{"name": "", "score": 43, "account": 1}]}]
+2017-11-04 12:44:59,338 INFO socket server [main] bind port [8800] succeed
+2017-11-04 12:44:59,370 INFO http server [main] bind port [8900] succeed
+2017-11-04 12:45:13,661 INFO doll machine [pool-6-thread-1] doll machine login
+2017-11-04 12:49:59,470 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 12:54:16,441 INFO shooter [main] --------------
+2017-11-04 12:54:16,443 INFO shooter [main] |Start server|
+2017-11-04 12:54:16,443 INFO shooter [main] --------------
+2017-11-04 12:54:16,559 INFO db [main] db:connected
+2017-11-04 12:54:16,594 INFO ranking [main] load ranking data from db [{"lowestScore": 0, "rankingSize": 200, "scoreRanking": [{"name": "", "score": 43, "account": 1}]}]
+2017-11-04 12:54:16,939 INFO socket server [main] bind port [8800] succeed
+2017-11-04 12:54:16,973 INFO http server [main] bind port [8900] succeed
+2017-11-04 12:55:00,769 INFO doll machine [pool-6-thread-1] doll machine login
+2017-11-04 12:56:53,083 INFO shooter [pool-6-thread-2] Disconnect from client
+2017-11-04 12:57:23,444 INFO shooter [pool-6-thread-3] Accept connect from client [0:0:0:0:0:0:0:1] count[45]
+2017-11-04 12:59:17,083 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 12:59:17,107 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 12:59:17,171 INFO db [pool-4-thread-1] db:save player[1]
+2017-11-04 12:59:17,184 INFO shooter [pool-4-thread-1] account [1] player [1] save to db
+2017-11-04 13:02:19,550 INFO shooter [pool-6-thread-3] Player [1] offline, CurrentPlayers [0]
+2017-11-04 13:02:19,552 INFO shooter [pool-6-thread-3] Disconnect from client
+2017-11-04 13:02:19,552 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 13:02:42,723 INFO shooter [main] --------------
+2017-11-04 13:02:42,725 INFO shooter [main] |Start server|
+2017-11-04 13:02:42,725 INFO shooter [main] --------------
+2017-11-04 13:02:42,816 INFO db [main] db:connected
+2017-11-04 13:02:42,852 INFO ranking [main] load ranking data from db [{"lowestScore": 0, "rankingSize": 200, "scoreRanking": [{"name": "", "score": 43, "account": 1}]}]
+2017-11-04 13:02:43,199 INFO socket server [main] bind port [8800] succeed
+2017-11-04 13:02:43,232 INFO http server [main] bind port [8900] succeed
+2017-11-04 13:03:24,039 INFO doll machine [pool-6-thread-1] doll machine login
+2017-11-04 13:03:35,113 INFO shooter [pool-6-thread-2] Accept connect from client [0:0:0:0:0:0:0:1] count[46]
+2017-11-04 13:07:43,284 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 13:07:43,288 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 13:07:43,293 INFO db [pool-4-thread-1] db:save player[1]
+2017-11-04 13:07:43,295 INFO shooter [pool-4-thread-1] account [1] player [1] save to db
+2017-11-04 13:12:43,317 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 13:12:43,319 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 13:17:43,311 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 13:17:43,313 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 13:22:43,349 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 13:22:43,350 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 13:27:43,246 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 13:27:43,247 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 13:32:43,290 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 13:32:43,291 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 13:37:43,296 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 13:37:43,297 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 13:42:43,338 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 13:42:43,339 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 13:47:43,274 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 13:47:43,276 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 13:52:43,302 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 13:52:43,303 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 13:57:43,254 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 13:57:43,255 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 14:02:43,316 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 14:02:43,317 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 14:07:43,271 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 14:07:43,272 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 14:12:43,281 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 14:12:43,282 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 14:17:43,304 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 14:17:43,305 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 14:22:43,340 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 14:22:43,341 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 14:27:43,269 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 14:27:43,270 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 14:32:43,331 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 14:32:43,333 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 14:37:43,276 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 14:37:43,277 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 14:42:43,289 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 14:42:43,290 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 14:47:43,332 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 14:47:43,333 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 14:52:43,263 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 14:52:43,264 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 14:57:43,331 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 14:57:43,332 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 15:02:43,319 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 15:02:43,320 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 15:03:56,862 INFO shooter [pool-6-thread-1] Disconnect from client
+2017-11-04 15:07:43,263 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 15:07:43,264 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 15:12:43,276 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 15:12:43,277 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 15:17:43,328 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 15:17:43,330 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 15:22:43,256 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 15:22:43,257 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 15:27:43,278 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 15:27:43,279 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 15:32:02,419 INFO doll machine [pool-6-thread-3] doll machine login
+2017-11-04 15:32:15,175 INFO shooter [main] --------------
+2017-11-04 15:32:15,176 INFO shooter [main] |Start server|
+2017-11-04 15:32:15,176 INFO shooter [main] --------------
+2017-11-04 15:32:15,269 INFO db [main] db:connected
+2017-11-04 15:32:15,306 INFO ranking [main] load ranking data from db [{"lowestScore": 0, "rankingSize": 200, "scoreRanking": [{"name": "", "score": 43, "account": 1}]}]
+2017-11-04 15:32:15,654 INFO socket server [main] bind port [8800] succeed
+2017-11-04 15:32:15,687 INFO http server [main] bind port [8900] succeed
+2017-11-04 15:32:15,807 INFO shooter [pool-6-thread-1] Accept connect from client [0:0:0:0:0:0:0:1] count[47]
+2017-11-04 15:32:34,985 INFO doll machine [pool-6-thread-2] doll machine login
+2017-11-04 15:32:47,330 INFO shooter [pool-6-thread-1] Player [1] offline, CurrentPlayers [0]
+2017-11-04 15:32:47,331 INFO shooter [pool-6-thread-1] Disconnect from client
+2017-11-04 15:32:47,333 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 15:32:47,357 INFO db [pool-4-thread-1] db:save player[1]
+2017-11-04 15:32:47,358 INFO shooter [pool-4-thread-1] account [1] player [1] save to db
+2017-11-04 15:32:48,561 INFO shooter [pool-6-thread-3] Accept connect from client [0:0:0:0:0:0:0:1] count[48]
+2017-11-04 15:37:15,753 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 15:37:15,755 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 15:37:15,774 INFO db [pool-4-thread-1] db:save player[1]
+2017-11-04 15:37:15,790 INFO shooter [pool-4-thread-1] account [1] player [1] save to db
+2017-11-04 15:44:15,219 INFO shooter [main] --------------
+2017-11-04 15:44:15,221 INFO shooter [main] |Start server|
+2017-11-04 15:44:15,221 INFO shooter [main] --------------
+2017-11-04 15:44:15,315 INFO db [main] db:connected
+2017-11-04 15:44:15,354 INFO ranking [main] load ranking data from db [{"lowestScore": 0, "rankingSize": 200, "scoreRanking": [{"name": "", "score": 43, "account": 1}]}]
+2017-11-04 15:44:15,706 INFO socket server [main] bind port [8800] succeed
+2017-11-04 15:44:15,739 INFO http server [main] bind port [8900] succeed
+2017-11-04 15:44:20,225 INFO doll machine [pool-6-thread-1] doll machine login
+2017-11-04 15:44:28,946 INFO shooter [pool-6-thread-2] Accept connect from client [0:0:0:0:0:0:0:1] count[49]
+2017-11-04 15:48:49,462 INFO shooter [pool-6-thread-2] Player [1] offline, CurrentPlayers [0]
+2017-11-04 15:48:49,463 INFO shooter [pool-6-thread-2] Disconnect from client
+2017-11-04 15:48:49,466 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 15:48:49,470 INFO db [pool-4-thread-1] db:save player[1]
+2017-11-04 15:48:49,471 INFO shooter [pool-4-thread-1] account [1] player [1] save to db
+2017-11-04 15:49:42,401 INFO shooter [main] --------------
+2017-11-04 15:49:42,403 INFO shooter [main] |Start server|
+2017-11-04 15:49:42,403 INFO shooter [main] --------------
+2017-11-04 15:49:42,494 INFO db [main] db:connected
+2017-11-04 15:49:42,530 INFO ranking [main] load ranking data from db [{"lowestScore": 0, "rankingSize": 200, "scoreRanking": [{"name": "", "score": 43, "account": 1}]}]
+2017-11-04 15:49:42,871 INFO socket server [main] bind port [8800] succeed
+2017-11-04 15:49:42,903 INFO http server [main] bind port [8900] succeed
+2017-11-04 15:49:52,013 INFO doll machine [pool-6-thread-1] doll machine login
+2017-11-04 15:50:09,072 INFO shooter [pool-6-thread-2] Accept connect from client [0:0:0:0:0:0:0:1] count[50]
+2017-11-04 15:53:49,188 INFO shooter [main] --------------
+2017-11-04 15:53:49,190 INFO shooter [main] |Start server|
+2017-11-04 15:53:49,190 INFO shooter [main] --------------
+2017-11-04 15:53:49,282 INFO db [main] db:connected
+2017-11-04 15:53:49,319 INFO ranking [main] load ranking data from db [{"lowestScore": 0, "rankingSize": 200, "scoreRanking": [{"name": "", "score": 43, "account": 1}]}]
+2017-11-04 15:53:49,671 INFO socket server [main] bind port [8800] succeed
+2017-11-04 15:53:49,704 INFO http server [main] bind port [8900] succeed
+2017-11-04 15:53:54,657 INFO shooter [pool-6-thread-1] Disconnect from client
+2017-11-04 15:53:54,674 INFO shooter [pool-6-thread-2] Accept connect from client [0:0:0:0:0:0:0:1] count[50]
+2017-11-04 15:54:50,674 INFO doll machine [pool-6-thread-3] doll machine login
+2017-11-04 15:55:06,595 INFO shooter [pool-6-thread-2] Player [1] offline, CurrentPlayers [0]
+2017-11-04 15:55:06,597 INFO shooter [pool-6-thread-2] Disconnect from client
+2017-11-04 15:55:06,601 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 15:55:06,626 INFO db [pool-4-thread-1] db:save player[1]
+2017-11-04 15:55:06,641 INFO shooter [pool-4-thread-1] account [1] player [1] save to db
+2017-11-04 15:55:07,732 INFO shooter [pool-6-thread-4] Accept connect from client [0:0:0:0:0:0:0:1] count[51]
+2017-11-04 15:58:44,995 INFO shooter [main] --------------
+2017-11-04 15:58:44,997 INFO shooter [main] |Start server|
+2017-11-04 15:58:44,997 INFO shooter [main] --------------
+2017-11-04 15:58:45,090 INFO db [main] db:connected
+2017-11-04 15:58:45,126 INFO ranking [main] load ranking data from db [{"lowestScore": 0, "rankingSize": 200, "scoreRanking": [{"name": "", "score": 43, "account": 1}]}]
+2017-11-04 15:58:45,472 INFO socket server [main] bind port [8800] succeed
+2017-11-04 15:58:45,505 INFO http server [main] bind port [8900] succeed
+2017-11-04 15:58:54,303 INFO doll machine [pool-6-thread-1] doll machine login
+2017-11-04 15:59:02,221 INFO shooter [pool-6-thread-2] Accept connect from client [0:0:0:0:0:0:0:1] count[51]
+2017-11-04 16:02:23,536 INFO shooter [main] --------------
+2017-11-04 16:02:23,538 INFO shooter [main] |Start server|
+2017-11-04 16:02:23,538 INFO shooter [main] --------------
+2017-11-04 16:02:23,632 INFO db [main] db:connected
+2017-11-04 16:02:23,669 INFO ranking [main] load ranking data from db [{"lowestScore": 0, "rankingSize": 200, "scoreRanking": [{"name": "", "score": 43, "account": 1}]}]
+2017-11-04 16:02:24,031 INFO socket server [main] bind port [8800] succeed
+2017-11-04 16:02:24,065 INFO http server [main] bind port [8900] succeed
+2017-11-04 16:02:34,807 INFO doll machine [pool-6-thread-1] doll machine login
+2017-11-04 16:02:44,740 INFO shooter [pool-6-thread-2] Accept connect from client [0:0:0:0:0:0:0:1] count[51]
+2017-11-04 16:04:27,049 INFO shooter [pool-6-thread-1] Disconnect from client
+2017-11-04 16:05:25,152 INFO shooter [main] --------------
+2017-11-04 16:05:25,154 INFO shooter [main] |Start server|
+2017-11-04 16:05:25,154 INFO shooter [main] --------------
+2017-11-04 16:05:25,250 INFO db [main] db:connected
+2017-11-04 16:05:25,286 INFO ranking [main] load ranking data from db [{"lowestScore": 0, "rankingSize": 200, "scoreRanking": [{"name": "", "score": 43, "account": 1}]}]
+2017-11-04 16:05:25,642 INFO socket server [main] bind port [8800] succeed
+2017-11-04 16:05:25,676 INFO http server [main] bind port [8900] succeed
+2017-11-04 16:05:35,156 INFO shooter [pool-6-thread-1] Accept connect from client [0:0:0:0:0:0:0:1] count[51]
+2017-11-04 16:06:03,355 INFO doll machine [pool-6-thread-2] doll machine login
+2017-11-04 16:06:11,479 INFO shooter [pool-6-thread-1] Player [1] offline, CurrentPlayers [0]
+2017-11-04 16:06:11,480 INFO shooter [pool-6-thread-1] Disconnect from client
+2017-11-04 16:06:11,484 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 16:06:11,488 INFO db [pool-4-thread-1] db:save player[1]
+2017-11-04 16:06:11,488 INFO shooter [pool-4-thread-1] account [1] player [1] save to db
+2017-11-04 16:06:12,631 INFO shooter [pool-6-thread-3] Accept connect from client [0:0:0:0:0:0:0:1] count[52]
+2017-11-04 16:10:25,703 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 16:10:25,704 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 16:10:25,707 INFO db [pool-4-thread-1] db:save player[1]
+2017-11-04 16:10:25,709 INFO shooter [pool-4-thread-1] account [1] player [1] save to db
+2017-11-04 16:13:57,024 INFO shooter [pool-6-thread-3] Player [1] offline, CurrentPlayers [0]
+2017-11-04 16:13:57,024 INFO shooter [pool-6-thread-3] Disconnect from client
+2017-11-04 16:13:57,025 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 16:14:07,062 INFO shooter [main] --------------
+2017-11-04 16:14:07,064 INFO shooter [main] |Start server|
+2017-11-04 16:14:07,064 INFO shooter [main] --------------
+2017-11-04 16:14:07,158 INFO db [main] db:connected
+2017-11-04 16:14:07,194 INFO ranking [main] load ranking data from db [{"lowestScore": 0, "rankingSize": 200, "scoreRanking": [{"name": "", "score": 43, "account": 1}]}]
+2017-11-04 16:14:07,536 INFO socket server [main] bind port [8800] succeed
+2017-11-04 16:14:07,569 INFO http server [main] bind port [8900] succeed
+2017-11-04 16:14:38,047 INFO doll machine [pool-6-thread-1] doll machine login
+2017-11-04 16:14:46,852 INFO shooter [pool-6-thread-2] Accept connect from client [0:0:0:0:0:0:0:1] count[53]
+2017-11-04 16:19:07,610 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 16:19:07,614 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 16:19:07,632 INFO db [pool-4-thread-1] db:save player[1]
+2017-11-04 16:19:07,633 INFO shooter [pool-4-thread-1] account [1] player [1] save to db
+2017-11-04 16:24:07,605 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 16:24:07,606 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 16:29:07,621 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 16:29:07,622 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 16:34:07,642 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 16:34:07,644 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 16:39:07,683 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 16:39:07,684 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 16:44:07,669 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 16:44:07,670 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 16:49:07,606 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 16:49:07,608 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 16:54:07,579 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 16:54:07,580 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 16:59:07,704 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 16:59:07,706 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 17:04:07,587 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 17:04:07,589 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 17:09:07,594 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 17:09:07,595 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 17:14:07,586 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 17:14:07,587 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 17:19:07,660 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 17:19:07,661 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 17:21:55,967 INFO shooter [pool-6-thread-1] Disconnect from client
+2017-11-04 17:24:07,635 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 17:24:07,637 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 17:27:44,258 INFO shooter [main] --------------
+2017-11-04 17:27:44,259 INFO shooter [main] |Start server|
+2017-11-04 17:27:44,259 INFO shooter [main] --------------
+2017-11-04 17:27:44,353 INFO db [main] db:connected
+2017-11-04 17:27:44,404 INFO ranking [main] load ranking data from db [{"lowestScore": 0, "rankingSize": 200, "scoreRanking": [{"name": "", "score": 43, "account": 1}]}]
+2017-11-04 17:27:44,769 INFO socket server [main] bind port [8800] succeed
+2017-11-04 17:27:44,802 INFO http server [main] bind port [8900] succeed
+2017-11-04 17:27:54,020 INFO shooter [pool-6-thread-1] Accept connect from client [0:0:0:0:0:0:0:1] count[54]
+2017-11-04 17:28:15,956 INFO doll machine [pool-6-thread-2] doll machine login
+2017-11-04 17:28:24,827 INFO shooter [pool-6-thread-1] Player [1] offline, CurrentPlayers [0]
+2017-11-04 17:28:24,828 INFO shooter [pool-6-thread-1] Disconnect from client
+2017-11-04 17:28:24,832 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 17:28:24,836 INFO db [pool-4-thread-1] db:save player[1]
+2017-11-04 17:28:24,837 INFO shooter [pool-4-thread-1] account [1] player [1] save to db
+2017-11-04 17:28:25,856 INFO shooter [pool-6-thread-3] Accept connect from client [0:0:0:0:0:0:0:1] count[55]
+2017-11-04 17:32:44,920 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 17:32:44,921 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 17:32:44,938 INFO db [pool-4-thread-1] db:save player[1]
+2017-11-04 17:32:44,954 INFO shooter [pool-4-thread-1] account [1] player [1] save to db
+2017-11-04 17:37:44,878 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 17:37:44,879 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 17:42:44,878 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 17:42:44,879 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 17:43:11,649 INFO shooter [pool-6-thread-3] Player [1] offline, CurrentPlayers [0]
+2017-11-04 17:43:11,649 INFO shooter [pool-6-thread-3] Disconnect from client
+2017-11-04 17:43:11,650 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 17:43:12,615 INFO shooter [pool-6-thread-4] Accept connect from client [0:0:0:0:0:0:0:1] count[56]
+2017-11-04 17:47:44,897 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 17:47:44,898 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 17:47:44,923 INFO db [pool-4-thread-1] db:save player[1]
+2017-11-04 17:47:44,939 INFO shooter [pool-4-thread-1] account [1] player [1] save to db
+2017-11-04 17:52:44,886 INFO ranking [pool-4-thread-1] save ranking data to db [{"lowestScore":0,"rankingSize":200,"scoreRanking":[{"account":1,"name":"","score":43}]}]
+2017-11-04 17:52:44,888 INFO db [pool-4-thread-1] db: save account [1]
+2017-11-04 17:55:48,287 INFO shooter [main] --------------
+2017-11-04 17:55:48,289 INFO shooter [main] |Start server|
+2017-11-04 17:55:48,289 INFO shooter [main] --------------
+2017-11-04 17:55:48,388 INFO db [main] db:connected
+2017-11-04 17:55:48,431 INFO ranking [main] load ranking data from db [{"lowestScore": 0, "rankingSize": 200, "scoreRanking": [{"name": "", "score": 43, "account": 1}]}]
+2017-11-04 17:55:57,400 INFO shooter [main] --------------
+2017-11-04 17:55:57,401 INFO shooter [main] |Start server|
+2017-11-04 17:55:57,401 INFO shooter [main] --------------
+2017-11-04 17:55:57,495 INFO db [main] db:connected
+2017-11-04 17:55:57,535 INFO ranking [main] load ranking data from db [{"lowestScore": 0, "rankingSize": 200, "scoreRanking": [{"name": "", "score": 43, "account": 1}]}]
+2017-11-04 17:55:57,896 INFO socket server [main] bind port [8800] succeed
+2017-11-04 17:55:57,929 INFO http server [main] bind port [8900] succeed
