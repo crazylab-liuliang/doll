@@ -31,6 +31,7 @@ public class DollMachine {
 		}		
 	}
 	
+	
 	// Ê¹ÓÃÓÊÏäÃÜÂëµÇÂ¼
 	public void login() {
 		machines.clear();
@@ -49,31 +50,24 @@ public class DollMachine {
 		return null;
 	}
 	
+	public static DollMachine getByName(String name) {
+		if(machines.size()>0){
+			ConcurrentHashMap.Entry<Integer, DollMachine> entry = machines.entrySet().iterator().next();
+			return entry.getValue();
+		}
+		
+		return null;
+	}
+	
 	// ×óÒÆ×¦×Ó
 	public void on_control(protocol.message msg) {
 		msg.send(mChannelCtx);
-		
-		protocol.machine_control msg_ = (protocol.machine_control)msg;
-		
-		System.out.println( msg_.type);
 	}
 	
-	// ×óÒÆ×¦×Ó
-	public void move_right() {
-		
-	}
-	
-	// ×óÒÆ×¦×Ó
-	public void move_forward() {
-		
-	}
-	
-	// ×óÒÆ×¦×Ó
-	public void move_back() {
-		
-	}
-	
-	public void catch_doll(){
-		
+	public void on_controll(String type, String value) {
+		protocol.machine_control msg = new protocol.machine_control();
+		msg.type = Integer.parseInt(type);
+		msg.op = Integer.parseInt(value);
+		msg.send(mChannelCtx);
 	}
 }

@@ -1,5 +1,10 @@
 package net.http;
 
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.List;
+import java.util.Map;
+
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFutureListener;
@@ -17,6 +22,7 @@ import io.netty.handler.codec.http.HttpResponseStatus;
 import io.netty.handler.codec.http.HttpVersion;
 import io.netty.handler.codec.http.QueryStringDecoder;
 import io.netty.util.CharsetUtil;
+import manager.machine.DollMachine;
 import manager.player.Player;
 import manager.ranking.RankingMgr;
 import manager.room.RoomMgr;
@@ -44,20 +50,33 @@ public class HttpServerInboundHandler extends SimpleChannelInboundHandler<FullHt
 	}
 	
 	private void handleHttpGet(ChannelHandlerContext ctx, FullHttpRequest request) {
-		final String uri = request.getUri();
-		logger.info("http request[" + uri + "]");
+		logger.info("http request[" + request.getUri() + "]");
 		
-		if(uri.equals("/state")) {
+		QueryStringDecoder decoder = new QueryStringDecoder(request.getUri());
+		String path = decoder.path();
+		Map<String, List<String>> params = decoder.parameters();
+		
+		if(path.equals("/op")) {
+			String machine = params.get("machine").get(0);
+			String type    = params.get("type").get(0);
+			String value   = params.get("value").get(0);
+			
+			DollMachine dm = DollMachine.getByName( machine);
+			if(dm!=null) {			
+				dm.on_controll(type, value);
+			}
+		}
+		else if(path.equals("/state")) {
 			String sendMsg = String.format("Rooms number [%d]\nPlayers number[%d]", RoomMgr.rooms.size(), Player.players.size());
 
 			writeJson(ctx, sendMsg);
 		}
-		else if(uri.equals("/ranking")) {
+		else if(path.equals("/ranking")) {
 			String sendMsg = RankingMgr.getInstance().getRankingInJson();
 			
 			writeJson(ctx, sendMsg);
 		}
-		
+	
 	}
 	
 	private void writeJson(ChannelHandlerContext ctx, String sendMsg) {
