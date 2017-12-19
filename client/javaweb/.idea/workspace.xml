@@ -33,14 +33,14 @@
             <state relative-caret-position="-357">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
-                <marker date="1513612905842" expanded="true" signature="0:104" ph="/.../" />
-                <marker date="1513612905842" expanded="false" signature="139:520" ph="..." />
-                <marker date="1513612905842" expanded="true" signature="522:604" ph="@{...}" />
-                <marker date="1513612905842" expanded="true" signature="673:680" ph="{}" />
-                <marker date="1513612905842" expanded="true" signature="686:773" ph="@{...}" />
-                <marker date="1513612905842" expanded="true" signature="818:954" ph="{...}" />
-                <marker date="1513612905842" expanded="true" signature="960:1062" ph="@{...}" />
-                <marker date="1513612905842" expanded="true" signature="1169:1415" ph="{...}" />
+                <marker date="1513613603014" expanded="true" signature="0:104" ph="/.../" />
+                <marker date="1513613603014" expanded="false" signature="139:520" ph="..." />
+                <marker date="1513613603014" expanded="true" signature="522:604" ph="@{...}" />
+                <marker date="1513613603014" expanded="true" signature="673:680" ph="{}" />
+                <marker date="1513613603014" expanded="true" signature="686:773" ph="@{...}" />
+                <marker date="1513613603014" expanded="true" signature="818:954" ph="{...}" />
+                <marker date="1513613603014" expanded="true" signature="960:1062" ph="@{...}" />
+                <marker date="1513613603014" expanded="true" signature="1169:1415" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -404,6 +404,34 @@
         </SHUTDOWN>
       </ConfigurationWrapper>
     </configuration>
+    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Remote" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="LOCAL" value="false" />
+      <deployment />
+      <server-settings>
+        <data>
+          <option name="targets">
+            <list>
+              <WatchedTargetModelImpl>
+                <option name="name" value="CONTEXT_XML" />
+                <name>CONTEXT_XML</name>
+              </WatchedTargetModelImpl>
+              <StagingTargetModelImpl>
+                <option name="name" value="STAGING" />
+                <name>STAGING</name>
+              </StagingTargetModelImpl>
+            </list>
+          </option>
+          <option name="transportHostId" />
+          <host-id />
+        </data>
+      </server-settings>
+      <predefined_log_file id="Tomcat" enabled="true" />
+      <predefined_log_file id="TOMCAT_LOCALHOST_LOG_ID" enabled="true" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="54293" />
+        <option name="LOCAL" value="false" />
+      </RunnerSettings>
+    </configuration>
     <configuration name="localhost" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.1" ALTERNATIVE_JRE_ENABLED="false">
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
@@ -500,12 +528,12 @@
       <workItem from="1513566644194" duration="1395000" />
       <workItem from="1513568644048" duration="3108000" />
       <workItem from="1513578789661" duration="7493000" />
-      <workItem from="1513609194146" duration="3768000" />
+      <workItem from="1513609194146" duration="5157000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16189000" />
+    <option name="totallyTimeSpent" value="17578000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -518,7 +546,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3984252" sideWeight="0.49707174" order="7" side_tool="true" content_ui="tabs" />
@@ -530,7 +557,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3984252" sideWeight="0.50292826" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3984252" sideWeight="0.50292826" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32997763" sideWeight="0.48777506" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32913387" sideWeight="0.49707174" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -742,14 +769,14 @@
         <state relative-caret-position="-357">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1513612905842" expanded="true" signature="0:104" ph="/.../" />
-            <marker date="1513612905842" expanded="false" signature="139:520" ph="..." />
-            <marker date="1513612905842" expanded="true" signature="522:604" ph="@{...}" />
-            <marker date="1513612905842" expanded="true" signature="673:680" ph="{}" />
-            <marker date="1513612905842" expanded="true" signature="686:773" ph="@{...}" />
-            <marker date="1513612905842" expanded="true" signature="818:954" ph="{...}" />
-            <marker date="1513612905842" expanded="true" signature="960:1062" ph="@{...}" />
-            <marker date="1513612905842" expanded="true" signature="1169:1415" ph="{...}" />
+            <marker date="1513613603014" expanded="true" signature="0:104" ph="/.../" />
+            <marker date="1513613603014" expanded="false" signature="139:520" ph="..." />
+            <marker date="1513613603014" expanded="true" signature="522:604" ph="@{...}" />
+            <marker date="1513613603014" expanded="true" signature="673:680" ph="{}" />
+            <marker date="1513613603014" expanded="true" signature="686:773" ph="@{...}" />
+            <marker date="1513613603014" expanded="true" signature="818:954" ph="{...}" />
+            <marker date="1513613603014" expanded="true" signature="960:1062" ph="@{...}" />
+            <marker date="1513613603014" expanded="true" signature="1169:1415" ph="{...}" />
           </folding>
         </state>
       </provider>
